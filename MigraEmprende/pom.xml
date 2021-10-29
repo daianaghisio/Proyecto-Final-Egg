@@ -8,10 +8,10 @@
 		<version>2.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Mesa5</groupId>
-	<artifactId>Mesa5</artifactId>
+	<groupId>com.MigraEmprende</groupId>
+	<artifactId>MigraEmprende</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Mesa5</name>
+	<name>MigraEmprende</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
