@@ -1,2 +1,0 @@
-# Proyecto-Final-Egg
-# MigraEmprende
