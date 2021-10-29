@@ -1,10 +1,10 @@
-package com.Mesa5.Mesa5;
+package com.MigraEmprende.MigraEmprende;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Mesa5ApplicationTests {
+class MigraEmprendeApplicationTests {
 
 	@Test
 	void contextLoads() {
