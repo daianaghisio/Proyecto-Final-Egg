@@ -1,13 +1,13 @@
 spring:
-#Configuración MySQL
+#ConfiguraciÃ³n MySQL
  datasource:
   url:
-    jdbc:mysql://migraemprende:3306/libreria?allowPublicKeyRetrieval=true&useSSL=false&u
+    jdbc:mysql://localhost:3306/migraemprende?allowPublicKeyRetrieval=true&useSSL=false&u
     seTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
   username: root
   password: root
   driver-class-name: com.mysql.cj.jdbc.Driver
-#Configuración Creación de tablas (Hibernate)
+#ConfiguraciÃ³n CreaciÃ³n de tablas (Hibernate)
  jpa:
   show-sql: true
   hibernate:
