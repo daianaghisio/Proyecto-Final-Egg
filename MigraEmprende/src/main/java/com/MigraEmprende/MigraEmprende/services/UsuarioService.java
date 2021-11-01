@@ -94,7 +94,13 @@ public class UsuarioService {
 		return usuarioRepository.getById(id);
 	}
 	
+	public Usuario busarPorEmail(String email) {
+		return usuarioRepository.retornarUsuarioPorEmail(email);
+	}
 	
+	public Usuario buscarPorUsername(String username) {
+		return usuarioRepository.retornarUsuarioPorUsername(username);
+	}
 	// // // Métodos Buscar
 	
 }
