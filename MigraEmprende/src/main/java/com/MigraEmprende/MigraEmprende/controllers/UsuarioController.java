@@ -15,4 +15,10 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	
+	
+	
+	
+	
 }
