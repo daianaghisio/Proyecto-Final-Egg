@@ -11,14 +11,10 @@ import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 @RequestMapping("/Usuario")           //VER NOMBRE DEL HTML
 public class UsuarioController {
 
-	@Autowired
-	private UsuarioService usuarioService;
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
-	
-	
-	
+//	@Autowired
+//	private UsuarioService usuarioService;
+//	@Autowired
+//	private UsuarioRepository usuarioRepository;
 	
 	
 }
