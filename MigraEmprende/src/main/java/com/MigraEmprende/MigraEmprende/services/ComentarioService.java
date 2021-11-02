@@ -1,12 +1,10 @@
 package com.MigraEmprende.MigraEmprende.services;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.MigraEmprende.MigraEmprende.entities.Comentario;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
@@ -20,7 +18,7 @@ public class ComentarioService {
 	
 	// CREAR COMENTARIO
 	@Transactional
-	public Comentario crearComentario(String titulo, String contenido, String email, Date fecha, Usuario usuario) {
+	public Comentario crearComentario(String titulo, String contenido, String email, Usuario usuario) {
 		
 		try {
 			Comentario entidad = new Comentario();
@@ -28,9 +26,11 @@ public class ComentarioService {
 			entidad.setTitulo(titulo);
 			entidad.setContenido(contenido);
 			entidad.setEmail(email);
-			entidad.setFecha(fecha);
+			entidad.setFecha(new Date());
 			entidad.setUsuario(usuario);
 			entidad.setAlta(true);
+			
+			comentRepository.save(entidad);
 			
 			return entidad;
 		} catch (Exception e) {
