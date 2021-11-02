@@ -2,9 +2,9 @@ package com.MigraEmprende.MigraEmprende.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
+import com.MigraEmprende.MigraEmprende.entities.Respuesta;
 
 @Repository
-public interface EmprendimientoRepository extends JpaRepository<Emprendimiento, String> {
+public interface RespuestaRepository extends JpaRepository<Respuesta, String> {
 
 }

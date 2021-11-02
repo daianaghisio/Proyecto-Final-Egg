@@ -59,6 +59,7 @@ public class ComentarioService {
 			comentRepository.delete(entidad);
 		} catch (Exception e) {
 			System.out.println("No se pudo eliminar el cometario");
+			throw e;
 		}
 	}
 
