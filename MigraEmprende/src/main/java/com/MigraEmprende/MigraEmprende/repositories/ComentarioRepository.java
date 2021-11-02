@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.MigraEmprende.MigraEmprende.entities.Comentario;
-import com.MigraEmprende.MigraEmprende.entities.Usuario;
 
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, String>{
