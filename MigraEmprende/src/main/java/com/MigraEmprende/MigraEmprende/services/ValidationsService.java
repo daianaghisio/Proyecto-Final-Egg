@@ -1,6 +1,10 @@
 package com.MigraEmprende.MigraEmprende.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import com.MigraEmprende.MigraEmprende.entities.Respuesta;
 
 @Service
 public class ValidationsService {
@@ -52,4 +56,16 @@ public class ValidationsService {
 			throw new Exception("El contenido no puede ser nulo.");
 		}
 	}	
+	
+	public void ValidarListaRespuesta(List<Respuesta> respuestas) throws Exception {
+		if(respuestas.isEmpty()) { // En caso de que la lista esté vacía
+			throw new Exception("La lista de respuestas no puede ser nula.");
+		}
+		for(int i = 0; i < respuestas.size() ; i++) {// verifica cada punto de la lista
+			if( respuestas.get(i) == null) {
+				throw new Exception("La respuesta no puede ser nula.");
+			}
+		}
+			
+		}
 }
