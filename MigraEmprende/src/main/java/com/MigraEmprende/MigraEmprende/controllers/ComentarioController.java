@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.services.ComentarioService;
 
@@ -17,7 +16,7 @@ import com.MigraEmprende.MigraEmprende.services.ComentarioService;
 public class ComentarioController {
 
 	@Autowired
-	ComentarioService comentarioService;
+	private ComentarioService comentarioService;
 
 	@GetMapping("/")
 	public String index() throws Exception {
@@ -25,15 +24,16 @@ public class ComentarioController {
 	}
 
 	@GetMapping("/{id}")
-	public String id(@PathVariable String id) {
+	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
+		
+		modelo.addAttribute("id", id);
 		return "foroComentario";
 	}
 
 	@PostMapping("/crear")
 	public String crear(ModelMap modelo, @RequestParam String titulo, @RequestParam String contenido,
-			@RequestParam String email, @RequestParam Usuario usuario) {
+			@RequestParam String email, @RequestParam Usuario usuario) throws Exception {
 		try {
-			// VER EMAIL Y USUARIO
 			comentarioService.crearComentario(titulo, contenido, email, usuario);
 			modelo.put("exito", "Comentario enviado!");
 			return "redirect:/";
@@ -44,8 +44,16 @@ public class ComentarioController {
 	}
 
 	@PostMapping("/delete/{id}")
-	public String deleteId(@PathVariable String id) {
-		return "redirect:/";
+	public String deleteId(ModelMap modelo, @PathVariable String id) throws Exception {
+
+		try {
+			comentarioService.borrarComentario(id);
+			modelo.put("exito", "Comentario borrado!");
+			return "redirect:/";
+		} catch (Exception e) {
+			modelo.put("error", e.getMessage());
+			return "redirect:/";
+		}
 	}
 
 }
