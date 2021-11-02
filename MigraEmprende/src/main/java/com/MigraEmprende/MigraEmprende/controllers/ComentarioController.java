@@ -25,16 +25,16 @@ public class ComentarioController {
 
 	@GetMapping("/{id}")
 	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
-		
+
 		modelo.addAttribute("id", id);
 		return "foroComentario";
 	}
 
 	@PostMapping("/crear")
 	public String crear(ModelMap modelo, @RequestParam String titulo, @RequestParam String contenido,
-			@RequestParam String email, @RequestParam Usuario usuario) throws Exception {
+			@RequestParam Usuario usuario) throws Exception {
 		try {
-			comentarioService.crearComentario(titulo, contenido, email, usuario);
+			comentarioService.crearComentario(titulo, contenido, usuario);
 			modelo.put("exito", "Comentario enviado!");
 			return "redirect:/";
 		} catch (Exception e) {
