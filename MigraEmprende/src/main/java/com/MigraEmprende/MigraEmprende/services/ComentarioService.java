@@ -87,31 +87,26 @@ public class ComentarioService {
 		}
 	}
 	
-	// LISTAR COMENTARIOS POR EMAIL 
-	// FALTA QUERY EN REPOSITORY
-	/*
-	public List<Comentario> listarComentariosId(String email){
+	// LISTAR COMENTARIOS POR EMAIL
+	public List<Comentario> listarComentariosEmail(String email){
 		try {
-			List<Comentario> listaComenatario = comentRepository.
+			List<Comentario> listaComentario = comentRepository.retornarComentarioPorEmail(email);
 			return listaComentario;
 		} catch (Exception e) {
 			System.out.println("No se pudo listar los comentarios por id");
 			throw e;
 		}
 	}
-	*/
 	
 	// LISTAR COMENTARIOS POR USUARIO
-	// FALTA QUERY EN REPOSITORY
-	/*
 	public List<Comentario> listarComentariosUsuario(Usuario usuario){
 		try {
-			List<Comentario> listaComentario = comentRepository.
+			List<Comentario> listaComentario = comentRepository.retornarComentarioPorUsername(usuario.getUsername());
 			return listaComentario;
 		} catch (Exception e) {
 			System.out.println("No se pudo listar los comentarios por Usuario");
 			throw e;
 		}
 	}
-	*/
+	
 }
