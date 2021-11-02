@@ -1,6 +1,37 @@
-.form-user{
+.form-user,
+.userform{
     margin: 10%;
 }
 body{
     font-family: 'Lato', sans-serif;
+}
+
+
+/* Validaciones */
+.form_group-right{
+    color: #1ed12d;
+    opacity: 1;
+}
+
+.form_group-error{
+    color: #bb2929;
+}
+
+.group_position-icon{
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 50%;
+}
+
+.group_errorname-activo{
+    display: block;
+}
+
+.group_errorname{
+    display: none;
+    font-size: 12px;
+    margin-bottom: 0;
 }
