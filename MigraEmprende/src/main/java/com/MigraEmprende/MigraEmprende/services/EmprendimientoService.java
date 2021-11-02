@@ -42,7 +42,7 @@ public class EmprendimientoService {
 				emprendimiento.setDescripcion(descripcion);
 				emprendimiento.setEmail(email);
 				emprendimiento.setUsuario( usuarioRepository.retornarUsuarioPorUsername(username) ); // Nos llega un username por cadena y lo enviamos a la query para que lo busque por usuario y lo devuelva como objeto entero
-				emprendimiento.setAlta(true); // Setteamos el alta en true
+				
 				
 				emprendimientoRepository.save(emprendimiento); // Guardamos los cambios
 			}else { // Si la id es nula, entonces tira error
