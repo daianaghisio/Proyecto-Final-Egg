@@ -2,9 +2,11 @@ package com.MigraEmprende.MigraEmprende.services;
 
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.MigraEmprende.MigraEmprende.entities.Comentario;
 import com.MigraEmprende.MigraEmprende.entities.Respuesta;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
@@ -16,10 +18,22 @@ public class RespuestaService {
 	@Autowired
 	private RespuestaRepository respuestaRepository;
 
+	@Autowired
+	private ValidationsService validationsService;
+
 	@Transactional
 	public void crearRespuesta(String contenido, Usuario usuario, Comentario comentario) throws Exception {
 
 		try {
+
+			// validations
+
+			validationsService.ValidarContenido(contenido);
+			validationsService.ValidarUsuario(usuario);
+			validationsService.ValidarComentario(comentario);
+
+			// create
+
 			Respuesta entidad = new Respuesta();
 
 			entidad.setContenido(contenido);
@@ -49,6 +63,14 @@ public class RespuestaService {
 	@Transactional
 	public void borrarRespuesta(String id) throws Exception {
 		try {
+			
+			// validations
+			
+			validationsService.ValidarId(id);
+			validationsService.ValidarIdExiste(id);
+			
+			// method
+			
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			respuestaRepository.delete(entidad);
 		} catch (Exception e) {
@@ -59,6 +81,14 @@ public class RespuestaService {
 	@Transactional
 	public Respuesta bajaRespuesta(String id) throws Exception {
 		try {
+			
+			// validations
+			
+			validationsService.ValidarId(id);
+			validationsService.ValidarIdExiste(id);
+			
+			// method
+			
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			entidad.setAlta(false);
 			return respuestaRepository.save(entidad);
@@ -70,6 +100,14 @@ public class RespuestaService {
 	@Transactional
 	public Respuesta altaRespuesta(String id) throws Exception {
 		try {
+			
+			// validations
+			
+			validationsService.ValidarId(id);
+			validationsService.ValidarIdExiste(id);
+			
+			// method
+			
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			entidad.setAlta(true);
 			return respuestaRepository.save(entidad);
