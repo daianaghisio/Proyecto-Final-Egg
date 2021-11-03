@@ -39,8 +39,7 @@ public class UsuarioService {
 				usuario.setNombreYApellido(NombreYApellido); // Setteamos los datos traidos por parámetro
 				usuario.setUsername(username);
 				usuario.setPassword(contrasenia);
-				usuario.setEmail(email);
-				usuario.setAlta(true); // Setteamos el alta en true
+				usuario.setEmail(email);				
 				
 				usuarioRepository.save(usuario); // Guardamos los cambios
 			}else { // Si la id es nula, entonces tira error
