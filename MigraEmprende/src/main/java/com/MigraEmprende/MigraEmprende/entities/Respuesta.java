@@ -1,10 +1,13 @@
 package com.MigraEmprende.MigraEmprende.entities;
 
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -21,7 +24,7 @@ public class Respuesta {
 	@OneToOne
 	private Usuario usuario;
 
-	@OneToOne
+	@ManyToOne
 	private Comentario comentario;
 
 	public Respuesta() {
