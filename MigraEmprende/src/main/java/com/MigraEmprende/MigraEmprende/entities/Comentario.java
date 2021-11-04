@@ -2,9 +2,11 @@ package com.MigraEmprende.MigraEmprende.entities;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -24,15 +26,14 @@ public class Comentario {
 	@OneToOne
 	private Usuario usuario;
 
-	/*@OneToOne
-	private List<Respuesta> respuestas;*/
+	@OneToMany
+	private List<Respuesta> respuestas;
 
 	public Comentario() {
 
 	}
 
-	public Comentario(String id, String titulo, String contenido, Date fecha, Boolean alta, Usuario usuario
-			) {
+	public Comentario(String id, String titulo, String contenido, Date fecha, Boolean alta, Usuario usuario) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -90,7 +91,13 @@ public class Comentario {
 		this.usuario = usuario;
 	}
 
-	
+	public List<Respuesta> getRespuestas() {
+		return respuestas;
+	}
+
+	public void setRespuestas(List<Respuesta> respuestas) {
+		this.respuestas = respuestas;
+	}
 
 	@Override
 	public String toString() {
