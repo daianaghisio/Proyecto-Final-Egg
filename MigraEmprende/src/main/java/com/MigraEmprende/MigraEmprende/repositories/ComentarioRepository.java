@@ -12,10 +12,8 @@ import com.MigraEmprende.MigraEmprende.entities.Comentario;
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, String>{
 
-	@Query("SELECT a FROM Comentario a WHERE a.username = :username")
+	@Query("SELECT a FROM Comentario a WHERE a.usuario.username LIKE :username")
 	public List<Comentario> retornarComentarioPorUsername(@Param("username") String username);
-	
-	@Query("SELECT a FROM Comentario a WHERE a.email = :email")
-	public List<Comentario> retornarComentarioPorEmail(@Param("email") String email);
+		
 	
 }
