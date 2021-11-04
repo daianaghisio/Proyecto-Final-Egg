@@ -1,0 +1,93 @@
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #3b3b3d;
+}
+.btnn{
+    background-color: #db9f1c;
+    color: #fff;
+}
+/* table y form*/
+table td {
+    padding: 0;
+}
+.form{
+    margin: 10%;
+}
+.tab-userform{
+    background-color: #db9f1c;
+    height: 70px;
+    color: #fff;
+    font-size: 30px;
+    padding-left: 30px;
+}
+.form-user,
+.userform{
+    background-color: #fff;
+    padding: 50px;
+}
+
+/* Validaciones */
+.form-control:focus{
+    border-color:none;
+    box-shadow: none;
+}
+.fm:focus {
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.fm-right:focus {
+    border-color: #1ed12d;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(115, 255, 0, 0.705);
+}
+
+.form_group-right{
+    color: #1ed12d;
+    opacity: 1;
+}
+
+.form_group-error{
+    color: #bb2929;
+}
+
+.group_position-icon{
+	position: absolute;
+	right: 20px;
+	bottom: 15%;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 50%;
+}
+
+.group__errorname{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    display: none;
+}
+.group__errorname-activo{
+    display: block;
+}
+
+.mensaje-exito{
+    font-size: 15px;
+    margin-bottom: 0;
+    color: #1ed12d;
+    display: none;
+    padding-top: 10px;
+}
+.mensaje-exito-activo{
+    display: block;
+}
+
+.msj-error{
+    height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+.msj-error-activo{
+    display: block;
+}
