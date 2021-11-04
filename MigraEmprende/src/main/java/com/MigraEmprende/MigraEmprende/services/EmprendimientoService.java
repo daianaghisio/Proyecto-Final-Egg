@@ -3,11 +3,13 @@ package com.MigraEmprende.MigraEmprende.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
 import com.MigraEmprende.MigraEmprende.repositories.EmprendimientoRepository;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 
+@Service
 public class EmprendimientoService {
 
 	@Autowired

@@ -2,13 +2,8 @@ package com.MigraEmprende.MigraEmprende.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import com.MigraEmprende.MigraEmprende.entities.Usuario;
+
 import com.MigraEmprende.MigraEmprende.services.ComentarioService;
 
 @Controller
@@ -17,7 +12,7 @@ public class ComentarioController {
 
 	@Autowired
 	private ComentarioService comentarioService;
-
+/*
 	@GetMapping("/")
 	public String index() throws Exception {
 		return "foro";
@@ -54,6 +49,6 @@ public class ComentarioController {
 			modelo.put("error", e.getMessage());
 			return "redirect:/";
 		}
-	}
+	}*/
 
 }

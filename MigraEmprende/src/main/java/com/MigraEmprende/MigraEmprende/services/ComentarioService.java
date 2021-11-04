@@ -85,18 +85,7 @@ public class ComentarioService {
 			System.out.println("No se pudo dar de alta el comentario");
 			throw e;
 		}
-	}
-
-	// LISTAR COMENTARIOS POR EMAIL
-	public List<Comentario> listarComentariosEmail(String email) {
-		try {
-			List<Comentario> listaComentario = comentRepository.retornarComentarioPorEmail(email);
-			return listaComentario;
-		} catch (Exception e) {
-			System.out.println("No se pudo listar los comentarios por id");
-			throw e;
-		}
-	}
+	}	
 
 	// LISTAR COMENTARIOS POR USUARIO
 	public List<Comentario> listarComentariosUsuario(Usuario usuario) {
