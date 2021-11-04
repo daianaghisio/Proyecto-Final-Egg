@@ -14,7 +14,7 @@ public class EmprendimientoController {
 
 	
 	@Autowired
-	EmprendimientoService emprendimientoService;
+	private EmprendimientoService emprendimientoService;
 	
 	
 	@GetMapping("/")

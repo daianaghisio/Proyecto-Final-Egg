@@ -24,23 +24,22 @@ public class Comentario {
 	@OneToOne
 	private Usuario usuario;
 
-	@OneToOne
-	private List<Respuesta> respuestas;
+	/*@OneToOne
+	private List<Respuesta> respuestas;*/
 
 	public Comentario() {
 
 	}
 
-	public Comentario(String id, String titulo, String contenido, Date fecha, Boolean alta, Usuario usuario,
-			List<Respuesta> respuestas) {
+	public Comentario(String id, String titulo, String contenido, Date fecha, Boolean alta, Usuario usuario
+			) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.contenido = contenido;
 		this.fecha = fecha;
 		this.alta = alta;
-		this.usuario = usuario;
-		this.respuestas = respuestas;
+		this.usuario = usuario;		
 	}
 
 	public String getId() {
@@ -91,18 +90,12 @@ public class Comentario {
 		this.usuario = usuario;
 	}
 
-	public List<Respuesta> getRespuestas() {
-		return respuestas;
-	}
-
-	public void setRespuestas(List<Respuesta> respuestas) {
-		this.respuestas = respuestas;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Comentario [id=" + id + ", titulo=" + titulo + ", contenido=" + contenido + ", fecha=" + fecha
-				+ ", alta=" + alta + ", usuario=" + usuario + ", respuestas=" + respuestas + "]";
+				+ ", alta=" + alta + ", usuario=" + usuario + ", respuestas="  + "]";
 	}
 
 }
