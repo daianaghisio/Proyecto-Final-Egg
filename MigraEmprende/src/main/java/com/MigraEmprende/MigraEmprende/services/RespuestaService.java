@@ -63,14 +63,14 @@ public class RespuestaService {
 	@Transactional
 	public void borrarRespuesta(String id) throws Exception {
 		try {
-			
+
 			// validations
-			
+
 			validationsService.ValidarId(id);
 			validationsService.ValidarIdExiste(id);
-			
+
 			// method
-			
+
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			respuestaRepository.delete(entidad);
 		} catch (Exception e) {
@@ -81,14 +81,14 @@ public class RespuestaService {
 	@Transactional
 	public Respuesta bajaRespuesta(String id) throws Exception {
 		try {
-			
+
 			// validations
-			
+
 			validationsService.ValidarId(id);
 			validationsService.ValidarIdExiste(id);
-			
+
 			// method
-			
+
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			entidad.setAlta(false);
 			return respuestaRepository.save(entidad);
@@ -100,14 +100,14 @@ public class RespuestaService {
 	@Transactional
 	public Respuesta altaRespuesta(String id) throws Exception {
 		try {
-			
+
 			// validations
-			
+
 			validationsService.ValidarId(id);
 			validationsService.ValidarIdExiste(id);
-			
+
 			// method
-			
+
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			entidad.setAlta(true);
 			return respuestaRepository.save(entidad);
