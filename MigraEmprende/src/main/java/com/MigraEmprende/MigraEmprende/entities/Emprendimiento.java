@@ -20,6 +20,9 @@ public class Emprendimiento {
 
 	@OneToOne
 	private Usuario usuario;
+	
+	@OneToOne
+	private Foto foto;
 
 	public Emprendimiento() {
 
@@ -34,6 +37,8 @@ public class Emprendimiento {
 		this.alta = alta;
 		this.usuario = usuario;
 	}
+
+	
 
 	public String getId() {
 		return id;
@@ -83,10 +88,20 @@ public class Emprendimiento {
 		this.usuario = usuario;
 	}
 
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public String toString() {
 		return "Emprendimiento [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", email=" + email
-				+ ", alta=" + alta + ", usuario=" + usuario + "]";
+				+ ", alta=" + alta + ", usuario=" + usuario + ", foto=" + foto + "]";
 	}
+
+	
 
 }
