@@ -4,8 +4,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
+import com.MigraEmprende.MigraEmprende.entities.Foto;
 import com.MigraEmprende.MigraEmprende.repositories.EmprendimientoRepository;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 
@@ -20,9 +22,12 @@ public class EmprendimientoService {
 
 	@Autowired
 	private ValidationsService validationsService;
+	
+	@Autowired
+	private FotoService fotoService;
 
 	// // // Métodos CRUD
-	public void crear(String nombre, String descripcion, String email, String username) throws Exception {
+	public void crear(MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
 		try {
 
 			// validations
@@ -48,6 +53,10 @@ public class EmprendimientoService {
 																								// entero
 			emprendimiento.setAlta(true); // Setteamos el alta en true
 
+			Foto foto = fotoService.guardar(archivo);
+			emprendimiento.setFoto(foto);
+			
+			
 			emprendimientoRepository.save(emprendimiento); // Guardamos los cambios
 		} catch (Exception e) {
 			System.out.println("Error-EmprendimientoService: " + e.getMessage());
@@ -55,7 +64,7 @@ public class EmprendimientoService {
 		}
 	}
 
-	public void modificar(String nombre, String descripcion, String email, String username, String id)
+	public void modificar(MultipartFile archivo, String nombre, String descripcion, String email, String username, String id)
 			throws Exception {
 		try {
 
@@ -86,6 +95,12 @@ public class EmprendimientoService {
 																									// usuario y lo
 																									// devuelva como
 																									// objeto entero
+				String idFoto = null;
+				if(emprendimiento.getFoto() != null) {
+					idFoto = emprendimiento.getFoto().getId();
+				}
+				Foto foto = fotoService.actualizar(idFoto, archivo);
+				emprendimiento.setFoto(foto);
 
 				emprendimientoRepository.save(emprendimiento); // Guardamos los cambios
 			} else { // Si la id es nula, entonces tira error

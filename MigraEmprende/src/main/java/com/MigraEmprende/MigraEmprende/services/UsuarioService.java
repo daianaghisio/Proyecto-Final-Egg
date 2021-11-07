@@ -4,7 +4,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.MigraEmprende.MigraEmprende.entities.Foto;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 
@@ -16,9 +18,12 @@ public class UsuarioService {
 
 	@Autowired
 	private ValidationsService validationsService;
+	
+	@Autowired
+	private FotoService fotoService;
 
 	// // // Métodos CRUD
-	public void crear(String NombreYApellido, String username, String email, String contrasenia) throws Exception {
+	public void crear(MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia) throws Exception {
 		try {
 
 			// validations
@@ -37,6 +42,9 @@ public class UsuarioService {
 			usuario.setEmail(email);
 			usuario.setAlta(true); // Setteamos el alta en true
 
+			Foto foto = fotoService.guardar(archivo);
+			usuario.setFoto(foto);
+			
 			usuarioRepository.save(usuario); // Guardamos los cambios
 		} catch (Exception e) {
 			System.out.println("Error-UsuarioService: " + e.getMessage());
@@ -45,7 +53,7 @@ public class UsuarioService {
 		}
 	}
 
-	public void modificar(String NombreYApellido, String username, String email, String contrasenia, String id)
+	public void modificar(MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia, String id)
 			throws Exception {
 		try {
 
@@ -68,6 +76,13 @@ public class UsuarioService {
 				usuario.setPassword(contrasenia);
 				usuario.setEmail(email);
 
+				String idFoto = null;
+				if(usuario.getFoto() != null) {
+					idFoto = usuario.getFoto().getId();
+				}
+				Foto foto = fotoService.actualizar(idFoto, archivo);
+				usuario.setFoto(foto);
+				
 				usuarioRepository.save(usuario); // Guardamos los cambios
 			}
 
