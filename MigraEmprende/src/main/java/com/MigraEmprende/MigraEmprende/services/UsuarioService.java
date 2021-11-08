@@ -64,7 +64,7 @@ public class UsuarioService {
 			validationsService.ValidarEmail(email);
 			validationsService.ValidarPassword(contrasenia);
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// mod
 			Optional<Usuario> respuesta = usuarioRepository.findById(id); // Se crea el optional, sirve para el
@@ -100,7 +100,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 			Optional<Usuario> respuesta = usuarioRepository.findById(id);
@@ -123,7 +123,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 			Optional<Usuario> respuesta = usuarioRepository.findById(id);
@@ -146,7 +146,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 
@@ -171,7 +171,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 

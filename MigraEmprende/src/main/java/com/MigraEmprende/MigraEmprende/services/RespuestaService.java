@@ -41,6 +41,10 @@ public class RespuestaService {
 			entidad.setAlta(true);
 			entidad.setComentario(comentario);
 			entidad.setUsuario(usuario);
+			
+			List<Respuesta> respuestas = comentario.getRespuestas();
+			respuestas.add(entidad);
+			comentario.setRespuestas(respuestas);
 
 			respuestaRepository.save(entidad);
 
@@ -49,30 +53,26 @@ public class RespuestaService {
 		}
 	}
 
-	@Transactional(readOnly = true)
-	public List<Respuesta> listarRespuestas() throws Exception {
-		try {
-			List<Respuesta> listaRespuestas;
-			listaRespuestas = respuestaRepository.findAll();
-			return listaRespuestas;
-		} catch (Exception e) {
-			throw e;
-		}
-	}
-
 	@Transactional
-	public void borrarRespuesta(String id) throws Exception {
+	public void borrarRespuesta(String id, Comentario comentario) throws Exception {
 		try {
 
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdRespuestaExiste(id);
 
 			// method
 
 			Respuesta entidad = respuestaRepository.findById(id).get();
 			respuestaRepository.delete(entidad);
+			
+			validationsService.ValidarRespuestaEnComentario(entidad, comentario);
+			
+			List<Respuesta> respuestas = comentario.getRespuestas();
+			respuestas.remove(entidad);
+			comentario.setRespuestas(respuestas);
+			
 		} catch (Exception e) {
 			throw e;
 		}
@@ -85,7 +85,7 @@ public class RespuestaService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdRespuestaExiste(id);
 
 			// method
 
@@ -104,7 +104,7 @@ public class RespuestaService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdRespuestaExiste(id);
 
 			// method
 

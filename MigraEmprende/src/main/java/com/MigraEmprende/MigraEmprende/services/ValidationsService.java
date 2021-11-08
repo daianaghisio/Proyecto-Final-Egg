@@ -9,6 +9,7 @@ import com.MigraEmprende.MigraEmprende.entities.Comentario;
 import com.MigraEmprende.MigraEmprende.entities.Respuesta;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
+import com.MigraEmprende.MigraEmprende.repositories.EmprendimientoRepository;
 import com.MigraEmprende.MigraEmprende.repositories.RespuestaRepository;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 
@@ -20,6 +21,9 @@ public class ValidationsService {
 
 	@Autowired
 	private ComentarioRepository comentarioRepository;
+	
+	@Autowired
+	private EmprendimientoRepository emprendimientoRepository;
 
 	@Autowired
 	private RespuestaRepository respuestaRepository;
@@ -30,9 +34,27 @@ public class ValidationsService {
 		}
 	}
 
-	public void ValidarIdExiste(String id) throws Exception {
+	public void ValidarIdRespuestaExiste(String id) throws Exception {
 		if (respuestaRepository.findById(id) == null) {
 			throw new Exception("No existe ninguna respuesta asociado al ID proporcionado");
+		}
+	}
+	
+	public void ValidarIdEmprendimientoExiste(String id) throws Exception {
+		if (emprendimientoRepository.findById(id) == null) {
+			throw new Exception("No existe ningun emprendimiento asociado al ID proporcionado");
+		}
+	}
+	
+	public void ValidarIdUsuarioExiste(String id) throws Exception {
+		if (usuarioRepository.findById(id) == null) {
+			throw new Exception("No existe ningun usuario asociado al ID proporcionado");
+		}
+	}
+	
+	public void ValidarIdComentarioExiste(String id) throws Exception {
+		if (comentarioRepository.findById(id) == null) {
+			throw new Exception("No existe ningun comentario asociado al ID proporcionado");
 		}
 	}
 
@@ -105,6 +127,12 @@ public class ValidationsService {
 	public void ValidarComentario(Comentario comentario) throws Exception {
 		if (comentario == null || !comentarioRepository.existsById(comentario.getId())) {
 			throw new Exception("El comentario no existe o es nulo.");
+		}
+	}
+	
+	public void ValidarRespuestaEnComentario(Respuesta respuesta, Comentario comentario) throws Exception {
+		if (!comentario.getRespuestas().contains(respuesta)) {
+			throw new Exception("La respuesta no se corresponde con el comentario.");
 		}
 	}
 }
