@@ -3,6 +3,8 @@ package com.MigraEmprende.MigraEmprende.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -17,7 +19,11 @@ public class Usuario {
 	private String password;
 	private String email;
 	private Boolean alta;
-
+	
+	@OneToOne
+    private Foto foto;
+	
+	
 	public Usuario() {
 
 	}
@@ -80,10 +86,20 @@ public class Usuario {
 		this.alta = alta;
 	}
 
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreYApellido=" + nombreYApellido + ", username=" + username + ", password="
-				+ password + ", email=" + email + ", alta=" + alta + "]";
+				+ password + ", email=" + email + ", alta=" + alta + ", foto=" + foto + "]";
 	}
+
+	
 
 }

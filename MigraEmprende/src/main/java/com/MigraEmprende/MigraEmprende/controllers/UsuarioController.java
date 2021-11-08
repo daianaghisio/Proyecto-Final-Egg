@@ -64,13 +64,7 @@ public class UsuarioController {
 	   usuarioService.baja(id);
 	   return "redirect:/";
    }
-   
-   
-   @PostMapping("/deshabilitar/{id}")
-   public String habilitar(@PathVariable String id) throws Exception{
-	   usuarioService.alta(id);
-	   return "redirect:/";
-   }
+     
    
 }
    

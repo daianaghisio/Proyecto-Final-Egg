@@ -2,9 +2,11 @@ package com.MigraEmprende.MigraEmprende.services;
 
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.MigraEmprende.MigraEmprende.entities.Comentario;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
@@ -16,11 +18,23 @@ public class ComentarioService {
 	@Autowired
 	private ComentarioRepository comentRepository;
 
+	@Autowired
+	private ValidationsService validationsService;
+
 	// CREAR COMENTARIO
 	@Transactional
-	public Comentario crearComentario(String titulo, String contenido, Usuario usuario) {
+	public Comentario crearComentario(String titulo, String contenido, Usuario usuario) throws Exception {
 
 		try {
+
+			// validations
+
+			validationsService.ValidarTitulo(titulo);
+			validationsService.ValidarContenido(contenido);
+			validationsService.ValidarUsuario(usuario);
+
+			// create
+
 			Comentario entidad = new Comentario();
 
 			entidad.setTitulo(titulo);
@@ -40,7 +54,7 @@ public class ComentarioService {
 
 	// LISTAR TODOS LOS COMENTARIOS
 	@Transactional(readOnly = true)
-	public List<Comentario> listarComentarios() {
+	public List<Comentario> listarComentarios() throws Exception {
 		try {
 			List<Comentario> listaComentarios;
 			listaComentarios = comentRepository.findAll();
@@ -53,8 +67,15 @@ public class ComentarioService {
 
 	// BORRAR COMENTARIO
 	@Transactional
-	public void borrarComentario(String id) {
+	public void borrarComentario(String id) throws Exception {
 		try {
+
+			// validations
+
+			validationsService.ValidarId(id);
+			validationsService.ValidarIdExiste(id);
+
+			// method
 			Comentario entidad = comentRepository.findById(id).get();
 			comentRepository.delete(entidad);
 		} catch (Exception e) {
@@ -64,8 +85,15 @@ public class ComentarioService {
 	}
 
 	// BAJA COMENTARIO
-	public Comentario bajaComentario(String id) {
+	public Comentario bajaComentario(String id) throws Exception {
 		try {
+
+			// validations
+
+			validationsService.ValidarId(id);
+			validationsService.ValidarIdExiste(id);
+
+			// method
 			Comentario entidad = comentRepository.findById(id).get();
 			entidad.setAlta(false);
 			return comentRepository.save(entidad);
@@ -76,8 +104,15 @@ public class ComentarioService {
 	}
 
 	// ALTA COMENTARIO
-	public Comentario altaComentario(String id) {
+	public Comentario altaComentario(String id) throws Exception {
 		try {
+
+			// validations
+
+			validationsService.ValidarId(id);
+			validationsService.ValidarIdExiste(id);
+
+			// method
 			Comentario entidad = comentRepository.findById(id).get();
 			entidad.setAlta(true);
 			return comentRepository.save(entidad);
@@ -87,20 +122,15 @@ public class ComentarioService {
 		}
 	}
 
-	// LISTAR COMENTARIOS POR EMAIL
-	public List<Comentario> listarComentariosEmail(String email) {
-		try {
-			List<Comentario> listaComentario = comentRepository.retornarComentarioPorEmail(email);
-			return listaComentario;
-		} catch (Exception e) {
-			System.out.println("No se pudo listar los comentarios por id");
-			throw e;
-		}
-	}
-
 	// LISTAR COMENTARIOS POR USUARIO
-	public List<Comentario> listarComentariosUsuario(Usuario usuario) {
+	public List<Comentario> listarComentariosUsuario(Usuario usuario) throws Exception {
 		try {
+
+			// validations
+
+			validationsService.ValidarUsuario(usuario);
+
+			// method
 			List<Comentario> listaComentario = comentRepository.retornarComentarioPorUsername(usuario.getUsername());
 			return listaComentario;
 		} catch (Exception e) {
