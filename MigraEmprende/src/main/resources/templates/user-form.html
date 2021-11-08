@@ -64,7 +64,7 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform">
+                    <form action="" class="row g-3 needs-validation position:relative" id="userform" enctype="multipart/form-data">
                         <!--User Name-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
@@ -99,6 +99,15 @@
                                 <input type="text" class="form-control fm" name="email" id="email" placeholder="Email">
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                        </div>
+                        
+                        <!--Foto-->
+                        <div class="col-md-6 position-relative">
+                            <label for="foto" class="form-label">Foto</label>
+                            <div class="grouplastname">
+                                <input type="file" class="form-control fm" name="archivo">
+                            </div>
+                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
                         </div>
 
                         <!--Password-->
