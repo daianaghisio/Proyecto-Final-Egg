@@ -19,7 +19,7 @@ public class UsuarioController {
    @Autowired
    private UsuarioRepository usuarioRepository;
 	
-   
+    
    @GetMapping("/")
 	public String indexProfile(@PathVariable String id) { 
 	   return "redirect:/profile/{id}";
