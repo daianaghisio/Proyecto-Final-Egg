@@ -73,7 +73,7 @@ public class ComentarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdComentarioExiste(id);
 
 			// method
 			Comentario entidad = comentRepository.findById(id).get();
@@ -91,7 +91,7 @@ public class ComentarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdComentarioExiste(id);
 
 			// method
 			Comentario entidad = comentRepository.findById(id).get();
@@ -110,7 +110,7 @@ public class ComentarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdComentarioExiste(id);
 
 			// method
 			Comentario entidad = comentRepository.findById(id).get();
