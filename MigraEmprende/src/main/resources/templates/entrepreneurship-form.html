@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
 
-    <title>Formulario de usuario</title>
+    <title>Formulario Emprendimiento</title>
 </head>
 <body>
     <!--navbar-->
@@ -58,7 +58,7 @@
     <table class="form">
         <tr>
             <td class="tab-userform">
-                <section>Formulario de Usuario:</section>
+                <section>Registro del Emprendimiento:</section>
             </td>
         </tr>
         <tr>
@@ -67,53 +67,78 @@
                     <form action="" class="row g-3 needs-validation position:relative" id="userform">
                         <!--User Name-->
                         <div class="col-md-4 position-relative" id="group_name">
-                            <label for="name" class="form-label is-invalid">Nombre</label>
+                            <label for="name" class="form-label is-invalid">Nombre Emprendimiento</label>
                             <div class="name">
                                 <input type="text" id="name" class="form-control fm" name="name" placeholder="Name">
                             </div>
-                            <p class="group__errorname">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
+                            <p class="group__errorname">El nombre del emprendimiento tiene que ser de 4 a 16 dígitos y solo puede contener letras</p>
                         </div>
 
-                        <!--Last Name-->
+                        <!--Direcction-->
                         <div class="col-md-4 position-relative" id="group_lastname">
-                            <label for="lastname" class="form-label">Apellido</label>
+                            <label for="lastname" class="form-label">Dirección</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control fm" name="lastname" id="lastname" placeholder="Last Name">
+                                <input type="text" class="form-control" placeholder="Address">
                             </div>
-                            <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
 
-                        <!--User-->
+                        <!--Phone-->
                         <div class="col-md-4 position-relative" id="group_user">
-                            <label for="user" class="form-label">Nombre de Usuario</label>
+                            <label for="user" class="form-label">Teléfono</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
+                                <input type="text" class="form-control fm" name="user" id="user" placeholder="Cell Phone">
                             </div>
-                            <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
+                            <p class="group__errorname">El Telefono tiene que ser de 4 a 16 dígitos y solo puede contener números</p>
                         </div>
 
                         <!--Email-->
-                        <div class="col-md-6 position-relative" id="group_email">
-                            <label for="email" class="form-label">Correo</label>
+                        <div class="col-md-4 position-relative" id="group_email">
+                            <label for="email" class="form-label">Correo Emprendimiento</label>
                             <div class="grouplastname">
                                 <input type="text" class="form-control fm" name="email" id="email" placeholder="Email">
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
 
-                        <!--Password-->
-                        <div class="col-md-6 position-relative" id="group_pass">
-                            <label for="pass" class="form-label">Contraseña</label>
+                        <!--Social Media-->
+                        <div class="col-md-4 position-relative" id="group_lastname">
+                            <label for="lastname" class="form-label">Link Facebook</label>
                             <div class="grouplastname">
-                                <input type="password" class="form-control fm" name="pass" id="pass" placeholder="Password">
+                                <input type="text" class="form-control" placeholder="Facebook">
                             </div>
-                            <p class="group__errorname">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+                        </div>
+                        <!--Social Media-->
+                        <div class="col-md-4 position-relative" id="group_lastname">
+                            <label for="lastname" class="form-label">Link Instagram</label>
+                            <div class="grouplastname">
+                                <input type="text" class="form-control" placeholder="Instagram">
+                            </div>
                         </div>
 
-                        <div class="msj-error" id="msj-error">
-                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
-                        </div>
                         
+                        <!-- Comentario -->
+                        <div class="mb-3 position-relative">
+                            <label for="comment" class="form-label">Breve descripción de su Emprendimiento: </label>
+                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                          </div>
+
+                        <!--Subír Imagen -->
+                        <div class="col-md-4 position-relative">
+                            <label for="formFile" class="form-label">Imagen 1</label>
+                            <input class="form-control" type="file" id="formFile1">
+                          </div>
+                        <!--Subír Imagen -->
+                        <div class="col-md-4 position-relative">
+                            <label for="formFile" class="form-label">Imagen 2</label>
+                            <input class="form-control" type="file" id="formFile2">
+                          </div>
+                        <!--Subír Imagen -->
+                        <div class="col-md-4 position-relative">
+                            <label for="formFile" class="form-label">Imagen 3</label>
+                            <input class="form-control" type="file" id="formFile3">
+                          </div>
+                          <br>
+                          <hr>
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
                             <button class="btn btnn" type="submit">Enviar</button>
                             <button class="btn btnn" type="submit">Cancelar</button>
