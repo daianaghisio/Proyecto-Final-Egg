@@ -30,9 +30,13 @@ public class UsuarioController {
 	   return "redirect:/profile/{id}";
 	}
    
-  
-   @GetMapping("/form")
-	public String form() {
+  @GetMapping("/register")
+  public String register () {
+	  return "user-form";
+  }
+   
+   @GetMapping("/login")
+	public String login() {
 		return "login";
 	}
    
