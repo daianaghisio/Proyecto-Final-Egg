@@ -17,4 +17,9 @@ public class MainController {
 	public String leyes() {	
 		return "seccion-leyes";
 	}
+	
+	@GetMapping("/noticias")
+	public String noticias() {
+		return "seccion-leyes";
+	}
 }
