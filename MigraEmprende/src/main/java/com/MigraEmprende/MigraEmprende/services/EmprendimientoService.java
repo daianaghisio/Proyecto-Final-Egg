@@ -75,7 +75,7 @@ public class EmprendimientoService {
 			validationsService.ValidarEmail(email);
 			validationsService.ValidarUsername(username);
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdEmprendimientoExiste(id);
 
 			// mod
 
@@ -119,7 +119,7 @@ public class EmprendimientoService {
 
 			// validations
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdEmprendimientoExiste(id);
 
 			// method
 			Optional<Emprendimiento> respuesta = emprendimientoRepository.findById(id);
@@ -142,7 +142,7 @@ public class EmprendimientoService {
 
 			// validations
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdEmprendimientoExiste(id);
 
 			// method
 			Optional<Emprendimiento> respuesta = emprendimientoRepository.findById(id);
@@ -165,7 +165,7 @@ public class EmprendimientoService {
 
 			// validations
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdEmprendimientoExiste(id);
 
 			// method
 			Optional<Emprendimiento> respuesta = emprendimientoRepository.findById(id);
@@ -189,7 +189,7 @@ public class EmprendimientoService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdEmprendimientoExiste(id);
 
 			// method
 

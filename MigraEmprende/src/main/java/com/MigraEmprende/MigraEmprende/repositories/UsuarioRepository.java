@@ -1,5 +1,7 @@
 package com.MigraEmprende.MigraEmprende.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,4 +17,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 	
 	@Query("SELECT a FROM Usuario a WHERE a.email = :email")
 	public Usuario retornarUsuarioPorEmail(@Param("email") String email);
+	
+	// ENCONTRAR USUARIO POR USERNAME(LOGIN)
+	Optional<Usuario> findByUsername(String username);
 }

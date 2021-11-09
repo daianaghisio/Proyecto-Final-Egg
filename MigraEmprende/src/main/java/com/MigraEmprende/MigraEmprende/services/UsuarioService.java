@@ -3,12 +3,15 @@ package com.MigraEmprende.MigraEmprende.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Foto;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
@@ -34,13 +37,15 @@ public class UsuarioService {
 			validationsService.ValidarPassword(contrasenia);
 
 			// create
-
+			//CREAMOS ENCRIPTADOR DE CONTRASEÑAS (LOGIN)
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			Usuario usuario = new Usuario(); // Al crear un nuevo usuario el UUID le da una ID automáticamente
 			usuario.setNombreYApellido(NombreYApellido); // Setteamos los datos traidos por parámetro
 			usuario.setUsername(username);
-			usuario.setPassword(contrasenia);
+			usuario.setPassword(encoder.encode(contrasenia)); //CREAMOS EL USUARIO CON LA CONTRASEÑA ENCRIPTADA (LOGIN)
 			usuario.setEmail(email);
 			usuario.setAlta(true); // Setteamos el alta en true
+			usuario.setRol("ROLE_USER"); // PERMISOS DE USUARIO(LOGIN)
 
 			Foto foto = fotoService.guardar(archivo);
 			usuario.setFoto(foto);
@@ -64,7 +69,7 @@ public class UsuarioService {
 			validationsService.ValidarEmail(email);
 			validationsService.ValidarPassword(contrasenia);
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// mod
 			Optional<Usuario> respuesta = usuarioRepository.findById(id); // Se crea el optional, sirve para el
@@ -100,7 +105,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 			Optional<Usuario> respuesta = usuarioRepository.findById(id);
@@ -123,7 +128,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 			Optional<Usuario> respuesta = usuarioRepository.findById(id);
@@ -146,7 +151,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 
@@ -171,7 +176,7 @@ public class UsuarioService {
 			// validations
 
 			validationsService.ValidarId(id);
-			validationsService.ValidarIdExiste(id);
+			validationsService.ValidarIdUsuarioExiste(id);
 
 			// method
 
@@ -216,5 +221,15 @@ public class UsuarioService {
 		}
 
 	}
-
+	// RETORNA USUARIO (LOGIN)
+	@Transactional(readOnly=true)
+	public Usuario findByUsername(String username) throws Exception{
+		try {
+			validationsService.ValidarUsername(username);
+			return usuarioRepository.findByUsername(username)
+					.orElseThrow(()->new Exception("Usuario no encontrado"));
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.MigraEmprende.MigraEmprende.services.EmprendimientoService;
 
 @Controller
@@ -31,20 +33,20 @@ public class EmprendimientoController {
 	
 	@GetMapping("/form")
 	public String form() {
-		return "formEmprendimiento";
+		return "entrepreneurship-form";
 	}
 	
 	
 	@PostMapping("/crear")
-	public String crear(String nombre, String descripcion, String email, String username) throws Exception {
-		emprendimientoService.crear(nombre, descripcion, email, username);
+	public String crear(MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
+		emprendimientoService.crear(archivo, nombre, descripcion, email, username);
 		return "redirect:/";
 	}
 	
 	
 	@PostMapping("/modificar/{id}")
-	public String modificarId(@PathVariable String id, String nombre, String descripcion, String email, String username) throws Exception {
-		emprendimientoService.modificar(nombre, descripcion, email, username, id);
+	public String modificarId(@PathVariable String id, MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
+		emprendimientoService.modificar(archivo, nombre, descripcion, email, username, id);
 		return "redirect:/";
 	}
 	
