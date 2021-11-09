@@ -1,13 +1,17 @@
 package com.MigraEmprende.MigraEmprende.controllers;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
@@ -32,6 +36,19 @@ public class UsuarioController {
 		return "formUser";
 	}
    
+   @GetMapping("/user") // PERFIL DE USUARIO, DEVUELVE LOS DATOS DEL USUARIO LOGEADO(LOGIN)
+	public String userProfile(Model model, Principal principal) throws Exception {
+       try {
+		Usuario user = usuarioService.findByUsername(principal.getName());
+		model.addAttribute("userName", user.getUsername());
+		model.addAttribute("nombreyapellido", user.getNombreYApellido());
+		model.addAttribute("email", user.getEmail());
+		
+		return "profile";
+       }catch(Exception e) {
+       	throw e;
+       }
+   }
     
    @GetMapping("/profile/{id}")
    public String profile() {
