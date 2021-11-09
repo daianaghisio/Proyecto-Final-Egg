@@ -33,7 +33,7 @@ public class EmprendimientoController {
 	
 	@GetMapping("/form")
 	public String form() {
-		return "formEmprendimiento";
+		return "entrepreneurship-form";
 	}
 	
 	
