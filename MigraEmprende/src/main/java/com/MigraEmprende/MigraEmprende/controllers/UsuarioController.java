@@ -33,7 +33,7 @@ public class UsuarioController {
   
    @GetMapping("/form")
 	public String form() {
-		return "formUser";
+		return "login";
 	}
    
    @GetMapping("/user") // PERFIL DE USUARIO, DEVUELVE LOS DATOS DEL USUARIO LOGEADO(LOGIN)
