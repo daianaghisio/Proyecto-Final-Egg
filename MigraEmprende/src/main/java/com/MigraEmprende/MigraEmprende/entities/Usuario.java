@@ -19,6 +19,7 @@ public class Usuario {
 	private String password;
 	private String email;
 	private Boolean alta;
+	private String rol;
 	
 	@OneToOne
     private Foto foto;
@@ -28,7 +29,7 @@ public class Usuario {
 
 	}
 
-	public Usuario(String id, String nombreYApellido, String username, String password, String email, Boolean alta) {
+	public Usuario(String id, String nombreYApellido, String username, String password, String email, Boolean alta, String rol) {
 		super();
 		this.id = id;
 		this.nombreYApellido = nombreYApellido;
@@ -36,6 +37,7 @@ public class Usuario {
 		this.password = password;
 		this.email = email;
 		this.alta = alta;
+		this.rol = rol;
 	}
 
 	public String getId() {
@@ -92,6 +94,15 @@ public class Usuario {
 
 	public void setFoto(Foto foto) {
 		this.foto = foto;
+	}
+	
+	
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	@Override
