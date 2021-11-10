@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,20 +23,27 @@ public class UsuarioController {
    @Autowired
    private UsuarioService usuarioService;
    @Autowired
-   private UsuarioRepository usuarioRepository;
-	
+   private UsuarioRepository usuarioRepository;	
     
-   @GetMapping("/")
+   @GetMapping("/") // devuelve el perfil del usuario
 	public String indexProfile(@PathVariable String id) { 
 	   return "redirect:/profile/{id}";
 	}
    
-  @GetMapping("/register")
-  public String register () {
+  @GetMapping("/register") // Devuelve el form para registrarse y/o cambiar datos
+  public String register (ModelMap model) {
+	  model.put("tipoForm", "register");
+	  return "user-form";
+  }
+  
+  @GetMapping("/modificar/{id}")
+  public String modificar (ModelMap model, @PathVariable String id) {
+	  model.put("tipoForm", "modificar/" + id);
+	  model.put("usuario", usuarioRepository.getById(id));
 	  return "user-form";
   }
    
-   @GetMapping("/login")
+   @GetMapping("/login") //Devuelve el form para loguearse
 	public String login() {
 		return "login";
 	}
@@ -54,39 +62,38 @@ public class UsuarioController {
        }
    }
     
-   @GetMapping("/profile/{id}")
+   @GetMapping("/profile/{id}") // Devuelve el perfil del usuario
    public String profile() {
 	   return "profile";
    }
      
    
-   @PostMapping("/register")
-	public String register(MultipartFile archivo, String name, String lastname, String user, String pass, String email) throws Exception {				
-	    usuarioService.crear(archivo, (name + " " + lastname), user, pass, email);
+   @PostMapping("/register") // Envía los datos del formulario de registro acá
+	public String register(MultipartFile archivo, String name, String user, String email, String pass) throws Exception {				
+	    usuarioService.crear(archivo, name, user, email, pass);
 		return "redirect:/";
 	}
    
    
-   @PostMapping("/modificar/{id}")
+   @PostMapping("/modificar/{id}") // Envía los datos del formulario de edicion acá
 	public String modificar(@PathVariable String id, MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia) throws Exception {	   
 		usuarioService.modificar(archivo, NombreYApellido, username, email, contrasenia, id);
 		return "redirect:/";
 	}
    
    
-   @PostMapping("/delete/{id}")
+   @PostMapping("/delete/{id}") // Elimina un usuario
 	public String delete(@PathVariable String id) throws Exception { 
 	   usuarioRepository.deleteById(id);
 		return "redirect:/";
 	}
    
    
-   @PostMapping("/deshabilitar/{id}")
+   @PostMapping("/deshabilitar/{id}")  // Se da de baja a un usuario
    public String deshabilitar(@PathVariable String id) throws Exception{
 	   usuarioService.baja(id);
 	   return "redirect:/";
-   }
-     
+   }     
    
 }
    
