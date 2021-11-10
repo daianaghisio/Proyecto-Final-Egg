@@ -60,15 +60,15 @@ public class UsuarioController {
    }
      
    
-   @PostMapping("/crear")
-	public String crear(MultipartFile archivo, String nombreYApellido, String username, String password, String email) throws Exception {
-		usuarioService.crear(archivo, nombreYApellido, username, password, email);
+   @PostMapping("/register")
+	public String register(MultipartFile archivo, String name, String lastname, String user, String pass, String email) throws Exception {				
+	    usuarioService.crear(archivo, (name + " " + lastname), user, pass, email);
 		return "redirect:/";
 	}
    
    
    @PostMapping("/modificar/{id}")
-	public String modificar(@PathVariable String id, MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia) throws Exception {
+	public String modificar(@PathVariable String id, MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia) throws Exception {	   
 		usuarioService.modificar(archivo, NombreYApellido, username, email, contrasenia, id);
 		return "redirect:/";
 	}

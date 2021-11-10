@@ -1,11 +1,23 @@
 package com.MigraEmprende.MigraEmprende.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Foto;
@@ -14,7 +26,7 @@ import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService{
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -26,6 +38,7 @@ public class UsuarioService {
 	private FotoService fotoService;
 
 	// // // Métodos CRUD
+	@Transactional
 	public void crear(MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia) throws Exception {
 		try {
 
@@ -231,5 +244,25 @@ public class UsuarioService {
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Usuario usuario = usuarioRepository.retornarUsuarioPorUsername(username);
+		if(usuario != null) {
+			List<GrantedAuthority> permisos = new ArrayList<>();
+			
+			GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_USER");
+			permisos.add(p1);
+
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			HttpSession session = attr.getRequest().getSession();
+			session.setAttribute("usuariosession", usuario);
+			
+			User user = new User(usuario.getUsername(), usuario.getPassword(), permisos);
+			return user;
+		}	
+		
+		return null;
 	}
 }

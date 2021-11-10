@@ -64,7 +64,7 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform" enctype="multipart/form-data">
+                    <form th:action="@{/user/register}" class="row g-3 needs-validation position:relative" method="POST" id="userform" enctype="multipart/form-data">
                         <!--User Name-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
@@ -123,9 +123,11 @@
                             <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
                         </div>
                         
+                        
+                        
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
-                            <button class="btn btnn" type="submit">Enviar</button>
-                            <button class="btn btnn" type="submit">Cancelar</button>
+                            <button class="btn btnn" type="submit" th:href="@{/}">Enviar</button>
+                            <button class="btn btnn" type="button" th:href="@{/}">Cancelar</button>
                             <p class="mensaje-exito" id="mensaje-exito">Formulario enviado exitosamente!</p>
                         </div>
                     </form>
@@ -133,7 +135,7 @@
             </td>
         </tr>
     </table>
-    <script src="/js/validation_form.js"></script>
+    <!--<script src="/js/validation_form.js"></script>-->
     <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
