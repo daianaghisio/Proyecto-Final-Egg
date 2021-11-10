@@ -3,15 +3,17 @@ package com.MigraEmprende.MigraEmprende.controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-public class ErroresController implements ErrorController{
+@Controller
+public class ErroresController implements ErrorController {
 
 	@RequestMapping(value = "/error", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView renderErrorPage(HttpServletRequest httpRequest) {
-        ModelAndView errorPage = new ModelAndView("error");
+    public String renderErrorPage(HttpServletRequest httpRequest, ModelMap model) {
+        
         String errorMsg = "";
         int httpErrorCode = getErrorCode(httpRequest);
         switch (httpErrorCode) {
@@ -31,11 +33,14 @@ public class ErroresController implements ErrorController{
                 errorMsg = "Http Error Code: 500. Internal Server Error";
                 break;
             }
+            default:
+            	errorMsg = "Vuelva a intentarlo";
+            	break;
         }
         
-        errorPage.addObject("codigo", httpErrorCode);
-        errorPage.addObject("mensaje", errorMsg);
-        return errorPage;
+        model.put("codigo", httpErrorCode);        
+        model.put("mensaje", errorMsg);        
+        return "error";
     }
 
     private int getErrorCode(HttpServletRequest httpRequest) {
