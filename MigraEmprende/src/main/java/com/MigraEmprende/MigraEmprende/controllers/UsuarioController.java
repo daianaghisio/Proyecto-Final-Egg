@@ -33,6 +33,7 @@ public class UsuarioController {
   @GetMapping("/register") // Devuelve el form para registrarse y/o cambiar datos
   public String register (ModelMap model) {
 	  model.put("tipoForm", "register");
+	  model.put("usuario", new Usuario()); // nueva linea
 	  return "user-form";
   }
   
@@ -76,8 +77,10 @@ public class UsuarioController {
    
    
    @PostMapping("/modificar/{id}") // Envía los datos del formulario de edicion acá
-	public String modificar(@PathVariable String id, MultipartFile archivo, String NombreYApellido, String username, String email, String contrasenia) throws Exception {	   
-		usuarioService.modificar(archivo, NombreYApellido, username, email, contrasenia, id);
+	public String modificar(@PathVariable String id, MultipartFile archivo, String name, String user, String email, String pass) throws Exception {
+	   String password = usuarioRepository.getById(id).getPassword();
+	   System.out.println("Valores actuales:" + " " + name + " " + user + " " + email + " " + password);
+	   usuarioService.modificar(archivo, name, user, email, password, id);
 		return "redirect:/";
 	}
    
