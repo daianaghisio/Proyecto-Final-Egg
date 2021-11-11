@@ -21,7 +21,7 @@ public class ValidationsService {
 
 	@Autowired
 	private ComentarioRepository comentarioRepository;
-	
+
 	@Autowired
 	private EmprendimientoRepository emprendimientoRepository;
 
@@ -39,19 +39,19 @@ public class ValidationsService {
 			throw new Exception("No existe ninguna respuesta asociado al ID proporcionado");
 		}
 	}
-	
+
 	public void ValidarIdEmprendimientoExiste(String id) throws Exception {
 		if (emprendimientoRepository.findById(id) == null) {
 			throw new Exception("No existe ningun emprendimiento asociado al ID proporcionado");
 		}
 	}
-	
+
 	public void ValidarIdUsuarioExiste(String id) throws Exception {
 		if (usuarioRepository.findById(id) == null) {
 			throw new Exception("No existe ningun usuario asociado al ID proporcionado");
 		}
 	}
-	
+
 	public void ValidarIdComentarioExiste(String id) throws Exception {
 		if (comentarioRepository.findById(id) == null) {
 			throw new Exception("No existe ningun comentario asociado al ID proporcionado");
@@ -59,49 +59,55 @@ public class ValidationsService {
 	}
 
 	public void ValidarNombreYApellido(String nombreYApellido) throws Exception {
-		if (nombreYApellido == null || nombreYApellido.isEmpty()) {
+		if (nombreYApellido == null || nombreYApellido.trim().isEmpty()) {
 			throw new Exception("El nombre y apellido no puede ser nulo.");
 		}
 	}
 
 	public void ValidarUsername(String username) throws Exception {
-		if (username == null || username.isEmpty()) {
+		if (username == null || username.trim().isEmpty()) {
 			throw new Exception("El username no puede ser nulo.");
 		}
 	}
 
 	public void ValidarPassword(String password) throws Exception {
-		if (password == null || password.isEmpty()) {
+		if (password == null || password.trim().isEmpty()) {
 			throw new Exception("El password no puede ser nulo.");
 		}
 	}
 
 	public void ValidarEmail(String email) throws Exception {
-		if (email == null || email.isEmpty()) {
+		if (email == null || email.trim().isEmpty()) {
 			throw new Exception("El email no puede ser nulo.");
 		}
 	}
 
 	public void ValidarNombre(String nombre) throws Exception {
-		if (nombre == null || nombre.isEmpty()) {
+		if (nombre == null || nombre.trim().isEmpty()) {
 			throw new Exception("El nombre no puede ser nulo.");
 		}
 	}
 
 	public void ValidarDescripcion(String descripcion) throws Exception {
-		if (descripcion == null || descripcion.isEmpty()) {
+		if (descripcion == null || descripcion.trim().isEmpty()) {
 			throw new Exception("La descripcion no puede ser nula.");
 		}
 	}
 
+	public void ValidarMensaje(String mensaje) throws Exception {
+		if (mensaje == null || mensaje.trim().isEmpty()) {
+			throw new Exception("El mensaje no puede ser nulo.");
+		}
+	}
+
 	public void ValidarTitulo(String titulo) throws Exception {
-		if (titulo == null || titulo.isEmpty()) {
+		if (titulo == null || titulo.trim().isEmpty()) {
 			throw new Exception("El titulo no puede ser nulo.");
 		}
 	}
 
 	public void ValidarContenido(String contenido) throws Exception {
-		if (contenido == null || contenido.isEmpty()) {
+		if (contenido == null || contenido.trim().isEmpty()) {
 			throw new Exception("El contenido no puede ser nulo.");
 		}
 	}
@@ -129,7 +135,7 @@ public class ValidationsService {
 			throw new Exception("El comentario no existe o es nulo.");
 		}
 	}
-	
+
 	public void ValidarRespuestaEnComentario(Respuesta respuesta, Comentario comentario) throws Exception {
 		if (!comentario.getRespuestas().contains(respuesta)) {
 			throw new Exception("La respuesta no se corresponde con el comentario.");

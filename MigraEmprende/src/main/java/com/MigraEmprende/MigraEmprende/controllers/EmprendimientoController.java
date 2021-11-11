@@ -13,50 +13,41 @@ import com.MigraEmprende.MigraEmprende.services.EmprendimientoService;
 @Controller
 @RequestMapping("/emprendimiento")
 public class EmprendimientoController {
-
 	
 	@Autowired
 	private EmprendimientoService emprendimientoService;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/") // Devuelve una página con cada emprendimiento
 	public String index() {
-		return "index";
+		return "entrepreneurship-all";
 	}
 	
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{id}") //Devuelve un único emprendimiento
 	public String id(@PathVariable String id) {
-		return "emprendimientoHTML";
+		return "entrepreneurship";
 	}
 	
 	
-	@GetMapping("/form")
+	@GetMapping("/form") //Devuelve un formulario para crear y modificar un emprendimiento
 	public String form() {
 		return "entrepreneurship-form";
 	}
 	
 	
-	@PostMapping("/crear")
+	@PostMapping("/crear") // Envía los datos del formulario acá para crear un emprendimiento
 	public String crear(MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
 		emprendimientoService.crear(archivo, nombre, descripcion, email, username);
 		return "redirect:/";
 	}
 	
 	
-	@PostMapping("/modificar/{id}")
+	@PostMapping("/modificar/{id}") // Envía los datos del formulario acá para editar un emprendimiento
 	public String modificarId(@PathVariable String id, MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
 		emprendimientoService.modificar(archivo, nombre, descripcion, email, username, id);
 		return "redirect:/";
 	}
-	
-	
-	@PostMapping("/delete/{id}")
-	public String deleteId(@PathVariable String id) throws Exception {
-		emprendimientoService.eliminar(id);
-		return "redirect:/";
-	}
-	
 	
 	@PostMapping("/deshabilitar")
 	public String deshabilitar(String id) throws Exception {
@@ -64,12 +55,19 @@ public class EmprendimientoController {
 		return "redirect:/";
 	}
 	
+	
+	
+	/* //Estas dos funciones están comentadas porque no van acorde a lo acordado respecto a la funcionalidad de un emprendimiento 
+	 * @PostMapping("/delete/{id}")
+	public String deleteId(@PathVariable String id) throws Exception {
+		emprendimientoService.eliminar(id);
+		return "redirect:/";
+	}
 	@PostMapping("/habilitar")
 	public String habilitar(String id) throws Exception {
 		emprendimientoService.alta(id);
 		return "redirect:/";
 	}
-	
-	
+	*/
 	
 }
