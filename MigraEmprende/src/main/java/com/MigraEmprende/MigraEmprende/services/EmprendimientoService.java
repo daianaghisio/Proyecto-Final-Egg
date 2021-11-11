@@ -1,15 +1,18 @@
 package com.MigraEmprende.MigraEmprende.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
 import com.MigraEmprende.MigraEmprende.entities.Foto;
 import com.MigraEmprende.MigraEmprende.repositories.EmprendimientoRepository;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
+
 
 @Service
 public class EmprendimientoService {
@@ -58,6 +61,10 @@ public class EmprendimientoService {
 			
 			
 			emprendimientoRepository.save(emprendimiento); // Guardamos los cambios
+			
+			//NO NECESITARIA QUE DESPUES DE CREARSE, SE META EN MI LISTA DE EMPRENDIMIENTOS?
+			//Respuesta: Lo hace. En el ultimo metodo de esta clase.
+			
 		} catch (Exception e) {
 			System.out.println("Error-EmprendimientoService: " + e.getMessage());
 			e.printStackTrace();
@@ -199,6 +206,14 @@ public class EmprendimientoService {
 			throw e;
 		}
 
+	}
+	
+	
+
+	//LISTAR EMPRENDIMIENTOS
+	@Transactional(readOnly=true) //Se usa por buenas practicas aclarando entre parentesis que no es una modificacion a la BBDD
+	public List<Emprendimiento> listarEmprendimientos(){
+		return emprendimientoRepository.findAll();
 	}
 
 }

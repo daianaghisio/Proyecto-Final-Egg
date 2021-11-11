@@ -1,0 +1,315 @@
+.texto{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #404040;
+}
+.titulo {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    color: #404040;
+}
+.nav-item {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    color: #FFFFFF;
+}
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-height: 1.4;
+}
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+.container-cover {
+    position: relative;
+    width: 90%;
+    height: 20rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    -webkit-box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.54); 
+    box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.54);
+    background-image:url(../portadalogo.jpg);
+}
+.seccion-perfil-usuario .perfil-usuario-avatar  {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 90px);
+    z-index: 1;
+}
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+.seccion-perfil-usuario .perfil-usuario-body  {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+    text-align: center;
+    list-style: none;
+}
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio  {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+   
+}
+
+.info{
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    color: #404040;
+    text-align: center;
+    align-items: center;
+    padding-top: 15px;
+    
+}
+
+.navbar-logo{
+    display:flex;
+    vertical-align: middle;
+    width: 150px;
+  }
+  .navbar-logo img{
+    display:block;
+    width: 100%;
+    height:fit-content;
+  }
+  .margen {
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+/*:::::Pie de Pagina*/
+.pie-pagina{
+    width: 100%;
+    background-color: #212529;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+.pie-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pie-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+
+.pie-pagina .grupo-2{
+    background-color: #404040;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+
+.mb-3 {
+    color: #fff;
+    forced-color-adjust: #fff;
+}
+
+.contacto{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color:#ffff ;
+    font-size:x-large;
+}
+
+.lista-contacto{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color:#ffff ;
+    font-size:medium;
+    list-style:none;
+    text-align: left;
+    padding-inline-start: 0pt;
+}
+
+.lista{
+    width: 50%;
+}
+
+
+.datos-personales {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    color: #404040 !important;
+    padding-inline-start: 0pt;
+    text-align: center;
+    list-style: none;
+}
+
+.datocolor{
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    color: #fcb316 !important;
+    padding-inline-start: 0pt;
+}
+
+.container {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    color: #fcb316 !important;
+    padding-inline-start: 0pt;  
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    
+}
+ .icon-label {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+ }
+
+ .icon-class{
+     margin-right: 8px;
+ }
+
+.html {
+	font-size: 16px;
+}
+
+.social-bar {
+	position: fixed;
+	right: 0;
+	top: 35%;
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	z-index: 100;
+}
+
+.icon {
+	color: white;
+	text-decoration: none;
+	padding: .7rem;
+	display: flex;
+	transition: all .5s;
+}
+
+.icon-facebook {
+	background: #262626;
+}
+
+.icon-instagram {
+	background: #262626;
+}
+
+.icon:first-child {
+	border-radius: 1rem 0 0 0;
+}
+
+.icon:last-child {
+	border-radius: 0 0 0 1rem;
+}
+
+.icon:hover {
+	padding-right: 3rem;
+	border-radius: 1rem 0 0 1rem;
+	box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?i226ha');
+    src:  url('fonts/icomoon.eot?i226ha#iefix') format('embedded-opentype'),
+      url('fonts/icomoon.ttf?i226ha') format('truetype'),
+      url('fonts/icomoon.woff?i226ha') format('woff'),
+      url('fonts/icomoon.svg?i226ha#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-facebook:before {
+    content: "\ea90";
+  }
+  .icon-instagram:before {
+    content: "\ea92";
+  }
+  
+  

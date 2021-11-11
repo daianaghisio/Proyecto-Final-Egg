@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<<<<<<< HEAD
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+=======
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--NO TOCAS LOS ID DE LOS INPUTS, estan enlazados con el JS-->
+
+    <!-- Libreria de Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <!--CSS-->
-    <link rel="stylesheet" href="../static/style/user-form.css">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <link rel="stylesheet" href="/style/user-form.css" th:href="@{/style/user-form.css}">
+=======
+    <link rel="stylesheet" href="/style/user-form.css">
+>>>>>>> 9b339436768bb7e980d5888d68f698805b2b7ab1
+=======
+    <link rel="stylesheet" href="/style/user-form.css">
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
     <!--FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +35,38 @@
     <title>Formulario de usuario</title>
 </head>
 <body>
+    <!--navbar-->
+    <div class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:src="@{/logotexto.png}">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" href="#">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" href="#">Lugares de ayuda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" href="#">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" href="#">Foro</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--Form User-->
     <table class="form">
         <tr>
             <td class="tab-userform">
@@ -27,30 +76,32 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform">
+                    <form th:action="@{/user/}+${tipoForm}" th:object="${usuario}" class="row g-3 needs-validation position:relative" method="POST" id="userform" enctype="multipart/form-data">
                         <!--User Name-->
-                        <div class="col-md-4 position-relative" id="group_name">
+                        <div class="col-md-6 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
                             <div class="name">
-                                <input type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
                             </div>
                             <p class="group__errorname">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
 
                         <!--Last Name-->
-                        <div class="col-md-4 position-relative" id="group_lastname">
+                        <!-- <div class="col-md-4 position-relative" id="group_lastname">
                             <label for="lastname" class="form-label">Apellido</label>
                             <div class="grouplastname">
                                 <input type="text" class="form-control fm" name="lastname" id="lastname" placeholder="Last Name">
                             </div>
                             <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
-                        </div>
+                        </div> -->
 
                         <!--User-->
-                        <div class="col-md-4 position-relative" id="group_user">
+                        <div class="col-md-6 position-relative" id="group_user">
                             <label for="user" class="form-label">Nombre de Usuario</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
                             </div>
                             <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
@@ -59,16 +110,37 @@
                         <div class="col-md-6 position-relative" id="group_email">
                             <label for="email" class="form-label">Correo</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control fm" name="email" id="email" placeholder="Email">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
+                        
+                        <!--Foto-->
+                        <div class="col-md-6 position-relative">
+                            <label for="foto" class="form-label">Foto</label>
+                            <div class="grouplastname">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                <input type="file" class="form-control" name="archivo">
+=======
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
+>>>>>>> 9b339436768bb7e980d5888d68f698805b2b7ab1
+                            </div>
+=======
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
+                            </div>
+                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
+                        </div>
 
                         <!--Password-->
-                        <div class="col-md-6 position-relative" id="group_pass">
+                        <div th:if="${ #strings.equals(tipoForm, 'register')}" class="col-md-6 position-relative" id="group_pass">
                             <label for="pass" class="form-label">Contraseña</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control fm" name="pass" id="pass" placeholder="Password">
+                                <input type="password" class="form-control fm" name="pass" id="pass" placeholder="Password">                                
                             </div>
                             <p class="group__errorname">La contraseña tiene que ser de 4 a 12 dígitos.</p>
                         </div>
@@ -77,9 +149,12 @@
                             <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
                         </div>
                         
+                        
+                        
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
-                            <button class="btn btnn" type="submit">Enviar</button>
-                            <button class="btn btnn" type="submit">Cancelar</button>
+                            <button th:if="${ #strings.equals(tipoForm, 'register')}" class="btn btnn" type="submit" th:href="@{/}">Registrarse</button>
+                            <button th:if="${ !#strings.equals(tipoForm, 'register' )}" class="btn btnn" type="submit" th:href="@{/}">Modificar</button>
+                            <button class="btn btnn" type="button" th:href="@{/}">Cancelar</button>
                             <p class="mensaje-exito" id="mensaje-exito">Formulario enviado exitosamente!</p>
                         </div>
                     </form>
@@ -87,7 +162,15 @@
             </td>
         </tr>
     </table>
-    <script src="../static/js/validation_form.js"></script>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <!--<script th:src="@{/js/validation_form.js}"></script>-->
+=======
+    <!--<script src="/js/validation_form.js"></script>-->
+>>>>>>> 9b339436768bb7e980d5888d68f698805b2b7ab1
+=======
+    <!--<script src="/js/validation_form.js"></script>-->
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
+    <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
