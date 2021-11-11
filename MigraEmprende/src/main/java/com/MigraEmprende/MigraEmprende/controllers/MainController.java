@@ -20,6 +20,20 @@ public class MainController {
 	
 	@GetMapping("/noticias")
 	public String noticias() {
-		return "seccion-leyes";
+		return "plantilla_noticia";
 	}
+	
+	//ESTO LO PUSE ACA PARA PROBAR SI ANDABA NADA MAS
+	@GetMapping("/capacitaciones")
+	public String capacitaciones() {
+		return "trainings";
+	}
+	
+	//ESTO LO PUSE ACA PARA PROBAR SI ANDABA NADA MAS X2
+	@GetMapping("/ayuda")
+	public String ayuda() {
+		return "help";
+	}
+	
+	
 }

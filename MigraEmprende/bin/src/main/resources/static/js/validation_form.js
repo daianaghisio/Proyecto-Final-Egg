@@ -70,7 +70,7 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-    e.preventDefault();//quita la funcion del boton
+    //e.preventDefault();//quita la funcion del boton
 
     if(areas.name && areas.lastname && areas.user && areas.email && areas.pass){
         formulario.reset();
