@@ -12,4 +12,14 @@ public class MainController {
 	public String index() {
 		return "index";
 	}
+	
+	@GetMapping("/leyes")
+	public String leyes() {	
+		return "seccion-leyes";
+	}
+	
+	@GetMapping("/noticias")
+	public String noticias() {
+		return "seccion-leyes";
+	}
 }

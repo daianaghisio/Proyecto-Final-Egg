@@ -1,9 +1,13 @@
 package com.MigraEmprende.MigraEmprende.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -23,7 +27,10 @@ public class Emprendimiento {
 	
 	@OneToOne
 	private Foto foto;
-
+	/*
+	@OneToMany
+	private List<Foto> listaDeFotos;
+	 */
 	public Emprendimiento() {
 
 	}
