@@ -61,6 +61,10 @@ public class EmprendimientoService {
 			
 			
 			emprendimientoRepository.save(emprendimiento); // Guardamos los cambios
+			
+			//NO NECESITARIA QUE DESPUES DE CREARSE, SE META EN MI LISTA DE EMPRENDIMIENTOS?
+			//Respuesta: Lo hace. En el ultimo metodo de esta clase.
+			
 		} catch (Exception e) {
 			System.out.println("Error-EmprendimientoService: " + e.getMessage());
 			e.printStackTrace();

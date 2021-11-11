@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ly7kvk');
+  src:  url('fonts/icomoon.eot?ly7kvk#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ly7kvk') format('truetype'),
+    url('fonts/icomoon.woff?ly7kvk') format('woff'),
+    url('fonts/icomoon.svg?ly7kvk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-envelop:before {
+  content: "\e945";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-user-check:before {
+  content: "\e975";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            line-height: 1.4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #404040;
+            font-family: "Arial", Segoe UI, Tahoma, sans-serifl, Helvetica Neue, Helvetica;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body,
+        .seccion-perfil-usuario {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(#fcb315, transparent);
+            margin-bottom: 1.25rem;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-portada {
+            display: block;
+            position: relative;
+            width: 90%;
+            height: 17rem;
+            background-color: #404040;
+            border-radius: 0 0 20px 20px;
+        }
+        .seccion-perfil-usuario .perfil-usuario-avatar{
+          width: 10%;
+          height: 10%;
+        }
+        .seccion-perfil-usuario .perfil-usuario-avatar {
+            display: flex;
+            height: 5%;
+            object-fit: cover;
+            object-position: center center;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #fcb41a;
+            border-radius: 20%;
+            background-color: #fcb41a;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            position: absolute;
+            bottom: -10px;
+            left: calc(10% - 90px);
+            z-index: 1;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-avatar img {
+            width: 100%;
+            position: relative;
+            border-radius: 20%;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            border: 0;
+            background-color: #fff;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body {
+            width: 70%;
+            position: relative;
+            max-width: 750px;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body .titulo {
+            display: block;
+            width: 100%;
+            font-size: 1.75em;
+            margin-bottom: 0.5rem;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body .texto {
+            color: #848484;
+            font-size: 0.95em;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-footer,
+        .seccion-perfil-usuario .perfil-usuario-bio {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            background-color: #fff;
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-bio {
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .seccion-perfil-usuario .lista-datos {
+            width: 50%;
+            list-style: none;
+        }
+
+        .seccion-perfil-usuario .lista-datos li {
+            padding: 5px 0;
+        }
+
+        .seccion-perfil-usuario .lista-datos li>.icono {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            vertical-align: middle;
+        }

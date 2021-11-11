@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 body{
     font-family: 'Lato', sans-serif;
     background-color: #3b3b3d;
@@ -91,3 +96,25 @@ table td {
 .msj-error-activo{
     display: block;
 }
+
+/* nav */
+navbar-logo{
+    display:flex;
+    vertical-align: middle;
+    width: 150px;
+  }
+  .navbar-logo img{
+    display:block;
+    width: 100%;
+    height:fit-content;
+  }
+  .margen {
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+  i {
+    color: #db9f1c;
+  }
+  i:hover {
+    color: #bfbfbf;
+  }
