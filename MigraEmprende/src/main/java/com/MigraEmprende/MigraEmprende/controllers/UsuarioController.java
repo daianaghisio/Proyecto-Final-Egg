@@ -49,6 +49,12 @@ public class UsuarioController {
 		return "login";
 	}
    
+   //prueba para borrar
+   @GetMapping("/userform")
+	public String userform() {
+		return "user-form";
+	}
+   
    @GetMapping("/user") // PERFIL DE USUARIO, DEVUELVE LOS DATOS DEL USUARIO LOGEADO(LOGIN)
 	public String userProfile(Model model, Principal principal) throws Exception {
        try {
