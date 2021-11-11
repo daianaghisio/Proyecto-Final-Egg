@@ -64,12 +64,15 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform">
-                        <!--User Name-->
+                    <form th:action="@{/emprendimiento/emprendimiento-crear}" th:object="${emprendimiento}" class="row g-3 needs-validation position:relative" id="userform" method="POST">
+                        <!--User Name 
+                        
+                        
+                        VOY A CAMBIAR LAS ETIQUETAS NAME PORQUE ESO ES LO QUE LE LLEVA A LA BD al submitir-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre Emprendimiento</label>
                             <div class="name">
-                                <input type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input type="text" id="name" class="form-control fm" name="nombre" placeholder="Name">
                             </div>
                             <p class="group__errorname">El nombre del emprendimiento tiene que ser de 4 a 16 dígitos y solo puede contener letras</p>
                         </div>
@@ -120,6 +123,7 @@
                         <div class="mb-3 position-relative">
                             <label for="comment" class="form-label">Breve descripción de su Emprendimiento: </label>
                             <textarea class="form-control" id="comment" rows="3"></textarea>
+                            <input type="text" class="form-control" placeholder="Descripcion" name="descripcion">
                           </div>
 
                       <!--Foto-->
@@ -130,6 +134,7 @@
                             </div>
                             <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
                         </div>
+                        
                         <!-- <div class="col-md-4 position-relative">
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
@@ -150,7 +155,7 @@
                           <br>
                           <hr>
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
-                            <button class="btn btnn" type="submit">Enviar</button>
+                            <button class="btn btnn" type="submit" th:href="@{/emprendimiento/}">Enviar</button>
                             <button class="btn btnn" type="submit">Cancelar</button>
                             <p class="mensaje-exito" id="mensaje-exito">Formulario enviado exitosamente!</p>
                         </div>
@@ -159,7 +164,7 @@
             </td>
         </tr>
     </table>
-    <script src="/js/validation_form.js"></script>
+  <!--  <script src="/js/validation_form.js"></script> SOLO LO COMENTE PARA QUE FUNCIONARA EL BOTON ENVIAR-->
     <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
