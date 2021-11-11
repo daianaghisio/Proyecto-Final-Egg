@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+=======
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +19,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <!--CSS-->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <link rel="stylesheet" href="/style/user-form.css" th:href="@{/style/user-form.css}">
 =======
     <link rel="stylesheet" href="/style/user-form.css">
 >>>>>>> 9b339436768bb7e980d5888d68f698805b2b7ab1
+=======
+    <link rel="stylesheet" href="/style/user-form.css">
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
     <!--FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,12 +121,19 @@
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type="file" class="form-control" name="archivo">
 =======
                                 <input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
 >>>>>>> 9b339436768bb7e980d5888d68f698805b2b7ab1
                             </div>
+=======
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
+                            </div>
+                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
                         </div>
 
                         <!--Password-->
@@ -148,10 +163,14 @@
         </tr>
     </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!--<script th:src="@{/js/validation_form.js}"></script>-->
 =======
     <!--<script src="/js/validation_form.js"></script>-->
 >>>>>>> 9b339436768bb7e980d5888d68f698805b2b7ab1
+=======
+    <!--<script src="/js/validation_form.js"></script>-->
+>>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
     <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
