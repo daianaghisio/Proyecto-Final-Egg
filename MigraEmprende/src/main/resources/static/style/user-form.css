@@ -18,6 +18,10 @@ table td {
 .form{
     margin: 10%;
 }
+.form-comment{
+    margin: auto;
+    margin-top: 5%;
+}
 .tab-userform{
     background-color: #db9f1c;
     height: 70px;
