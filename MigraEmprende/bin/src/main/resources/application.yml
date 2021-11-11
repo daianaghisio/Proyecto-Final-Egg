@@ -1,11 +1,24 @@
 spring:
+#MailSender
+ mail:
+   host: smtp.gmail.com
+   port: 587
+   username: nosepruebanoseprueba@gmail.com
+   password: migraemprende5*
+   properties:
+       mail:
+           smtp:
+               auth: true
+               starttls:
+                   required: true
+                   enable: true
 #Configuración MySQL
  datasource:
   url:
     jdbc:mysql://localhost:3306/migraemprende?allowPublicKeyRetrieval=true&useSSL=false&u
     seTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
   username: root
-  password: user
+  password: 1234
   driver-class-name: com.mysql.cj.jdbc.Driver
 #Configuración Creación de tablas (Hibernate)
  jpa:

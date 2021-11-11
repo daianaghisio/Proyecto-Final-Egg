@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,18 +10,22 @@
 <body>
     <!-- NAVBAR -->
     <!-- No reemplaces el fixed-top -->
-    <nav class="navbar fixed-top navbar-light bg-danger shadow-lg p-3">
+    <!--<nav class="navbar fixed-top navbar-light shadow-lg p-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
         </div>
-      </nav>
+      </nav>-->
     <!-- NAVBAR -->
-    <div class="container-fluid bg-danger">
+    <div class="container-fluid">
         <div class="row vh-100  d-flex align-items-center text-center">            
             <div>
                 <h1 class="">Oops... algo no salió bien</h1>
                 <h2>Error <span th:text="${codigo}"></span></h2>
                 <h2 th:text="${mensaje}"> </h2 >
+                
+                <img class="img-fluid" style="width:30%; height: 30%;" alt="1" src="https://pbs.twimg.com/media/EbeD4qUWkAI8ULR.jpg">
+
+                
             </div>            
         </div>
     </div>
