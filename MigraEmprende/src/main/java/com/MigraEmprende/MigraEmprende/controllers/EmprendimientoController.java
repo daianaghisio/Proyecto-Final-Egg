@@ -61,7 +61,7 @@ public class EmprendimientoController {
 	@PostMapping("/emprendimiento-crear") // Envía los datos del formulario acá para crear el emprendimiento
 	public String crear(MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
 		emprendimientoService.crear(archivo, nombre, descripcion, email, username);
-		return "redirect:/";
+		return "redirect:entrepreneurship-all";
 	}
 	
 	
