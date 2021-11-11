@@ -1,6 +1,5 @@
 package com.MigraEmprende.MigraEmprende.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +13,7 @@ import com.MigraEmprende.MigraEmprende.services.MailService;
 @RequestMapping("/consulta")
 public class ConsultaController {
 
-	@Autowired
-	private MailService mailService;
+	private MailService mailService = new MailService();
 
 	@GetMapping("/")
 	public String form() {
