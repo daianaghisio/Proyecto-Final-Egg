@@ -15,12 +15,12 @@ public class ConsultaController {
 
 	private MailService mailService = new MailService();
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String form() {
-		return "queryForm";
+		return "mail-contact";
 	}
 
-	@PostMapping("/")
+	@PostMapping("")
 	public String enviar(ModelMap modelo, @RequestParam String nombre, @RequestParam String email,
 			@RequestParam String mensaje) throws Exception {
 		try {
