@@ -20,7 +20,9 @@ public class ComentarioController {
 	private ComentarioService comentarioService;
 
 	@GetMapping("/") // Devuelve todo el foro
-	public String index() throws Exception {
+	public String index(ModelMap modelo) throws Exception {
+		modelo.addAttribute("listaComentario", comentarioService.listarComentarios());
+		
 		return "comments-section";
 	}
 
