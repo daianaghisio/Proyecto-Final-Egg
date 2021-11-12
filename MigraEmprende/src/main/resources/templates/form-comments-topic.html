@@ -64,7 +64,7 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform">
+                    <form th:action="@{/foro/crear/}" class="row g-3 needs-validation position:relative" id="userform" method="POST">
                         <!--User Name-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label">Título: </label>
@@ -75,9 +75,10 @@
                         <!-- Comentario -->
                         <div class="mb-2 position-relative">
                             <label for="comment" class="form-label">Comentario: </label>
-                            <textarea class="form-control" id="comment" rows=""></textarea>
+                            <textarea class="form-control" id="comment" rows="" name="contenido"></textarea>
                           </div>
                         <div>
+                        	 <input type="hidde" id="usuario" name="usuario" th:value="${session.usuariosession.username}">
                             <button class="btn btnn" type="submit">Enviar</button>
                             <button class="btn btnn" type="submit">Cancelar</button>
                         </div>
