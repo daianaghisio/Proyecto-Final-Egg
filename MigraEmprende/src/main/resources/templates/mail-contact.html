@@ -66,20 +66,17 @@
                         <p><span class="fa fa-phone"></span> +54 9 3412 111111</p>
                     </section>
             </section>
-                <form action="" class="form_contact">
+                <form th:action="@{/consulta}" method="POST" class="form_contact">
                     <h2>Enviar tu mensaje</h2>
                     <div class="user_info">
                         <label for="names">Nombre *</label>
-                        <input type="text" id="names" required>
-
-                        <label for="phone">Telefono / Celular</label>
-                        <input type="text" id="phone">
+                        <input type="text" id="names" name="nombre" required>
 
                         <label for="email">Correo Electronico *</label>
-                        <input type="text" id="email" required>
+                        <input type="text" id="email" name="email" required>
 
                         <label for="mensaje">Mensaje *</label>
-                        <textarea name="" id="mensaje" ></textarea>
+                        <textarea name="mensaje" id="mensaje" ></textarea>
                     </div>
                     <div class="btn-form">
                         <button class="btn btnn" type="submit">Enviar</button>
