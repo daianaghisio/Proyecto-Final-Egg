@@ -27,7 +27,7 @@ public class MailService {
 			SimpleMailMessage message1 = new SimpleMailMessage();
 			message1.setTo("nosepruebanoseprueba@gmail.com");
 			message1.setSubject("Consulta via Web Recibida");
-			message1.setText(nombre + " cuyo mail es " + email + " envió el siguiente mensaje: " + mensaje);
+			message1.setText(nombre + ", cuyo mail es " + email + ", envió el siguiente mensaje: " + mensaje);
 
 			javaMailSender.send(message1);
 
