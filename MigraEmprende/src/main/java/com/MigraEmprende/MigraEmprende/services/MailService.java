@@ -3,11 +3,13 @@ package com.MigraEmprende.MigraEmprende.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MailService {
 
 	@Autowired
-	private JavaMailSender javaMailSender;
+	private JavaMailSender mailSender;
 
 	@Autowired
 	private ValidationsService validationsServices;
@@ -25,13 +27,15 @@ public class MailService {
 			// method
 
 			SimpleMailMessage message1 = new SimpleMailMessage();
+			message1.setFrom("nosepruebanoseprueba@gmail.com");
 			message1.setTo("nosepruebanoseprueba@gmail.com");
 			message1.setSubject("Consulta via Web Recibida");
 			message1.setText(nombre + ", cuyo mail es " + email + ", envió el siguiente mensaje: " + mensaje);
 
-			javaMailSender.send(message1);
+			mailSender.send(message1);
 
 			SimpleMailMessage message2 = new SimpleMailMessage();
+			message2.setFrom("nosepruebanoseprueba@gmail.com");
 			message2.setTo(email);
 			message2.setSubject("Has enviado una consulta a MigraEmprende");
 			message2.setText(
@@ -39,7 +43,7 @@ public class MailService {
 							+ "Nombre: " + nombre + "\n\n" + "Email: " + email + "\n\n" + "Mensaje: " + mensaje
 							+ "\n\n\n\n" + "MigraEmprende - Rosario, Santa Fé, Argentina");
 
-			javaMailSender.send(message2);
+			mailSender.send(message2);
 
 		} catch (Exception e) {
 			throw e;
