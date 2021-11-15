@@ -23,37 +23,68 @@
     <title>Formulario Emprendimiento</title>
 </head>
 <body>
-    <!--navbar-->
-    <div class="container-fluid navbar navbar-dark bg-dark">
+        <!--navbar LOGOUT-->
+    <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <a class="navbar-logo" href="#">
-                    <img src="/img/logotexto.png">
+                    <img th:href="@{/}" src="/img/logotexto.png">
                 </a>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Emprendimientos</a>
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Lugares de ayuda</a>
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Leyes</a>
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Foro</a>
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="#">
-                            <i class="fas fa-user"></i>
+                        <a th:href="@{/user/login}">
+                            <i  class="fas fa-user"></i>
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
+    <!--navbar OK-->
+    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a th:text="${session.usuariosession.username}">A</a>
+                        <a th:href="@{/logout}">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+        
     <!--Form User-->
     <table class="form-comment">
         <tr>
@@ -64,7 +95,7 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform">
+                    <form th:action="@{/foro/crear/}" class="row g-3 needs-validation position:relative" id="userform" method="POST">
                         <!--User Name-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label">Título: </label>
@@ -75,9 +106,10 @@
                         <!-- Comentario -->
                         <div class="mb-2 position-relative">
                             <label for="comment" class="form-label">Comentario: </label>
-                            <textarea class="form-control" id="comment" rows=""></textarea>
+                            <textarea class="form-control" id="comment" rows="" name="contenido"></textarea>
                           </div>
                         <div>
+                        	 <input type="hidde" id="usuario" name="usuario" th:value="${session.usuariosession.username}">
                             <button class="btn btnn" type="submit">Enviar</button>
                             <button class="btn btnn" type="submit">Cancelar</button>
                         </div>

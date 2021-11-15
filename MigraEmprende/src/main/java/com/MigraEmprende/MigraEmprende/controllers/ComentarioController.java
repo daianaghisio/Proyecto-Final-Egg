@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.services.ComentarioService;
+import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
 @Controller
 @RequestMapping("/foro")
@@ -18,6 +19,9 @@ public class ComentarioController {
 
 	@Autowired
 	private ComentarioService comentarioService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@GetMapping("/") // Devuelve todo el foro
 	public String index(ModelMap modelo) throws Exception {
@@ -35,15 +39,15 @@ public class ComentarioController {
 	
 	@GetMapping("/crear") // Devuelve un formulario para crear un comentario
 	public String crear() {
-		return "topic-form";
+		return "form-comments-topic";
 	}
 	
 
 	@PostMapping("/crear") // Manda los datos del formulario y lo redirecciona a el foro
-	public String crear(ModelMap modelo, @RequestParam String titulo, @RequestParam String contenido,
-			@RequestParam Usuario usuario) throws Exception {
+	public String crear(ModelMap modelo, @RequestParam String name, @RequestParam String contenido,
+			@RequestParam String usuario) throws Exception {
 		try {
-			comentarioService.crearComentario(titulo, contenido, usuario);
+			comentarioService.crearComentario(name, contenido, usuarioService.buscarPorUsername(usuario));
 			modelo.put("exito", "Comentario enviado!");
 			return "redirect:/";
 		} catch (Exception e) {
