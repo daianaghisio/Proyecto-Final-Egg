@@ -95,11 +95,12 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form th:action="@{/emprendimiento/emprendimiento-crear}" th:object="${negocito}" class="row g-3 needs-validation position:relative" id="userform" method="POST">
+                    <form th:action="@{/emprendimiento/emprendimiento-crear}" th:object="${negocito}" class="row g-3 needs-validation position:relative" id="userform" method="POST" enctype="multipart/form-data">
+                        
+                        
                         <!--Nombre
-                        
-                        
-                        LAS ETIQUETAS NAME llevan al back la informacion, si name es usuario, en el back va a ingresar como atributo usuario-->
+                                               
+                        LAS ETIQUETAS NAME de input llevan al back la informacion, si name es usuario, en el back va a ingresar como atributo usuario-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre Emprendimiento</label>
                             <div class="name">
@@ -170,7 +171,7 @@
                         <div class="col-md-4 position-relative">
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
+                                <input type="file" class="form-control" name="archivo">
                             </div>
                             <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
                         </div>
@@ -204,7 +205,7 @@
             </td>
         </tr>
     </table>
-  <!--  <script src="/js/validation_form.js"></script> SOLO LO COMENTE PARA QUE FUNCIONARA EL BOTON ENVIAR-->
+  <script src="/js/validation_form.js"></script> 
     <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
