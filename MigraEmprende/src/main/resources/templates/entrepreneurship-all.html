@@ -89,61 +89,22 @@
   <section>
   
   
-  <div class="row">
-   <div class="col" th:each="emprendimiento:${todosEmprendimientos}"> 
- 
-  <div class="card" style="width:400px">
-      <div class="img">
-      
-           <img th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del emprendimiento" style="width:100%">
-    <!--   PARA AGREGAR MAS FOTOS, HACER UNA LISTA DE FOTOS, EN LA ENTIDAD EMPRENDIMIENTOS, Y USAR UN FOR EACH EN LA ETIQUETA IMG DE ACA ARRIBA!!!!! -->
-    
-    
-      </div>
-      <div class="descripcion">
-        <h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_emprendimiento </h4><br>
-        Rubro<br>
-        Contacto<br>
-      </div>
-      <a class="boton" href="#">Visitar</a>
-
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    
-    
-    <!-- 
-  cards del html sin modificar
   
-   
-    <div class="card">
     
-      <div class="img">
-          <img src="Fotos/Cards/img1.jpeg" alt="foto1">
-      </div>
-      <div class="descripcion">
-        <b>Nombre</b><br>
-        Rubro<br>
-        Contacto<br>
-      </div>
-      <a class="boton" href="#">Visitar</a>
+  <div class="row">
+   <div class="col" th:each="emprendimiento:${todosEmprendimientos}">
+    <!--  La siguiente card es para agregar las fotos -->
+ <div class="card" style="width:400px">
+    <div class="card-body">
+      <h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_Emprendimiento </h4>
+      <p class="card-text">Foto del emprendimiento</p>
+      
     </div>
-    <div class="card">
+    <img class="card-img-bottom" th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del producto" style="width:100%">
+  </div>
+
+   </div>
     
-      <div class="img">
-          <img src="Fotos/Cards/img1.jpeg" alt="foto1">
-      </div>
-      <div class="descripcion">
-        <b>Nombre</b><br>
-        Rubro<br>
-        Contacto<br>
-      </div>
-      <a class="boton" href="#">Visitar</a>
-    </div>
-    
-     -->
      
     </section>
 

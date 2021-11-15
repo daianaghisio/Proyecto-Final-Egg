@@ -54,7 +54,7 @@ public class EmprendimientoController {
 			e.printStackTrace();
 		}
 		
-		return "entrepreneurship-all"; //retornaba el form antes, lo cambie para ver si funciona el boton (y si)
+		return "/"; //retornaba el form antes, lo cambie para ver si funciona el boton (y si)
 	}
 	
 	
