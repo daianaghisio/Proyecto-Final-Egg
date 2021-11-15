@@ -54,14 +54,14 @@ public class EmprendimientoController {
 			e.printStackTrace();
 		}
 		
-		return "/"; //retornaba el form antes, lo cambie para ver si funciona el boton (y si)
+		return "/entrepreneurship-form"; //retornaba el form antes, lo cambie para ver si funciona el boton (y si)
 	}
 	
 	
 	@PostMapping("/emprendimiento-crear") // Envía los datos del formulario acá para crear el emprendimiento
 	public String crear(MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
 		emprendimientoService.crear(archivo, nombre, descripcion, email, username);
-		return "redirect:entrepreneurship-all";
+		return "redirect:/";
 	}
 	
 	
