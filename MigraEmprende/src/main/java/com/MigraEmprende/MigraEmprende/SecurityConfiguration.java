@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http			
 			.headers().frameOptions().sameOrigin().and()
 			.authorizeRequests()
-				.antMatchers("/css/", "/js/", "/img/")
+				.antMatchers("/resources/**") //Se añadieron los asteriscos, en otro caso, se puede poner solo "/resources/**"
 				.permitAll()
 			.and().formLogin()
 				.loginPage("/user/login")

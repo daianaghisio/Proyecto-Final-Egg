@@ -20,38 +20,69 @@
 </head>
 
 <body>
-    <!-------NAVBAR------->
-    <div class="container-fluid navbar navbar-dark bg-dark">
+    <!--navbar LOGOUT-->
+    <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <a class="navbar-logo" href="#">
-                    <img src="logotexto.png">
+                    <img th:href="@{/}" src="/img/logotexto.png">
                 </a>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Emprendimientos</a>
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Consultas</a>
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Leyes</a>
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Foro</a>
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a th:href="@{/user/login}">
+                            <i  class="fas fa-user"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
-    <!-------FIN DE NAVBAR------->
+    <!--navbar OK-->
+    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a th:text="${session.usuariosession.username}">A</a>
+                        <a th:href="@{/logout}">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
-    <!-------BODY------->
+    <!-- BODY -->
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="container-cover">
@@ -91,9 +122,9 @@
     </section>
    
     
-    <!-------FIN DE BODY-------->
+    <!-- FIN DE BODY -->
 
-    <!-------PIE DE PAGINA------>
+    <!-- PIE DE PAGINA -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
@@ -116,7 +147,7 @@
             <small>&copy; 2021 <b>Mesa 5</b> - Todos los Derechos Reservados.</small>
         </div>
     </footer>
-    <!------ FIN DE PIE DE PAGINA------->
+    <!-- FIN DE PIE DE PAGINA -->
 </body>
 
 </html>

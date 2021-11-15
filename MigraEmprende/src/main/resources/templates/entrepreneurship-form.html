@@ -24,66 +24,66 @@
 </head>
 <body>
         <!--navbar LOGOUT-->
-        <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a class="navbar-logo" href="#">
-                        <img th:href="@{/}" src="/img/logotexto.png">
-                    </a>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/emprendimiento/emprendimiento/}">Emprendimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/leyes/leyes/}">Leyes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/consulta/consulta}">Consulta</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#">
-                                <i th:href="@{/user/login}" class="fas fa-user"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <!--navbar OK-->
-        <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a class="navbar-logo" href="#">
-                        <img th:href="@{/}" src="/img/logotexto.png">
-                    </a>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/emprendimiento/emprendimiento/}">Emprendimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/leyes/leyes/}">Leyes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" th:href="@{/consulta/consulta}">Consulta</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a th:text="${session.usuariosession.username}"></a>
-                            <a th:href="@{/}">Log Out</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+    <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a th:href="@{/user/login}">
+                            <i  class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--navbar OK-->
+    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a th:text="${session.usuariosession.username}">A</a>
+                        <a th:href="@{/logout}">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
         
     <!--Form User-->
     <table class="form">
@@ -95,11 +95,12 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form th:action="@{/emprendimiento/emprendimiento-crear}" th:object="${negocito}" class="row g-3 needs-validation position:relative" id="userform" method="POST">
+                    <form th:action="@{/emprendimiento/emprendimiento-crear}" th:object="${negocito}" class="row g-3 needs-validation position:relative" id="userform" method="POST" enctype="multipart/form-data">
+                        
+                        
                         <!--Nombre
-                        
-                        
-                        LAS ETIQUETAS NAME llevan al back la informacion, si name es usuario, en el back va a ingresar como atributo usuario-->
+                                               
+                        LAS ETIQUETAS NAME de input llevan al back la informacion, si name es usuario, en el back va a ingresar como atributo usuario-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre Emprendimiento</label>
                             <div class="name">
@@ -170,28 +171,11 @@
                         <div class="col-md-4 position-relative">
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
+                                <input type="file" class="form-control" name="archivo">
                             </div>
                             <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
                         </div>
                         
-                        <!-- <div class="col-md-4 position-relative">
-                            <label for="foto" class="form-label">Foto</label>
-                            <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
-                            </div>
-                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
-                        </div>
-                        
-                        <div class="col-md-4 position-relative">
-                            <label for="foto" class="form-label">Foto</label>
-                            <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
-                            </div>
-                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
-                        </div> -->
-
-                       
                           <br>
                           <hr>
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
@@ -204,7 +188,7 @@
             </td>
         </tr>
     </table>
-  <!--  <script src="/js/validation_form.js"></script> SOLO LO COMENTE PARA QUE FUNCIONARA EL BOTON ENVIAR-->
+  <script src="/js/validation_form.js"></script> 
     <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
