@@ -21,6 +21,7 @@ public class FotoController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
 	private EmprendimientoService emprendimientoService;
 	
 	
