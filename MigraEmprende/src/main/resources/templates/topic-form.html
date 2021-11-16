@@ -66,8 +66,10 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a th:text="${session.usuariosession.username}">A</a>
-                        <a th:href="@{/logout}">Log Out</a>
+                    	<div class="d-flex">
+	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
+	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
+                       </div >
                     </li>
                 </ul>
             </div>

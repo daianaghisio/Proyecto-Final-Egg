@@ -42,7 +42,7 @@ public class EmprendimientoController {
 	}
 	
 	
-	@GetMapping("/emprendimiento-crear") //Este get se usa para enviar al form del front un nuevo emprendimiento y pedirle los datos
+	@GetMapping("/crear") //Este get se usa para enviar al form del front un nuevo emprendimiento y pedirle los datos
 	public String crearEmprendimiento(Model model) {
 		try {
 			  	

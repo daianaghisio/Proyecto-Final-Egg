@@ -126,4 +126,13 @@ navbar-logo{
 	width: 150px;
 	}
 
+.imgF{
+	width: 100%;
+	max-width: 398px;	
+}
+.aNull{
+	text-decoration: none;
+	color: rgb(31, 31, 31);
+}
+
 

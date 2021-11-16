@@ -1,5 +1,6 @@
 package com.MigraEmprende.MigraEmprende.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.MigraEmprende.MigraEmprende.entities.Comentario;
+import com.MigraEmprende.MigraEmprende.entities.Respuesta;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
 
@@ -58,6 +60,18 @@ public class ComentarioService {
 		try {
 			List<Comentario> listaComentarios;
 			listaComentarios = comentRepository.findAll();
+			return listaComentarios;
+		} catch (Exception e) {
+			System.out.println("No se pudo listar los comentarios");
+			throw e;
+		}
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Comentario> listarComentariosEnAlta() throws Exception {
+		try {
+			List<Comentario> listaComentarios;
+			listaComentarios = comentRepository.retornarComentariosEnAlta();
 			return listaComentarios;
 		} catch (Exception e) {
 			System.out.println("No se pudo listar los comentarios");
@@ -144,4 +158,16 @@ public class ComentarioService {
 		return comentRepository.retornarComentarioPorId(id);
 	}
 	
+	
+	// ASIGNAR UNA RESPUESTA A UN COMENTARIO
+	public void añadirRespuestaAComentario(String idComentario, String contenido, Usuario usuario) {
+		Comentario comentario = comentRepository.getById(contenido);
+		List<Respuesta> respuestas = new ArrayList<>(); // Funcionará ArrayList?
+		Respuesta respuesta = new Respuesta();
+		respuesta.setAlta(true);
+		respuesta.setComentario(comentario);
+		respuesta.setContenido(contenido);
+		respuesta.setUsuario(usuario);		
+		//comentario.getRespuestas() = 
+	}
 }

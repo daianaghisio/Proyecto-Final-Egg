@@ -28,8 +28,8 @@
     <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
-                <a  href="#">
-                    <img class="navbar-logo" id="logoImg"  th:href="@{/}" src="/img/logotexto.png"> <!-- Añadiendole width="150" se soluciona el tamaño--> 
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
                 </a>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
@@ -78,8 +78,10 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a th:text="${session.usuariosession.username}">A</a>
-                        <a th:href="@{/logout}">Log Out</a>
+                    	<div class="d-flex">
+	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
+	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
+                       </div >
                     </li>
                 </ul>
             </div>
@@ -90,20 +92,34 @@
   
   
   
-    
-  <div class="row">
-   <div class="col" th:each="emprendimiento:${todosEmprendimientos}">
-    <!--  La siguiente card es para agregar las fotos -->
- <div class="card" style="width:400px">
-    <div class="card-body">
-      <h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_Emprendimiento </h4>
-      <p class="card-text">Foto del emprendimiento</p>
-      
-    </div>
-    <img class="card-img-bottom" th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del producto" style="width:100%">
-  </div>
 
-   </div>
+	<div class="container-fluid">    
+	<div class="row p-4 d-flex justify-content-between align-items-center">
+		<div class="col-6">
+			<p class="text-white"> <span class="fs-3">¿Tienes interés en llegar a más personas?</span > <span class="fs-3 ">¡Podemos ayudarte! </span ></p  >
+		 </div >
+		<div class="col-2">
+			<a th:href="@{/emprendimiento/crear/}" class="btn btn-primary">Crear emprendimiento</a  >
+		 </div >
+	 </div >
+		  <div class="row mt-3">
+		   <div class="col-3" th:each="emprendimiento:${todosEmprendimientos}">
+		   
+		    	<!--  La siguiente card es para agregar las fotos -->
+		 		<div class="card" style="width:400px">
+		 		<a class="aNull text-dark" th:href="@{/emprendimiento/}+${emprendimiento.id}">
+		 			<img th:if="${emprendimiento.foto == null}" src="https://innovadirectivos.es/wp-content/uploads/2019/09/comprador-online-2.jpg" class="card-img-top imgF" alt="...">
+		  			<img th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" class="card-img-top imgF" alt="...">
+		    			<div class="card-body">
+		      		<h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_Emprendimiento </h4>
+		      		<p class="card-text">Foto del emprendimiento</p>		      
+		    	</div>
+		    <!-- <img class="card-img-bottom" th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del producto" style="width:100%">-->
+		   </div>
+			</a>
+		   </div>
+		   
+	</div>
     
      
     </section>

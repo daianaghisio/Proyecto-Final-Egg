@@ -25,7 +25,7 @@ public class ComentarioController {
 
 	@GetMapping("/") // Devuelve todo el foro
 	public String index(ModelMap modelo) throws Exception {
-		modelo.addAttribute("listaComentario", comentarioService.listarComentarios());
+		modelo.addAttribute("listaComentario", comentarioService.listarComentariosEnAlta());
 		
 		return "comments-section";
 	}
@@ -34,7 +34,8 @@ public class ComentarioController {
 	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
 
 		modelo.addAttribute("id", id);
-		
+		modelo.addAttribute("comentario", comentarioService.retornarComentarioPorId(id));
+		modelo.addAttribute("respuestas", comentarioService.retornarComentarioPorId(id).getRespuestas());
 		return "topic";
 	}
 	
@@ -57,7 +58,7 @@ public class ComentarioController {
 		}
 	}
 
-	@PostMapping("/delete/{id}") // 
+	@GetMapping("/delete/{id}") // 
 	public String deleteId(ModelMap modelo, @PathVariable String id) throws Exception {
 
 		try {
@@ -68,6 +69,20 @@ public class ComentarioController {
 			modelo.put("error", e.getMessage());
 			return "redirect:/";
 		}
+	}
+	
+	@GetMapping("/{id}/responder")
+	public String responder(@PathVariable String id, String contenido, String username, ModelMap modelo) throws Exception{
+		
+		
+		try {			
+			comentarioService.añadirRespuestaAComentario(id, contenido, usuarioService.buscarPorUsername(username));
+			modelo.put("exito", "Comentario borrado!");
+			return "redirect:/";
+		} catch (Exception e) {
+			modelo.put("error", e.getMessage());
+			return "redirect:/";
+		}		
 	}
 
 }

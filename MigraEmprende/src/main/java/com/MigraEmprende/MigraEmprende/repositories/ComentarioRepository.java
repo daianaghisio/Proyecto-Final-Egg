@@ -17,4 +17,7 @@ public interface ComentarioRepository extends JpaRepository<Comentario, String>{
 		
 	@Query("SELECT a FROM Comentario a WHERE a.id LIKE :id")
 	public Comentario retornarComentarioPorId(@Param("id") String id);
+	
+	@Query("SELECT a FROM Comentario a WHERE a.alta = TRUE")
+	public List<Comentario> retornarComentariosEnAlta();
 }
