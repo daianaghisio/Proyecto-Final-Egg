@@ -122,6 +122,8 @@ navbar-logo{
   i:hover {
     color: #bfbfbf;
   }  
-  #logoImg{
+  .navbar-logo{
 	width: 150px;
-}
+	}
+
+

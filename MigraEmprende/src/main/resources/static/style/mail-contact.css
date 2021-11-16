@@ -116,3 +116,7 @@ i {
     min-width: 100%;
     max-height: 90px;
 }
+
+.navbar-logo img{
+	width: 150px;
+}
