@@ -30,7 +30,7 @@ public class EmprendimientoService {
 	private FotoService fotoService;
 
 	// // // Métodos CRUD
-	public void crear(MultipartFile archivo, String nombre, String descripcion, String email, String username) throws Exception {
+	public void crear(MultipartFile archivo, String nombre, String descripcion, String email, String username, String address, String phone, String facebook, String instagram) throws Exception {
 		try {
 
 			// validations
@@ -55,6 +55,12 @@ public class EmprendimientoService {
 																								// devuelva como objeto
 																								// entero
 			emprendimiento.setAlta(true); // Setteamos el alta en true
+			//nuevo:
+			emprendimiento.setAddress(address);
+			emprendimiento.setPhone(phone);
+			emprendimiento.setInstagram(instagram);
+			emprendimiento.setFacebook(facebook);
+			
 
 			Foto foto = fotoService.guardar(archivo);
 			emprendimiento.setFoto(foto);
