@@ -71,12 +71,13 @@ public class ComentarioController {
 		}
 	}
 	
-	@GetMapping("/{id}/responder")
-	public String responder(@PathVariable String id, String contenido, String username, ModelMap modelo) throws Exception{
+	@PostMapping("/{idComentario}/responder")
+	public String responder(String contenido, String username, @PathVariable String idComentario,ModelMap modelo) throws Exception{
 		
 		
 		try {			
-			comentarioService.añadirRespuestaAComentario(id, contenido, usuarioService.buscarPorUsername(username));
+			
+			comentarioService.crearRespuesta(contenido, usuarioService.buscarPorUsername(username), idComentario);
 			modelo.put("exito", "Comentario borrado!");
 			return "redirect:/";
 		} catch (Exception e) {

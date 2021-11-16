@@ -12,6 +12,7 @@ import com.MigraEmprende.MigraEmprende.entities.Comentario;
 import com.MigraEmprende.MigraEmprende.entities.Respuesta;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
+import com.MigraEmprende.MigraEmprende.repositories.RespuestaRepository;
 
 @Service
 public class ComentarioService {
@@ -22,6 +23,12 @@ public class ComentarioService {
 
 	@Autowired
 	private ValidationsService validationsService;
+	
+	@Autowired
+	private RespuestaRepository respuestaRepository;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	// CREAR COMENTARIO
 	@Transactional
@@ -155,19 +162,23 @@ public class ComentarioService {
 	// RETORNAR COMENTARIO POR ID	
 	public Comentario retornarComentarioPorId(String id) throws Exception{
 		validationsService.ValidarId(id);
-		return comentRepository.retornarComentarioPorId(id);
+		return comentRepository.getById(id);
 	}
 	
 	
-	// ASIGNAR UNA RESPUESTA A UN COMENTARIO
-	public void añadirRespuestaAComentario(String idComentario, String contenido, Usuario usuario) {
-		Comentario comentario = comentRepository.getById(contenido);
-		List<Respuesta> respuestas = new ArrayList<>(); // Funcionará ArrayList?
+	
+	public void crearRespuesta(String contenido, Usuario usuario, String idComentario) {
+		Comentario comentario = comentRepository.getById(idComentario);
+		
 		Respuesta respuesta = new Respuesta();
+		
 		respuesta.setAlta(true);
-		respuesta.setComentario(comentario);
 		respuesta.setContenido(contenido);
-		respuesta.setUsuario(usuario);		
-		//comentario.getRespuestas() = 
+		respuesta.setFecha(new Date());
+		respuesta.setUsuario( usuario );
+		respuesta.setComentario(comentario);
+		
+		respuestaRepository.save(respuesta);						
+		
 	}
 }

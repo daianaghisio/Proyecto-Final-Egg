@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0;    
 }
 body{
     font-family: 'Lato', sans-serif;
@@ -121,8 +121,18 @@ navbar-logo{
   }
   i:hover {
     color: #bfbfbf;
-<<<<<<< HEAD
-  }
-=======
-  }
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
+  }  
+  .navbar-logo{
+	width: 150px;
+	}
+
+.imgF{
+	width: 100%;
+	max-width: 398px;	
+}
+.aNull{
+	text-decoration: none;
+	color: rgb(31, 31, 31);
+}
+
+
