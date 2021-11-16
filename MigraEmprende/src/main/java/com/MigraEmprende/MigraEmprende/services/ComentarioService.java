@@ -138,5 +138,10 @@ public class ComentarioService {
 			throw e;
 		}
 	}
-
+	// RETORNAR COMENTARIO POR ID	
+	public Comentario retornarComentarioPorId(String id) throws Exception{
+		validationsService.ValidarId(id);
+		return comentRepository.retornarComentarioPorId(id);
+	}
+	
 }

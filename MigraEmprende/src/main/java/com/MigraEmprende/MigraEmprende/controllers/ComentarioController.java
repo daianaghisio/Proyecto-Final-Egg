@@ -34,6 +34,7 @@ public class ComentarioController {
 	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
 
 		modelo.addAttribute("id", id);
+		
 		return "topic";
 	}
 	

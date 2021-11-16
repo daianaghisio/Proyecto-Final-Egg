@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.MigraEmprende.MigraEmprende.entities.Comentario;
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
+import com.MigraEmprende.MigraEmprende.services.ComentarioService;
 import com.MigraEmprende.MigraEmprende.services.EmprendimientoService;
 import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
@@ -23,7 +25,8 @@ public class FotoController {
 	private UsuarioService usuarioService;
 	@Autowired
 	private EmprendimientoService emprendimientoService;
-	
+	@Autowired
+	private ComentarioService comentarioService;
 	
 	
 	@GetMapping("/emprendimiento")
@@ -76,4 +79,30 @@ public class FotoController {
 	}
 		
 	}
+	
+	@GetMapping("/comentario")
+	public ResponseEntity<byte[]> fotoComentario(@RequestParam String id) throws Exception {
+
+	try {
+		Comentario comentario = comentarioService.retornarComentarioPorId(id);
+		
+		if(comentario.getUsuario().getFoto() == null) {
+			throw new Exception("El usuario no tiene una foto asignada.");
+		}
+		
+		byte[] foto = comentario.getUsuario().getFoto().getContenido();
+	
+		
+		HttpHeaders headers = new HttpHeaders(); 
+		headers.setContentType(MediaType.IMAGE_JPEG);
+		return new ResponseEntity<>(foto, headers, HttpStatus.OK); 
+	} catch (Exception e) {
+		System.out.println("FotoController: No se encontro el id de la foto");
+		e.printStackTrace();
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+		
+	}
+	
+	
 }
