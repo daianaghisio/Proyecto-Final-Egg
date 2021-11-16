@@ -265,4 +265,20 @@ public class UsuarioService implements UserDetailsService{
 		
 		return null;
 	}
+	
+	//CHANGE PASS
+	@Transactional
+	public Usuario changePass(String id, String password) throws Exception{
+		try {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			
+			
+			Usuario user = buscarPorId(id);
+			user.setPassword(encoder.encode(password));
+			usuarioRepository.save(user);
+			return user;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }
