@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,37 +23,70 @@
     <title>Formulario Emprendimiento</title>
 </head>
 <body>
-    <!--navbar-->
-    <div class="container-fluid navbar navbar-dark bg-dark">
+        <!--navbar LOGOUT-->
+    <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <a class="navbar-logo" href="#">
-                    <img src="/img/logotexto.png">
+                    <img th:href="@{/}" src="/img/logotexto.png">
                 </a>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Emprendimientos</a>
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Lugares de ayuda</a>
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Leyes</a>
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Foro</a>
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="#">
-                            <i class="fas fa-user"></i>
+                        <a th:href="@{/user/login}">
+                            <i  class="fas fa-user"></i>
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
+    <!--navbar OK-->
+    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                    	<div class="d-flex">
+	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
+	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
+                       </div >
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+        
     <!--Form User-->
     <table class="form">
         <tr>
@@ -64,21 +97,34 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form action="" class="row g-3 needs-validation position:relative" id="userform">
-                        <!--User Name-->
+                    <form th:action="@{/emprendimiento/emprendimiento-crear}" th:object="${negocito}" class="row g-3 needs-validation position:relative" id="userform" method="POST" enctype="multipart/form-data">
+                        
+                        
+                        <!--Nombre
+                                               
+                        LAS ETIQUETAS NAME de input llevan al back la informacion, si name es usuario, en el back va a ingresar como atributo usuario-->
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre Emprendimiento</label>
                             <div class="name">
-                                <input type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input type="text" id="name" class="form-control fm" name="nombre" placeholder="Name">
                             </div>
-                            <p class="group__errorname">El nombre del emprendimiento tiene que ser de 4 a 16 dígitos y solo puede contener letras</p>
+                            <p class="group__errorname">El nombre del emprendimiento tiene que ser de 4 a 16 digitos y solo puede contener letras</p>
+                        </div>
+                        
+                        <!-- Username-->
+                          <div class="col-md-4 position-relative" id="group_name">
+                            <label for="name" class="form-label is-invalid">Nombre Emprendimiento</label>
+                            <div class="name">
+                                <input type="text"  th:value="${session.usuariosession.username}" id="name" class="form-control fm" name="username" placeholder="Name">
+                            </div>
+                            <p class="group__errorname">El nombre del emprendimiento tiene que ser de 4 a 16 digitos y solo puede contener letras</p>
                         </div>
 
                         <!--Direcction-->
                         <div class="col-md-4 position-relative" id="group_lastname">
-                            <label for="lastname" class="form-label">Dirección</label>
+                            <label for="lastname" class="form-label">Direccion</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control" placeholder="Address">
+                                <input type="text" class="form-control" name="address" placeholder="Address">
                             </div>
                         </div>
 
@@ -86,9 +132,9 @@
                         <div class="col-md-4 position-relative" id="group_user">
                             <label for="user" class="form-label">Teléfono</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control fm" name="user" id="user" placeholder="Cell Phone">
+                                <input type="text" class="form-control fm" name="phone" id="user" placeholder="Cell Phone">
                             </div>
-                            <p class="group__errorname">El Telefono tiene que ser de 4 a 16 dígitos y solo puede contener números</p>
+                            <p class="group__errorname">El Telefono tiene que ser de 4 a 16 dÃ­gitos y solo puede contener nÃºmeros</p>
                         </div>
 
                         <!--Email-->
@@ -100,53 +146,38 @@
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
 
-                        <!--Social Media-->
+                        <!--Social Media Facebook-->
                         <div class="col-md-4 position-relative" id="group_lastname">
                             <label for="lastname" class="form-label">Link Facebook</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control" placeholder="Facebook">
+                                <input type="text" class="form-control" name="facebook" placeholder="Facebook">
                             </div>
                         </div>
-                        <!--Social Media-->
+                        <!--Social Media Instagram-->
                         <div class="col-md-4 position-relative" id="group_lastname">
                             <label for="lastname" class="form-label">Link Instagram</label>
                             <div class="grouplastname">
-                                <input type="text" class="form-control" placeholder="Instagram">
+                                <input type="text" class="form-control" name="instagram" placeholder="Instagram">
                             </div>
                         </div>
 
                         
-                        <!-- Comentario -->
+                        <!-- Descripcion -->
                         <div class="mb-3 position-relative">
-                            <label for="comment" class="form-label">Breve descripción de su Emprendimiento: </label>
-                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                            <label for="comment" class="form-label">Breve descripciÃ³n de su Emprendimiento: </label>
+                           <!-- <textarea class="form-control" id="comment" rows="3"></textarea> probar -->
+                            <input type="text" class="form-control" placeholder="Descripcion" name="descripcion">
                           </div>
 
                       <!--Foto-->
                         <div class="col-md-4 position-relative">
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
-                            </div>
-                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
-                        </div>
-                        <!-- <div class="col-md-4 position-relative">
-                            <label for="foto" class="form-label">Foto</label>
-                            <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
+                                <input type="file" class="form-control" name="archivo">
                             </div>
                             <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
                         </div>
                         
-                        <div class="col-md-4 position-relative">
-                            <label for="foto" class="form-label">Foto</label>
-                            <div class="grouplastname">
-                                <input type="file" class="form-control fm" name="archivo">
-                            </div>
-                            <p class="group__errorname">El archivo ingresado debe ser una imagen.</p>
-                        </div> -->
-
-                       
                           <br>
                           <hr>
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
@@ -159,7 +190,7 @@
             </td>
         </tr>
     </table>
-    <script src="/js/validation_form.js"></script>
+  <script src="/js/validation_form.js"></script> 
     <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
 </body>
 </html>

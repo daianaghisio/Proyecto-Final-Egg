@@ -5,10 +5,14 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
 
 @Entity
 public class Respuesta {
@@ -25,8 +29,9 @@ public class Respuesta {
 	private Usuario usuario;
 
 	@ManyToOne
+	@JoinColumn(name = "comentario_id")
 	private Comentario comentario;
-
+	
 	public Respuesta() {
 
 	}
@@ -87,7 +92,10 @@ public class Respuesta {
 
 	public void setComentario(Comentario comentario) {
 		this.comentario = comentario;
-	}
+	}		
+	
+	
+	
 
 	@Override
 	public String toString() {

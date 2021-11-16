@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-=======
-<html lang="es">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,11 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <!--CSS-->
-<<<<<<< HEAD
     <link rel="stylesheet" href="/style/comments.css">
-=======
-    <link rel="stylesheet" href="../static/style/comments.css">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
     <!--FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,37 +20,65 @@
 
     <title>Comments Section</title>
 </head>
-<body>
-    <!--navbar-->
-    <div class="container-fluid navbar navbar-dark bg-dark">
+<body>   
+    <!--navbar LOGOUT-->
+    <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <a class="navbar-logo" href="#">
-<<<<<<< HEAD
-                    <img src="/img/logotexto.png">
-=======
-                    <img src="logotexto.png">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
+                    <img th:href="@{/}" src="/img/logotexto.png">
                 </a>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Emprendimientos</a>
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Lugares de ayuda</a>
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Leyes</a>
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" href="#">Foro</a>
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="#">
-                            <i class="fas fa-user"></i>
+                        <a th:href="@{/user/login}">
+                            <i  class="fas fa-user"></i>
                         </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--navbar OK-->
+    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                    	<div class="d-flex">
+	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
+	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
+                       </div >
                     </li>
                 </ul>
             </div>
@@ -70,61 +90,36 @@
         <div class="row comments justify-content-center">
             <div class="col-6">
                 <h2>Deja tu comentario</h2>
-                <form action="" class="form_comments d-flex justify-content-end flex-wrap">
-                    <textarea name="" id="" placeholder="Deja tu Comentario.."></textarea>
-                    <button class="btn" type="button">Comentar</button>
-                </form>
+                <form action="" class="form_comments d-flex justify-content-end flex-wrap mb-5">
+                    <a href="/foro/crear/"> <div class="btn btn-primary" type="button">Comentar</div > </a> 		        </form>
+                
                 <!--Usuarios-->
-                <div class="media">
-<<<<<<< HEAD
-                    <img src="/img/male.jpg"  widht="84" height="84" alt="">
-=======
-                    <img src="../static/img/male.jpg"  widht="84" height="84" alt="">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
+                <div class="media shadow-lg p-4 mb-5" th:each="comentario : ${listaComentario}">
+                	<img th:if="${comentario.usuario.foto != null}" th:src="${'/foto/comentario?id=' + comentario.id}"  widht="84" height="84" alt="">
+                    <img th:if="${comentario.usuario.foto == null}" src="/img/male.jpg"  widht="84" height="84" alt="">
                     <div class="media-body">
-                        <p class="name-user">Juan Perez <span>Time: 19:34, 01/01/2022 </span></p>
-                        <p class="comment-user">
+                    	<div class="d-flex justify-content-between">                         	
+                        	<p th:text="${comentario.titulo}"> </p >
+                        	<p class="name-user" th:text="${comentario.usuario.username}">Juan Perez <span>Time: 19:34, 01/01/2022 </span></p>
+                        </div >
+                        <p class="comment-user" th:text="${comentario.contenido}">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione dolorem iusto nesciunt quos consectetur maxime natus labore impedit necessitatibus possimus temporibus voluptas, exercitationem inventore at laudantium reprehenderit nihil atque?
                         </p>
                     </div>
+                    <div th:if="${session.usuariosession != null}" class="d-flex justify-content-end">
+                    	<a th:href="@{/foro/}+${comentario.id}" class="btn btn-info"> Responder </a>
+        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn btn-danger" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
+        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn btn-danger" th:if="${ session.usuariosession.id == comentario.usuario.id}"> Eliminar  </a>
+         			</div >
+         			<div th:if="${session.usuariosession == null}" class="d-flex justify-content-end">
+         				<p class="text-muted">Si quieres comentar, <a th:href="@{/user/register}">regístrate</a > o <a th:href="@{/user/login}">Inicia Sesión</a ></p >
+         			</div>
                 </div>
-
                 <!--Usuarios-->
-                <div class="media">
-<<<<<<< HEAD
-                    <img src="/img/feminine.jpg"  widht="84" height="84" alt="">
-=======
-                    <img src="../static/img/feminine.jpg"  widht="84" height="84" alt="">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
-                    <div class="media-body">
-                        <p class="name-user">Juan Perez <span>Time: 03:34, 01/01/2022 </span></p>
-                        <p class="comment-user">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione dolorem iusto nesciunt quos consectetur maxime natus labore impedit necessitatibus possimus temporibus voluptas, exercitationem inventore at laudantium reprehenderit nihil atque?
-                        </p>
-                    </div>
-                </div>
-
-                <!--Usuarios-->
-                <div class="media">
-<<<<<<< HEAD
-                    <img src="/img/feminine.jpg"  widht="84" height="84" alt="">
-=======
-                    <img src="../static/img/feminine.jpg"  widht="84" height="84" alt="">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
-                    <div class="media-body">
-                        <p class="name-user">Juan Perez <span>Time: 01:34, 01/01/2022 </span></p>
-                        <p class="comment-user">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione dolorem iusto nesciunt quos consectetur maxime natus labore impedit necessitatibus possimus temporibus voluptas, exercitationem inventore at laudantium reprehenderit nihil atque?
-                        </p>
-                    </div>
-                </div>
+                
 
             </div>
         </div>
     </div>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f

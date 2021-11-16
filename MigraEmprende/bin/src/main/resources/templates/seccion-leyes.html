@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-=======
 <html lang="en">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,42 +8,83 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">           
-<<<<<<< HEAD
+
         <link rel="stylesheet" href="/style/style_leyes_prueba.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <title>Sección Leyes Prueba</title>
+
+        <link rel="stylesheet" href="/style/style_leyes.css">
+        <title>Sección Leyes</title>
     </head>
 
     <body> 
-        <!--navbar-->
-        <div class="container-fluid navbar navbar-dark bg-dark">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a class="navbar-logo" href="#">
-                        <img src="/img/logotexto.png">
-                    </a>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link margen" href="#">Emprendimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" href="#">Lugares de ayuda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" href="#">Leyes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link margen" href="#">Foro</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                    </ul>
 
-                </div>
-            </nav>
-        </div>
+       <!--navbar LOGOUT-->
+    <div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a th:href="@{/user/login}">
+                            <i  class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--navbar OK-->
+    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+                <a class="navbar-logo" href="#">
+                    <img th:href="@{/}" src="/img/logotexto.png">
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                    	<div class="d-flex">
+	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
+	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
+                       </div >
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
         
         <!-- Sección leyes-->
         <div class="container"> 
@@ -60,25 +97,25 @@
                 <div class="contenedor-leyes">
                     <div class="contenedor-ley">
                         <p class="ley">Soy emprendedor</p>                     
-                        <p class="texto-ley">Te acompañamos en el proceso de crear, desarrollar o consolidar proyectos.</p>
-                     <a href="https://www.argentina.gob.ar/tema/emprender/soy-emprendedor" target="_blank" rel="nooper noreferrer">Leer más...</a>
+                        <p class="texto-ley"> ¿Atesorás una idea y querés convertirla en un emprendimiento real?; ¿sos parte de una cooperativa y te interesa hacerla fuerte?; ¿tenés una PyME y deseás que gane en solidez y competitividad? Estos trámites y servicios te permitirán obtener herramientas de financiamiento, capacitación y asistencia para emprender, innovar o crecer.</p>
+                     <a href="https://www.argentina.gob.ar/tema/emprender" target="_blank" rel="nooper noreferrer">Leer más...</a>
                         
                     </div>
                     <div class="contenedor-ley">
-                        <p class="ley">Ley Empredimiento1</p>                     
-                        <p class="texto-ley">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae mollitia adipisci repellat modi illum, vitae tempora perspiciatis deleniti velit officia odit facere enim doloribus placeat laboriosam cupiditate iste consequatur autem.</p>
-                        <a href="https://www.argentina.gob.ar/tema/emprender/soy-emprendedor" target="_blank" rel="nooper noreferrer">Leer más...</a>
+                        <p class="ley">Obtener CUIT por Internet</p>                     
+                        <p class="texto-ley">La CUIT (Clave Única de Identificación Tributaria) es un código con el que la AFIP identifica a trabajadores autónomos, comercios y empresas. Aquí te guiamos, paso a paso, para que puedas obtenerla.</p>
+                        <a href="https://www.argentina.gob.ar/servicio/obtener-cuit-por-internet" target="_blank" rel="nooper noreferrer">Leer más...</a>
                     </div>
                     <div class="contenedor-ley">
-                        <p class="ley">Ley Empredimiento1</p>                     
-                        <p class="texto-ley">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae mollitia adipisci repellat modi illum, vitae tempora perspiciatis deleniti velit officia odit facere enim doloribus placeat laboriosam cupiditate iste consequatur autem.</p>
-                        <a href="https://www.argentina.gob.ar/tema/emprender/soy-emprendedor" target="_blank" rel="nooper noreferrer">Leer más...</a>
+                        <p class="ley">Ley General de Sociedades 19.550</p>                     
+                        <p class="texto-ley">La Ley 19550 regula los siguientes tipos sociales: sociedad colectiva, sociedad en comandita simple, sociedad de capital e industria, sociedad de responsabilidad limitada, sociedad anónima, sociedad en comandita por acciones y la sociedad anónima unipersonal.</p>
+                        <a href="https://www.argentina.gob.ar/sites/default/files/ley_19.550_-_extracto_artculos_118_-_123.pdf" target="_blank" rel="nooper noreferrer">Leer más...</a>
                     </div>
 
                     <div class="contenedor-ley">
-                        <p class="ley">Ley Empredimiento1</p>                     
-                        <p class="texto-ley">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae mollitia adipisci repellat modi illum, vitae tempora perspiciatis deleniti velit officia odit facere enim doloribus placeat laboriosam cupiditate iste consequatur autem.</p>
-                        <a href="https://www.argentina.gob.ar/tema/emprender/soy-emprendedor" target="_blank" rel="nooper noreferrer">Leer más...</a>
+                        <p class="ley">Código Civil y Comercial de la Nación. Ley 26.994</p>                     
+                        <p class="texto-ley">El Código Civil y Comercial de la Nación es el cuerpo legal que reúne​ las bases del ordenamiento jurídico en materia civil y comercial en la Argentina.</p>
+                        <a href="http://servicios.infoleg.gob.ar/infolegInternet/anexos/235000-239999/235975/texact.htm#2" target="_blank" rel="nooper noreferrer">Leer más...</a>
 
                     </div>
 
@@ -90,71 +127,4 @@
        
    </body>
   
-=======
-        <link rel="stylesheet" href="style_seccion_leyes.css">
-        <title>Sección Leyes</title>
-    </head>
-
-    <body> 
-        <!--Cada sección es una pestaña en el acordeón, podemos poner tantas como queramos,
-        tan solo tenemos que repetir el siguiente div una y otra vez.-->
-        <div class="seccion">
-            <div class="titulo">
-                <p class="titulo">Ley Empredimiento1</p>
-            </div>  
-    
-            <div class="informacion">
-            
-              <p class="informacion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! 
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Ley Empredimiento1
-              </p>
-
-            
-            </div>
-    
-        </div>
-
-        <div class="seccion">
-            
-            <div class="titulo">
-            <p class="titulo">Ley Emprendimiento2</p>
-            </div>
-        
-            <div class="informacion">
-            <p class="informacion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab!
-            </p>
-            
-            </div>
-        </div>
-        <div class="seccion">
-            
-            <div class="titulo">
-            <p class="titulo">Ley Emprendimiento3</p>
-            </div>
-        
-            <div class="informacion">
-            <p class="informacion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ullam, veniam tenetur est nihil odit culpa a enim cupiditate explicabo error, nam distinctio vel eum, cumque nulla ea? Provident, ab!
-            </p>
-            
-            </div>
-        </div>
-   
-        
- </body>
-
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
 </html> 

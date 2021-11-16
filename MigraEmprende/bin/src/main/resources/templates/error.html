@@ -1,51 +1,28 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-=======
-<html lang="en">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/style/error.css" th:href="@{/style/error.css}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Página de error</title>
 </head>
-<body>
-    <!-- NAVBAR -->
-    <!-- No reemplaces el fixed-top -->
-<<<<<<< HEAD
-    <!--<nav class="navbar fixed-top navbar-light shadow-lg p-3">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-        </div>
-      </nav>-->
-    <!-- NAVBAR -->
-    <div class="container-fluid">
-=======
-    <nav class="navbar fixed-top navbar-light bg-danger shadow-lg p-3">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-        </div>
-      </nav>
-    <!-- NAVBAR -->
-    <div class="container-fluid bg-danger">
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
-        <div class="row vh-100  d-flex align-items-center text-center">            
-            <div>
-                <h1 class="">Oops... algo no salió bien</h1>
-                <h2>Error <span th:text="${codigo}"></span></h2>
-                <h2 th:text="${mensaje}"> </h2 >
-<<<<<<< HEAD
-                
-                <img class="img-fluid" style="width:30%; height: 30%;" alt="1" src="https://pbs.twimg.com/media/EbeD4qUWkAI8ULR.jpg">
 
-                
-=======
->>>>>>> 0a33764e03b2268c1a5bc0b05cc173ff0b9f504f
-            </div>            
+<body class="nose">
+    <main>
+        <div id="main">
+            <div class="fof">
+                    <h2>Oops... algo no salió bien.</h2>
+                    <br>
+                    <h1>Error <span th:text="${codigo}"></span></h1>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </main>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

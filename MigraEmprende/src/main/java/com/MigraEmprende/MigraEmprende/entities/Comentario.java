@@ -3,6 +3,7 @@ package com.MigraEmprende.MigraEmprende.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,7 +27,11 @@ public class Comentario {
 	@OneToOne
 	private Usuario usuario;
 
-	@OneToMany
+	@OneToMany(
+			mappedBy = "comentario",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
 	private List<Respuesta> respuestas;
 
 	public Comentario() {
