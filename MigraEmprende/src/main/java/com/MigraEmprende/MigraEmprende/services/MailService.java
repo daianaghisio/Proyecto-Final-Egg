@@ -5,6 +5,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.MigraEmprende.MigraEmprende.entities.Usuario;
+
 @Service
 public class MailService {
 
@@ -13,6 +15,9 @@ public class MailService {
 
 	@Autowired
 	private ValidationsService validationsServices;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	public void enviarMail(String nombre, String email, String mensaje) throws Exception {
 
@@ -48,7 +53,30 @@ public class MailService {
 		} catch (Exception e) {
 			throw e;
 		}
-
+		
 	}
+	
+	public void resetPass(String email) throws Exception{
+		try {
+			validationsServices.ValidarEmail(email);
+			
+			Usuario usuario = usuarioService.busarPorEmail(email);
+			
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setFrom("nosepruebanoseprueba@gmail.com");
+			message.setTo(email);
+			message.setSubject("Recuperación de contraseña - MigraEmprende");
+			message.setText(
+					"Usted inició el proceso para recuperar su contraseña. En caso contrario, ignore este mail\n"
+							+ "Los datos de su cuenta:\n\n"
+							+ "Nombre de usuario: " + usuario.getUsername() + "\n\n" 
+							+ "Ingrese al siguiente link para cambiar su contraseña:\n\n"
+							+ "localhost:8080/user/resetpassword/" + usuario.getId()
+							+ "\n\n\n\n" + "MigraEmprende - Rosario, Santa Fé, Argentina");
 
+			mailSender.send(message);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }
