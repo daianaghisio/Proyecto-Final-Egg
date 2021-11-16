@@ -75,8 +75,10 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a th:text="${session.usuariosession.username}">A</a>
-                        <a th:href="@{/logout}">Log Out</a>
+                    	<div class="d-flex">
+	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
+	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
+                       </div >
                     </li>
                 </ul>
             </div>
@@ -105,9 +107,9 @@
                         </p>
                     </div>
                     <div th:if="${session.usuariosession != null}" class="d-flex justify-content-end">
-                    	<button class="btn btn-info"> Responder </button>
-        				<button class="btn btn-danger" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </button>
-        				<button class="btn btn-danger" th:if="${ session.usuariosession == comentario.usuario}"> Eliminar  </button>
+                    	<a th:href="@{/foro/}+${comentario.id}" class="btn btn-info"> Responder </a>
+        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn btn-danger" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
+        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn btn-danger" th:if="${ session.usuariosession.id == comentario.usuario.id}"> Eliminar  </a>
          			</div >
          			<div th:if="${session.usuariosession == null}" class="d-flex justify-content-end">
          				<p class="text-muted">Si quieres comentar, <a th:href="@{/user/register}">regístrate</a > o <a th:href="@{/user/login}">Inicia Sesión</a ></p >

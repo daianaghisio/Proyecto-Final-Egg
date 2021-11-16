@@ -88,14 +88,16 @@
             <div class="container-cover">
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
-                        <img src="/img/user.jpg" alt="img-avatar">
+                        <img th:if="${session.usuariosession.foto == null}" src="/img/user.jpg" alt="img-avatar">
+                        <img th:if="${session.usuariosession.foto != null}" th:src="${'/foto/usuario?id=' + session.usuariosession.id}" alt="img-avatar">	
+                        
                     </div>
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Usuario Perez</h3>
+                <h3 class="titulo" th:text="${session.usuariosession.nombreYApellido}">Usuario Perez</h3>
             </div>
         </div>
     </section>
@@ -105,16 +107,16 @@
             <ul class="datos-personales">
                 <li class="items">
                     <div class="icon-label">
-                        <i class="bi bi-person-circle icon-class"></i><p class="dato">Username</p>
+                        <i class="bi bi-person-circle icon-class"></i><p class="dato" >Username</p>
                     </div>
-                    <p class="datocolor">Usuario123</p>
+                    <p class="datocolor" th:text="${session.usuariosession.username}">Usuario123</p>
                 </li>
                 <hr class="lineaperfil">
                 <li class="items">
                     <div class="icon-label">
-                        <i class="bi bi-envelope-fill icon-class"></i><p class="dato">E-Mail</p> 
+                        <i class="bi bi-envelope-fill icon-class"></i><p class="dato" >E-Mail</p> 
                     </div>
-                    <p class="datocolor">usuario@gmail.com</p>
+                    <p class="datocolor" th:text="${session.usuariosession.email}">usuario@gmail.com</p>
                 </li>
             </ul>
         </div>
