@@ -252,7 +252,7 @@ public class UsuarioService implements UserDetailsService{
 		if(usuario != null) {
 			List<GrantedAuthority> permisos = new ArrayList<>();
 			
-			GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_USER");
+			GrantedAuthority p1 = new SimpleGrantedAuthority(usuario.getRol());
 			permisos.add(p1);
 
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();

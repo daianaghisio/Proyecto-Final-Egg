@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,13 +88,13 @@
         <div class="row comments justify-content-center">
             <div class="col-6">
                 <h2>Deja tu comentario</h2>
-                <form action="" class="form_comments d-flex justify-content-end flex-wrap">
-                    <button class="btn" type="button">Comentar</button>
-                </form>
+                <form action="" class="form_comments d-flex justify-content-end flex-wrap mb-5">
+                    <a href="/foro/crear/"> <div class="btn btn-primary" type="button">Comentar</div > </a> 		        </form>
                 
                 <!--Usuarios-->
-                <div class="media" th:each="comentario : ${listaComentario}">
-                    <img src="/img/male.jpg"  widht="84" height="84" alt="">
+                <div class="media shadow-lg p-4 mb-5" th:each="comentario : ${listaComentario}">
+                	<img th:if="${comentario.usuario.foto != null}" th:src="${'/foto/comentario?id=' + comentario.id}"  widht="84" height="84" alt="">
+                    <img th:if="${comentario.usuario.foto == null}" src="/img/male.jpg"  widht="84" height="84" alt="">
                     <div class="media-body">
                     	<div class="d-flex justify-content-between">                         	
                         	<p th:text="${comentario.titulo}"> </p >
@@ -104,6 +104,14 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione dolorem iusto nesciunt quos consectetur maxime natus labore impedit necessitatibus possimus temporibus voluptas, exercitationem inventore at laudantium reprehenderit nihil atque?
                         </p>
                     </div>
+                    <div th:if="${session.usuariosession != null}" class="d-flex justify-content-end">
+                    	<button class="btn btn-info"> Responder </button>
+        				<button class="btn btn-danger" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </button>
+        				<button class="btn btn-danger" th:if="${ session.usuariosession == comentario.usuario}"> Eliminar  </button>
+         			</div >
+         			<div th:if="${session.usuariosession == null}" class="d-flex justify-content-end">
+         				<p class="text-muted">Si quieres comentar, <a th:href="@{/user/register}">regístrate</a > o <a th:href="@{/user/login}">Inicia Sesión</a ></p >
+         			</div>
                 </div>
                 <!--Usuarios-->
                 
