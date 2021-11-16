@@ -21,6 +21,23 @@ i {
   i:hover {
     color: #bfbfbf;
   }
+  
+/*nav*/
+.navbar-logo{
+    display:flex;
+    vertical-align: middle;
+    width: 150px;
+}
+.navbar-logo img{
+    display:block;
+    width: 100%;
+    height:fit-content;
+}
+.margen {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+  
 /*FORMULARIO*/
 .form_wrap{
     width: 1050px;
