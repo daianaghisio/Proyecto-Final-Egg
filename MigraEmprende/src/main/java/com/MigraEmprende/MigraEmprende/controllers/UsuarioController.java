@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
+import com.MigraEmprende.MigraEmprende.services.MailService;
 import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
 @Controller
@@ -24,6 +26,8 @@ public class UsuarioController {
    private UsuarioService usuarioService;
    @Autowired
    private UsuarioRepository usuarioRepository;	
+   @Autowired
+   private MailService mailService;
     
    @GetMapping("/") // devuelve el perfil del usuario
 	public String indexProfile(@PathVariable String id) { 
@@ -104,5 +108,29 @@ public class UsuarioController {
 	   return "redirect:/";
    }     
    
+   // CHANGE PASS
+   @GetMapping("/resetpassword")
+   public String resetpassForm() {
+	   return "resetpass-form";
+   }
+   
+   @PostMapping("/resetpassword")
+   public String resetpass(@RequestParam String email) throws Exception {
+	   mailService.resetPass(email);
+	   return "redirect:../";
+   }
+   
+   @GetMapping("/resetpassword/{id}")
+   public String resetpassEndForm(ModelMap modelo, @PathVariable String id) throws Exception{
+	   modelo.put("id", id);
+	   return "resetpass-end";
+   }
+   
+   @PostMapping("/resetpassword/{id}")
+   public String resetpassEnd(@RequestParam String password, @PathVariable String id) throws Exception {
+	   usuarioService.changePass(id, password);
+	   
+	   return "redirect:../login";
+   }
 }
    

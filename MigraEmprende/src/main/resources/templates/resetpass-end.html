@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CAMBIAR CONTRASEÑA:</h1>
+    <h2>Ingrese su nueva contraseña</h2>
+    
+    <form th:action="@{/user/resetpassword/__${id}__}" method="POST">
+        <input type="password" name="password" placeholder="Nueva contraseña">
+        <button type="submit">Cambiar</button>
+    </form>
+</body>
+</html>
