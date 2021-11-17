@@ -43,9 +43,10 @@ body{
 }
 
 .slider{
-    width: 900px;
-    height:400px;    
+    width: 100%;
+    max-width: 1500px;
     margin: auto;
+    height: 400px;        
     overflow: hidden;
 
 }
@@ -92,8 +93,9 @@ body{
     border-radius: 100%;
 }
 
-.slider img{
+.slider ul img{
     width: 100%;
+    
 }
 
 @keyframes cambio {
@@ -145,13 +147,15 @@ body{
 }
 .card .contenido h3{
     font-weight: 400;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #3b3b3d;
+    text-align: left;
 }
 
 .card .contenido p{
     line-height: 1.5;
     color: #3b3b3d;
+    text-align: justify;
 }
 
 .card .contenido a{
