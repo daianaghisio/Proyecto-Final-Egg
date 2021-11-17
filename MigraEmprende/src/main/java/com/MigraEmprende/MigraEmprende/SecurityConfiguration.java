@@ -26,9 +26,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http			
 			.headers().frameOptions().sameOrigin().and()
-			.authorizeRequests()
+			.authorizeRequests()				
 				.antMatchers("/resources/**") //Se añadieron los asteriscos, en otro caso, se puede poner solo "/resources/**"
 				.permitAll()
+				.antMatchers("/").permitAll()
+				.antMatchers("/user/").permitAll()
+				.antMatchers("/foro/").permitAll()
+				.antMatchers("/foro/crear/").hasAnyRole("ROLE_USER")
+				.antMatchers("/foro/**/responder/").hasAnyRole("ROLE_USER")
+				.antMatchers("/foro/**/").hasAnyRole("ROLE_USER")
+				.antMatchers("/emprendimiento/crear/").hasAnyRole("ROLE_USER")
+				
 			.and().formLogin()
 				.loginPage("/user/login")
 					.loginProcessingUrl("/logincheck")
