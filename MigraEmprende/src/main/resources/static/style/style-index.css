@@ -43,9 +43,10 @@ body{
 }
 
 .slider{
-    width: 900px;
-    height:400px;    
+    width: 100%;
+    max-width: 1500px;
     margin: auto;
+    height: 400px;        
     overflow: hidden;
 
 }
@@ -92,8 +93,9 @@ body{
     border-radius: 100%;
 }
 
-.slider img{
+.slider ul img{
     width: 100%;
+    
 }
 
 @keyframes cambio {

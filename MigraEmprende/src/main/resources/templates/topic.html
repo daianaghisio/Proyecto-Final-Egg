@@ -102,12 +102,12 @@
                             </div>
                             <div class="comment-content" th:text="${comentario.contenido}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id rerum ducimus. Nam sint corporis nisi laboriosam, dolores eligendi saepe ipsam? Magni alias ex rem explicabo, quia quo amet laudantium?</div>
                         </div>
-                        <form th:action="@{/foro/}+ ${comentario.id}+ '/responder'" method="POST">
-                        	<input type="text"name="contenido" placeholder="Comenta algo">
+                        <form class="form d-flex justify-content-between" th:action="@{/foro/}+ ${comentario.id}+ '/responder'" method="POST">
+                        	<input class="form-input" type="text"name="contenido" placeholder="Comenta algo">
                         	<input type="hidden" name="username" th:value="${session.usuariosession.username}">
                         	<input type="hidden" name="idComentario" th:value="${comentario.id}"> 
-                        	<input type="submit" th:href="@{/foro/} + @{comentario.id}"> 
-                        </form  >
+                        	<input class="form-button" type="submit" th:href="@{/foro/} + @{comentario.id}"> 
+                        </form >
                     </div>
                     <!--Respuesta Comentario-->
                     <ul class="comments-list reply-list" >
