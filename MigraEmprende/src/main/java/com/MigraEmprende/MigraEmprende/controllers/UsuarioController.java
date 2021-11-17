@@ -17,6 +17,7 @@ import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
 import com.MigraEmprende.MigraEmprende.services.MailService;
 import com.MigraEmprende.MigraEmprende.services.UsuarioService;
+import com.MigraEmprende.MigraEmprende.services.ValidationsService;
 
 @Controller
 @RequestMapping("/user")         
@@ -24,10 +25,15 @@ public class UsuarioController {
 
    @Autowired
    private UsuarioService usuarioService;
+   
    @Autowired
-   private UsuarioRepository usuarioRepository;	
+   private UsuarioRepository usuarioRepository;
+   
    @Autowired
    private MailService mailService;
+   
+   @Autowired
+   private ValidationsService validationsService;
     
    @GetMapping("/") // devuelve el perfil del usuario
 	public String indexProfile(@PathVariable String id) { 
@@ -80,7 +86,8 @@ public class UsuarioController {
      
    
    @PostMapping("/register") // Envía los datos del formulario de registro acá
-	public String register(MultipartFile archivo, String name, String user, String email, String pass) throws Exception {				
+	public String register(MultipartFile archivo, String name, String user, String email, String pass, String pass2) throws Exception {
+	   validationsService.ValidarPasswordsSonIguales(pass, pass2);
 	    usuarioService.crear(archivo, name, user, email, pass);
 		return "redirect:/";
 	}
