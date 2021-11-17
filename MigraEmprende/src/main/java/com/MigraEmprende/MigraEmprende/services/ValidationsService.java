@@ -142,9 +142,5 @@ public class ValidationsService {
 		}
 	}
 	
-	public void ValidarUsuarioSession (Usuario session) throws Exception{
-		if(session == null) {
-			throw new Exception("La sesión no puede ser nula");
-		}
-	}
+	
 }

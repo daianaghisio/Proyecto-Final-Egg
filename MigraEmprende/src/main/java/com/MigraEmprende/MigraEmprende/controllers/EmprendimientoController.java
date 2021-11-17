@@ -39,13 +39,13 @@ public class EmprendimientoController {
 		return "entrepreneurship-all";
 	}
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_USER')")
 	@GetMapping("/form") //Devuelve el formulario para crear y modificar un emprendimiento
 	public String form() {
 		return "entrepreneurship-form";
 	}
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_USER')")
 	@GetMapping("/crear") //Este get se usa para enviar al form del front un nuevo emprendimiento y pedirle los datos
 	public String crearEmprendimiento(Model model) {
 		try {			
