@@ -1,6 +1,7 @@
 package com.MigraEmprende.MigraEmprende.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class ComentarioController {
 		
 		return "comments-section";
 	}
-
+	@PreAuthorize("hasAnyRole('ROLE_USER')")
 	@GetMapping("/{id}") // Devuelve un único comentario con cada respuesta
 	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
 
@@ -38,6 +39,7 @@ public class ComentarioController {
 		return "topic";
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_USER')")
 	@GetMapping("/crear") // Devuelve un formulario para crear un comentario
 	public String crear() {
 		return "form-comments-topic";
