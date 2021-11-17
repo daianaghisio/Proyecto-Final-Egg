@@ -141,4 +141,10 @@ public class ValidationsService {
 			throw new Exception("La respuesta no se corresponde con el comentario.");
 		}
 	}
+	
+	public void ValidarUsuarioSession (Usuario session) throws Exception{
+		if(session == null) {
+			throw new Exception("La sesión no puede ser nula");
+		}
+	}
 }
