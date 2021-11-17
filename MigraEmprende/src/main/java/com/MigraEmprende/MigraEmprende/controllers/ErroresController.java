@@ -25,6 +25,9 @@ public class ErroresController implements ErrorController {
                 errorMsg = "Http Error Code: 401. Unauthorized";
                 break;
             }
+            /*case 403: {
+            	return "redirect:/user/login";
+            }*/
             case 404: {
                 errorMsg = "Http Error Code: 404. Resource not found";
                 break;

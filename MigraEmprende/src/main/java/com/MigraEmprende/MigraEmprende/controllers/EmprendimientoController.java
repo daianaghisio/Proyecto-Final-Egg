@@ -3,6 +3,7 @@ package com.MigraEmprende.MigraEmprende.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,16 +15,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
 import com.MigraEmprende.MigraEmprende.services.EmprendimientoService;
+import com.MigraEmprende.MigraEmprende.services.ValidationsService;
 
 
 @Controller
+
 @RequestMapping("/emprendimiento")
 public class EmprendimientoController {
 	
 	@Autowired
 	private EmprendimientoService emprendimientoService;
+	@Autowired
+	private ValidationsService validation;
 	
-
 	@GetMapping("/")   //Este get se usa para las cards de emprendimientos en "entrepreneurship-all"
 	public String lista(ModelMap modelo) {
 		List<Emprendimiento> listarEmprendimientos = emprendimientoService.listarEmprendimientos();
@@ -44,8 +48,9 @@ public class EmprendimientoController {
 	
 	@GetMapping("/crear") //Este get se usa para enviar al form del front un nuevo emprendimiento y pedirle los datos
 	public String crearEmprendimiento(Model model) {
-		try {
-			  	
+		try {			
+			
+			
 			model.addAttribute("negocito", new Emprendimiento());			
 			
 			
