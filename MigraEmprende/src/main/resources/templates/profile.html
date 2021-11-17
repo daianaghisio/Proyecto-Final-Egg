@@ -88,8 +88,8 @@
             <div class="container-cover">
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
-                        <img th:if="${session.usuariosession.foto == null}" src="/img/user.jpg" alt="img-avatar">
-                        <img th:if="${session.usuariosession.foto != null}" th:src="${'/foto/usuario?id=' + session.usuariosession.id}" alt="img-avatar">	
+                        <img th:if="${usuario == null}" src="/img/user.jpg" alt="img-avatar">
+                        <img th:if="${usuario != null}" th:src="${'/foto/usuario?id=' + usuario.id}" alt="img-avatar">	
                         
                     </div>
                 </div>
@@ -97,7 +97,7 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo" th:text="${session.usuariosession.nombreYApellido}">Usuario Perez</h3>
+                <h3 class="titulo" th:text="${usuario.nombreYApellido}">Usuario Perez</h3>
             </div>
         </div>
     </section>
@@ -109,14 +109,14 @@
                     <div class="icon-label">
                         <i class="bi bi-person-circle icon-class"></i><p class="dato" >Username</p>
                     </div>
-                    <p class="datocolor" th:text="${session.usuariosession.username}">Usuario123</p>
+                    <p class="datocolor" th:text="${usuario.username}">Usuario123</p>
                 </li>
                 <hr class="lineaperfil">
                 <li class="items">
                     <div class="icon-label">
                         <i class="bi bi-envelope-fill icon-class"></i><p class="dato" >E-Mail</p> 
                     </div>
-                    <p class="datocolor" th:text="${session.usuariosession.email}">usuario@gmail.com</p>
+                    <p class="datocolor" th:text="${usuario.email}">usuario@gmail.com</p>
                 </li>
             </ul>
         </div>

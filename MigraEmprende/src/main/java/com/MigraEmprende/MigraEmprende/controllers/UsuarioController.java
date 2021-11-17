@@ -74,7 +74,8 @@ public class UsuarioController {
    }
     
    @GetMapping("/profile/{id}") // Devuelve el perfil del usuario
-   public String profile() {
+   public String profile(ModelMap model, @PathVariable String id) throws Exception {	   
+	   model.addAttribute("usuario", usuarioService.buscarPorId(id));
 	   return "profile";
    }
      
