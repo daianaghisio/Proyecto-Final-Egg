@@ -141,4 +141,10 @@ public class ValidationsService {
 			throw new Exception("La respuesta no se corresponde con el comentario.");
 		}
 	}
+	
+	public void ValidarPasswordsSonIguales(String pass1, String pass2) throws Exception {
+		if (!pass1.equals(pass2)) {
+			throw new Exception ("Las contraseñas no coinciden.");
+		}
+	}
 }
