@@ -102,18 +102,18 @@
                         <div class="col-md-4 position-relative" id="group_name">
                             <label for="name" class="form-label">Título: </label>
                             <div class="name">
-                                <input type="text" id="name" class="form-control" name="name">
+                                <input type="text" id="name" class="form-control" name="name" required>
                             </div>
                         </div>
                         <!-- Comentario -->
                         <div class="mb-2 position-relative">
                             <label for="comment" class="form-label">Comentario: </label>
-                            <textarea class="form-control" id="comment" rows="" name="contenido"></textarea>
+                            <textarea class="form-control" id="comment" rows="" name="contenido" required></textarea>
                           </div>
                         <div>
-                        	 <input type="hidde" id="usuario" name="usuario" th:value="${session.usuariosession.username}">
+                        	<input type="hidden" id="usuario" name="usuario" th:value="${session.usuariosession.username}">
                             <button class="btn btnn" type="submit">Enviar</button>
-                            <button class="btn btnn" type="submit">Cancelar</button>
+                            <button class="btn btnn" type="reset">Cancelar</button>
                         </div>
                     </form>
                 </section>
