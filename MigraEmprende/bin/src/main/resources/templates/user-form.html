@@ -43,8 +43,8 @@
                         <div class="col-md-6 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
                             <div class="name">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name">
-                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" required>
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}" required>
                             </div>
                             <p class="group__errorname">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
@@ -62,8 +62,8 @@
                         <div class="col-md-6 position-relative" id="group_user">
                             <label for="user" class="form-label">Nombre de Usuario</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
-                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" required>
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}" required>
                             </div>
                             <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
@@ -72,8 +72,8 @@
                         <div class="col-md-6 position-relative" id="group_email">
                             <label for="email" class="form-label">Correo</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email">
-                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" required>
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}" required>
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
@@ -93,7 +93,16 @@
                         <div th:if="${ #strings.equals(tipoForm, 'register')}" class="col-md-6 position-relative" id="group_pass">
                             <label for="pass" class="form-label">Contraseña</label>
                             <div class="grouplastname">
-                                <input type="password" class="form-control fm" name="pass" id="pass" placeholder="Password">                                
+                                <input type="password" class="form-control fm" name="pass" id="pass" placeholder="Password" required>                                
+                            </div>
+                            <p class="group__errorname">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+                        </div>
+                        
+                        <!--Password 2 -->
+                        <div th:if="${ #strings.equals(tipoForm, 'register')}" class="col-md-6 position-relative" id="group_pass">
+                            <label for="pass" class="form-label">Repita la contraseña</label>
+                            <div class="grouplastname">
+                                <input type="password" class="form-control fm" name="pass2" id="pass2" placeholder="Password" required>                                
                             </div>
                             <p class="group__errorname">La contraseña tiene que ser de 4 a 12 dígitos.</p>
                         </div>
@@ -107,7 +116,7 @@
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
                             <button th:if="${ #strings.equals(tipoForm, 'register')}" class="btn btnn" type="submit" th:href="@{/}">Registrarse</button>
                             <button th:if="${ !#strings.equals(tipoForm, 'register' )}" class="btn btnn" type="submit" th:href="@{/}">Modificar</button>
-                            <button class="btn btnn" type="button" th:href="@{/}">Cancelar</button>
+                            <button class="btn btnn" type="reset" th:href="@{/}">Cancelar</button>
                             <p class="mensaje-exito" id="mensaje-exito">Formulario enviado exitosamente!</p>
                         </div>
                     </form>

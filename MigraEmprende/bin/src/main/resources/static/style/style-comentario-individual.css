@@ -24,7 +24,7 @@ body{
 /*Lista de Comentarios*/
 .comments-container{
     margin: 60px auto 15px;
-    width: 768px;
+    width: 80%;
 }
 
 .comments-container h1{
@@ -100,7 +100,7 @@ body{
 
 /*Caja de Comentario*/
 .comments-list .comment-box{
-    width: 680px;
+    width: 100%;
     position: relative;
     box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
@@ -126,7 +126,7 @@ body{
 }
 
 .reply-list .comment-box{
-    width: 610px;
+    width: 100%;
 }
 
 .comment-box .comment-head{
@@ -174,11 +174,28 @@ body{
     padding: 12px;
     border-radius:0 0 4px 4px;
 }
+.comment-content{
+	width: 100%;
+}
 
 .navbar-logo img{
 	width: 150px;
 }
+.form{
+	width: 100%;	
+}
 
+.form-button{
+	background-color: rgb(252, 179, 22);
+	padding: 5px 20px;
+	border-radius: 5px;
+	outline: none;
+}
+
+.form-input{
+	width: 90%;	
+	padding: 5px 20px;
+}
 
 
 

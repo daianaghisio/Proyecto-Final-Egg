@@ -142,9 +142,9 @@ public class ValidationsService {
 		}
 	}
 	
-	public void ValidarUsuarioSession (Usuario session) throws Exception{
-		if(session == null) {
-			throw new Exception("La sesión no puede ser nula");
+	public void ValidarPasswordsSonIguales(String pass1, String pass2) throws Exception {
+		if (!pass1.equals(pass2)) {
+			throw new Exception ("Las contraseñas no coinciden.");
 		}
 	}
 }

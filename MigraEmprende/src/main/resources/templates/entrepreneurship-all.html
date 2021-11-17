@@ -112,7 +112,7 @@
 		  			<img th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" class="card-img-top imgF" alt="...">
 		    			<div class="card-body">
 		      		<h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_Emprendimiento </h4>
-		      		<p class="card-text">Foto del emprendimiento</p>		      
+		      		<p class="card-text" th:text="${emprendimiento.descripcion}" >Foto del emprendimiento</p>		      
 		    	</div>
 		    <!-- <img class="card-img-bottom" th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del producto" style="width:100%">-->
 		   </div>
