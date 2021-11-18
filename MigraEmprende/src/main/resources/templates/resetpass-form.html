@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/style/resetpass-form.css">
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="stylesheet" href="/style/emprendimiento.css">
     <!--FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,72 +22,88 @@
 </head>
 
 <body>
-
-	<!--navbar LOGOUT-->
-	<div  th:if="${session.usuariosession == null}" class="container-fluid navbar navbar-dark bg-dark">
-    	<nav class="navbar navbar-expand-lg container">
-        	<div class="container-fluid">
-            	<a class="navbar-logo" href="#">
-                	<img th:href="@{/}" src="/img/logotexto.png">
-            	</a>
-            	<ul class="navbar-nav mr-auto">
-                	<li class="nav-item">
-                    	<a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
-                	</li>
-                	<li class="nav-item">
-                    	<a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
-                	</li>
-                	<li class="nav-item">
-                    	<a class="nav-link margen" th:href="@{/foro/}">Foro</a>
-                	</li>
-                	<li class="nav-item">
-                    	<a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
-                	</li>
-            	</ul>
-            	<ul class="navbar-nav ml-auto">
-                	<li class="nav-item">
-                    	<a th:href="@{/user/login}">
-                        	<i  class="fas fa-user"></i>
-                    	</a>
-                	</li>
-            	</ul>
-        	</div>
-    	</nav>
-	</div>
-
-	<!--navbar OK-->
-    <div th:if="${session.usuariosession != null}" class="container-fluid navbar navbar-dark bg-dark">
-        <nav class="navbar navbar-expand-lg container">
-            <div class="container-fluid">
-                <a class="navbar-logo" href="#">
-                    <img th:href="@{/}" src="/img/logotexto.png">
-                </a>
-                <ul class="navbar-nav mr-auto">
+ <!-- navbar logout -->
+<nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid ">
+        <a class="navbar-brand" href="../"><img th:href="@{../}" class="logo" src="/img/logotexto.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/foro/}">Foro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/consulta/}">Consultas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/leyes/}">Leyes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/noticias/}">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- navbar login -->
+    <nav th:if="${session.usuariosession != null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="../"><img th:href="@{/}" class="logo" src="/img/logotexto.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
                     <li class="nav-item">
-                        <a class="nav-link margen" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                        <a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" th:href="@{/leyes/}">Leyes</a>
+                        <a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" th:href="@{/foro/}">Foro</a>
+                        <a class="nav-link" th:href="@{/foro/}">Foro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link margen" th:href="@{/consulta/}">Consulta</a>
+                        <a class="nav-link" th:href="@{/consulta/}">Consultas</a>
                     </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                    	<div class="d-flex">
-	                        <a class="text-white text-decoration-none me-3" th:href="@{/user/profile/}+${session.usuariosession.id}" th:text="${session.usuariosession.username}"></a>
-	                        <a class="text-white text-decoration-none ms-3" th:href="@{/logout}">Log Out</a>
-                       </div >
+                        <a class="nav-link" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/noticias/}">Noticias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle menu-usuario" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="img-container-logo">
+                                <img th:if="${session.usuariosession.foto != null}" th:src="${'/foto/usuario?id=' + session.usuariosession.id}" class="foto-logo" alt="img-avatar">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                            <li><a class="dropdown-item" th:href="@{/user/profile/}+${session.usuariosession.id}">Mi perfil</a></li>
+                            <li><a class="dropdown-item" th:href="@{/emprendimiento/}+${id}">Mis emprendimientos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
-        </nav>
-    </div>
-
+        </div>
+    </nav>
 
 
     <div class="login-box">
@@ -131,6 +147,8 @@
         <small>&copy; 2021 <b>Mesa 5</b> - Todos los Derechos Reservados.</small>
     </div>
 </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
