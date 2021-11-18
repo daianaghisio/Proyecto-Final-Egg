@@ -142,13 +142,10 @@ public class ValidationsService {
 		}
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	public void ValidarPasswordsSonIguales(String pass1, String pass2) throws Exception {
 		if (!pass1.equals(pass2)) {
 			throw new Exception ("Las contraseñas no coinciden.");
 		}
 	}
->>>>>>> 87565250c83f086d958ae5666150fb601f6da6fc
+
 }
