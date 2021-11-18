@@ -80,7 +80,7 @@ public class EmprendimientoController {
 
 @GetMapping("/{id}") //Devuelve un único emprendimiento
 public String id(@PathVariable String id) {
-	return "entrepreneurship";
+	return "emprendimiento";
 }
 
 
