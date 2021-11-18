@@ -166,6 +166,12 @@ public class ComentarioService {
 	}
 	
 	
+	public List<Respuesta> retornarRespuestasDeComentarioPorId(String id) throws Exception{
+		validationsService.ValidarId(id);
+		Comentario comentario = comentRepository.retornarComentarioPorId(id);		
+		return respuestaRepository.RetornarRespuestasEnTrue(comentario.getId());
+	}
+	
 	
 	public void crearRespuesta(String contenido, Usuario usuario, String idComentario) {
 		Comentario comentario = comentRepository.getById(idComentario);

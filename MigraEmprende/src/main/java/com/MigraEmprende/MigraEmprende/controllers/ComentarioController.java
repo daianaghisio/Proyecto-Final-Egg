@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.MigraEmprende.MigraEmprende.entities.Respuesta;
+import com.MigraEmprende.MigraEmprende.repositories.RespuestaRepository;
 import com.MigraEmprende.MigraEmprende.services.ComentarioService;
 import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
@@ -22,6 +24,9 @@ public class ComentarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private RespuestaRepository respuestaRepository;
 
 	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/") // Devuelve todo el foro
@@ -37,7 +42,7 @@ public class ComentarioController {
 
 		modelo.addAttribute("id", id);
 		modelo.addAttribute("comentario", comentarioService.retornarComentarioPorId(id));
-		modelo.addAttribute("respuestas", comentarioService.retornarComentarioPorId(id).getRespuestas());
+		modelo.addAttribute("respuestas", comentarioService.retornarRespuestasDeComentarioPorId(id));
 		return "topic";
 	}
 	
@@ -54,10 +59,10 @@ public class ComentarioController {
 		try {
 			comentarioService.crearComentario(name, contenido, usuarioService.buscarPorUsername(usuario));
 			modelo.put("exito", "Comentario enviado!");
-			return "redirect:/";
+			return "redirect:/foro/";
 		} catch (Exception e) {
 			modelo.put("error", e.getMessage());
-			return "redirect:/";
+			return "redirect:/foro/";
 		}
 	}
 
@@ -82,11 +87,25 @@ public class ComentarioController {
 			
 			comentarioService.crearRespuesta(contenido, usuarioService.buscarPorUsername(username), idComentario);
 			modelo.put("exito", "Comentario borrado!");
-			return "redirect:/";
+			return "redirect:/foro/{idComentario}/";
 		} catch (Exception e) {
 			modelo.put("error", e.getMessage());
-			return "redirect:/";
+			return "redirect:/foro/";
 		}		
+	}
+	
+	
+	@GetMapping("/{idComentario}/{idRta}")
+	public String deshabilitarRespuesta(@PathVariable String idComentario, @PathVariable String idRta) throws Exception {
+		try {
+			Respuesta respuesta = respuestaRepository.getById(idRta);
+			respuesta.setAlta(false);
+			respuestaRepository.save(respuesta);
+		}catch(Exception e) {
+			throw new Exception("No se ha encontrado una respuesta con esa id");
+		}
+		
+		return "redirect:/foro/{idComentario}";
 	}
 
 }

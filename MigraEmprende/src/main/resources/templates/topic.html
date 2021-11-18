@@ -144,6 +144,10 @@
                                 </div>
                                 <div class="comment-content" th:text="${respuesta.contenido}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id rerum ducimus. Nam sint corporis nisi laboriosam, dolores eligendi saepe ipsam? Magni alias ex rem explicabo, quia quo amet laudantium?
                                 </div>
+                                <div>
+                   		           	 <a th:href="@{/foro/}+${comentario.id}+'/'+${respuesta.id}" class="btn btn-danger" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
+        			 	   			<a th:href="@{/foro/}+${comentario.id}+'/'+${respuesta.id}" class="btn btn-danger" th:if="${ session.usuariosession.id == comentario.usuario.id}"> Eliminar  </a> 
+		        				</div>
                             </div>
                             
                         </li >
