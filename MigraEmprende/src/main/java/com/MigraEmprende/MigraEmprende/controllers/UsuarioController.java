@@ -87,16 +87,25 @@ public class UsuarioController {
      
    
    @PostMapping("/register") // Envía los datos del formulario de registro acá
-	public String register(MultipartFile archivo, String name, String user, String email, String pass, String pass2) throws Exception {
+	public String register(MultipartFile archivo, String name, String user, String email, String pass, String pass2, ModelMap modelo) throws Exception {
 	   validationsService.ValidarNombre(name);
 	   validationsService.ValidarUsername(user);
-	   validationsService.ValidarUsernameNoRepetido(user);	   
+	   //validationsService.ValidarUsernameNoRepetido(user);	   
 	   validationsService.ValidarEmail(email);
 	   validationsService.ValidarPassword(pass);
 	   validationsService.ValidarPasswordsSonIguales(pass, pass2);
-	   
+	   if(usuarioService.buscarPorUsername(user) != null) {
+		   modelo.put("errorUsuario", "El nombre de usuario ya existe!");
+		   modelo.put("tipoForm", "register");
+		   return "user-form";
+	   }else if(usuarioService.busarPorEmail(email) != null) {
+		   modelo.put("errorEmail", "El Email ingresado ya se encuentra registrado!");
+		   modelo.put("tipoForm", "register");
+		   return "user-form";
+	   }else {
 	    usuarioService.crear(archivo, name, user, email, pass);
 		return "redirect:/";
+	   }
 	}
    
    

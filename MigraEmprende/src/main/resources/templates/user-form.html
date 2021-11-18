@@ -37,6 +37,18 @@
         </tr>
         <tr>
             <td>
+            	<div th:if="${errorUsuario}!=null" class="card text-white bg-danger mb-3" >
+					<div class="card-body">
+						<h5 class="card-title">Error</h5>
+						<p class="card-text" th:text="${errorUsuario}"></p>
+					</div>
+				</div>
+				<div th:if="${errorEmail}!=null" class="card text-white bg-danger mb-3" >
+					<div class="card-body">
+						<h5 class="card-title">Error</h5>
+						<p class="card-text" th:text="${errorEmail}"></p>
+					</div>
+				</div>
                 <section class="userform">
                     <form th:action="@{/user/}+${tipoForm}" th:object="${usuario}" class="row g-3 needs-validation position:relative" method="POST" id="userform" enctype="multipart/form-data">                        
                         <!--User Name-->
