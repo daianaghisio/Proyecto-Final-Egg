@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.MigraEmprende.MigraEmprende.entities.Foto;
 import com.MigraEmprende.MigraEmprende.entities.Usuario;
 import com.MigraEmprende.MigraEmprende.repositories.UsuarioRepository;
+import com.MigraEmprende.MigraEmprende.services.FotoService;
 import com.MigraEmprende.MigraEmprende.services.MailService;
 import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 import com.MigraEmprende.MigraEmprende.services.ValidationsService;
@@ -34,6 +36,9 @@ public class UsuarioController {
    
    @Autowired
    private ValidationsService validationsService;
+   
+   @Autowired
+   private FotoService fotoService;
     
    @GetMapping("/") // devuelve el perfil del usuario
 	public String indexProfile(@PathVariable String id) { 
@@ -88,19 +93,27 @@ public class UsuarioController {
    
    @PostMapping("/register") // Envía los datos del formulario de registro acá
 	public String register(MultipartFile archivo, String name, String user, String email, String pass, String pass2, ModelMap modelo) throws Exception {
+	   Usuario usuario = new Usuario();
 	   validationsService.ValidarNombre(name);
 	   validationsService.ValidarUsername(user);
 	   //validationsService.ValidarUsernameNoRepetido(user);	   
 	   validationsService.ValidarEmail(email);
 	   validationsService.ValidarPassword(pass);
 	   validationsService.ValidarPasswordsSonIguales(pass, pass2);
+	   usuario.setNombreYApellido(name);
+	   usuario.setUsername(user);
+	   usuario.setEmail(email);
+	   Foto foto = fotoService.guardar(archivo);
+	   usuario.setFoto(foto);
 	   if(usuarioService.buscarPorUsername(user) != null) {
 		   modelo.put("errorUsuario", "El nombre de usuario ya existe!");
 		   modelo.put("tipoForm", "register");
+		   modelo.put("usuario", usuario);
 		   return "user-form";
 	   }else if(usuarioService.busarPorEmail(email) != null) {
 		   modelo.put("errorEmail", "El Email ingresado ya se encuentra registrado!");
 		   modelo.put("tipoForm", "register");
+		   modelo.put("usuario", usuario);
 		   return "user-form";
 	   }else {
 	    usuarioService.crear(archivo, name, user, email, pass);
