@@ -55,7 +55,7 @@
                         <div class="col-md-6 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
                             <div class="name">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
                             </div>
                             <p class="group__errorname">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
@@ -74,7 +74,7 @@
                         <div class="col-md-6 position-relative" id="group_user">
                             <label for="user" class="form-label">Nombre de Usuario</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
                             </div>
                             <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
@@ -84,7 +84,7 @@
                         <div class="col-md-6 position-relative" id="group_email">
                             <label for="email" class="form-label">Correo</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
@@ -95,7 +95,7 @@
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
                                 <input type="file" class="form-control" name="archivo">
-                                <!--<input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">-->
+                                <!-- input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}" -->
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
                             </div>
                         </div>
@@ -128,10 +128,11 @@
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
                             <button th:if="${ #strings.equals(tipoForm, 'register')}" class="btn btnn" type="submit" th:href="@{/}">Registrarse</button>
                             <button th:if="${ !#strings.equals(tipoForm, 'register' )}" class="btn btnn" type="submit" th:href="@{/}">Modificar</button>
-                            <button class="btn btnn" type="reset" th:href="@{/}">Cancelar</button>
+                            
                             <p class="mensaje-exito" id="mensaje-exito">Formulario enviado exitosamente!</p>
                         </div>
                     </form>
+                    <a href="/./"><button class="btn btnn" type="button">Cancelar</button></a>
                 </section>
             </td>
         </tr>
