@@ -20,7 +20,7 @@ public class MainController {
 	
 	@GetMapping("/noticias")
 	public String noticias() {
-		return "plantilla_noticia";
+		return "news";
 	}
 	
 	//ESTO LO PUSE ACA PARA PROBAR SI ANDABA NADA MAS
