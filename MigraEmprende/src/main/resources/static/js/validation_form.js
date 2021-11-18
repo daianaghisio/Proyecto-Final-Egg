@@ -30,6 +30,7 @@ const validationForm = (e) => {
         break;
         case "pass":
             validationArea(expressions.pass, e.target, 'pass');
+            validarPassword2();
         break;
         case "pass2":
             validarPassword2();
@@ -72,13 +73,15 @@ const validarPassword2 = () => {
         document.querySelector(`#group_pass2 .group__errorname`).classList.add('group__errorname-activo');
         document.getElementById(`pass2`).classList.add('fm');
         document.getElementById(`pass2`).classList.remove('fm-right');
-
+        areas['pass'] = false;
     }else{
         document.getElementById(`group_pass2`).classList.remove('form_group-error');
         document.getElementById(`group_pass2`).classList.add('form_group-right');
         document.querySelector(`#group_pass2 .group__errorname`).classList.remove('group__errorname-activo');
         document.getElementById(`pass2`).classList.remove('fm');
         document.getElementById(`pass2`).classList.add('fm-right');
+        document.getElementById('msj-error').classList.remove('msj-error-activo');
+        areas['pass'] = true;
     }
 }
 
@@ -87,6 +90,7 @@ inputs.forEach((input) => {
     input.addEventListener('blur', validationForm);
 });
 
+/*Ultima versión */
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();//quita la funcion del boton
 
