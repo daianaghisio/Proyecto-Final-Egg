@@ -110,8 +110,8 @@
             <div class="container-cover">
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
-                        <img th:if="${usuario == null}" src="/img/user.jpg" alt="img-avatar">
-                        <img th:if="${usuario != null}" th:src="${'/foto/usuario?id=' + usuario.id}" alt="img-avatar">	
+                        <img class="foto" th:if="${usuario == null}"  src="/img/user.jpg" alt="img-avatar">
+                        <img class="foto" th:if="${usuario != null}" th:src="${'/foto/usuario?id=' + usuario.id}" alt="img-avatar">	
                         
                     </div>
                 </div>
