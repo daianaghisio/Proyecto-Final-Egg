@@ -23,12 +23,14 @@ public class ComentarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/") // Devuelve todo el foro
 	public String index(ModelMap modelo) throws Exception {
 		modelo.addAttribute("listaComentario", comentarioService.listarComentariosEnAlta());
 		
 		return "comments-section";
 	}
+	
 	@PreAuthorize("hasAnyRole('ROLE_USER')")
 	@GetMapping("/{id}") // Devuelve un único comentario con cada respuesta
 	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
@@ -39,7 +41,7 @@ public class ComentarioController {
 		return "topic";
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_USER')")
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/crear") // Devuelve un formulario para crear un comentario
 	public String crear() {
 		return "form-comments-topic";
