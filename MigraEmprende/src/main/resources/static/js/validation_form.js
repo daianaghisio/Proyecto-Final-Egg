@@ -14,7 +14,6 @@ const areas = {
     user: false,
     name: false,
     pass: false,
-    pass2: false,
     email: false
 }
 
@@ -31,7 +30,6 @@ const validationForm = (e) => {
         break;
         case "pass":
             validationArea(expressions.pass, e.target, 'pass');
-            validarPassword2();
         break;
         case "pass2":
             validarPassword2();
@@ -81,8 +79,6 @@ const validarPassword2 = () => {
         document.querySelector(`#group_pass2 .group__errorname`).classList.remove('group__errorname-activo');
         document.getElementById(`pass2`).classList.remove('fm');
         document.getElementById(`pass2`).classList.add('fm-right');
-        document.getElementById('msj-error').classList.remove('msj-error-activo');
-        pass2 = true;
     }
 }
 
@@ -91,11 +87,10 @@ inputs.forEach((input) => {
     input.addEventListener('blur', validationForm);
 });
 
-/*Ultima versión */
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();//quita la funcion del boton
 
-    if(areas.name && areas.user && areas.email && areas.pass && areas.pass2){
+    if(areas.name && areas.user && areas.email && areas.pass){
         //formulario.reset();
 
         document.getElementById('mensaje-exito').classList.add('mensaje-exito-activo');

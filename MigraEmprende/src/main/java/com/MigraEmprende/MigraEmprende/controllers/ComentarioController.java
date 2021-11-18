@@ -31,7 +31,7 @@ public class ComentarioController {
 		return "comments-section";
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_USER')")
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/{id}") // Devuelve un único comentario con cada respuesta
 	public String id(ModelMap modelo, @PathVariable String id) throws Exception {
 
