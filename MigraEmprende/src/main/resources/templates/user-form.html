@@ -14,9 +14,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <!--CSS-->
-   <link rel="stylesheet" href="/style/emprendimiento.css">
-    <link rel="stylesheet" href="/style/user-form.css" th:href="@{/style/user-form.css}">
 
+    <link rel="stylesheet" href="/style/user-form.css" th:href="@{/style/user-form.css}">
+    
     <link rel="stylesheet" href="/style/user-form.css">
 
     <!--FONT-->
@@ -27,88 +27,7 @@
     <title>Formulario de usuario</title>
 </head>
 <body>
-     <!-- navbar logout -->
-<nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid ">
-        <a class="navbar-brand" href="../"><img th:href="@{../}" class="logo" src="/img/logotexto.png"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/foro/}">Foro</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/consulta/}">Consultas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/leyes/}">Leyes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/noticias/}">Noticias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/user/login}">Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-    <!-- navbar login -->
-    <nav th:if="${session.usuariosession != null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid ">
-            <a class="navbar-brand" href="../"><img th:href="@{/}" class="logo" src="/img/logotexto.png"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/foro/}">Foro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/consulta/}">Consultas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/leyes/}">Leyes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/noticias/}">Noticias</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle menu-usuario" href="#" id="navbarDarkDropdownMenuLink"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="img-container-logo">
-                                <img th:if="${session.usuariosession.foto != null}" th:src="${'/foto/usuario?id=' + session.usuariosession.id}" class="foto-logo" alt="img-avatar">
-                            </div>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                            <li><a class="dropdown-item" th:href="@{/user/profile/}+${session.usuariosession.id}">Mi perfil</a></li>
-                            <li><a class="dropdown-item" th:href="@{/emprendimiento/}+${id}">Mis emprendimientos</a></li>
-                            <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
     <!--Form User-->
     <table class="form">
         <tr>
@@ -119,13 +38,13 @@
         <tr>
             <td>
                 <section class="userform">
-                    <form th:action="@{/user/}+${tipoForm}" th:object="${usuario}" class="row g-3 needs-validation position:relative" method="POST" id="userform" enctype="multipart/form-data">
+                    <form th:action="@{/user/}+${tipoForm}" th:object="${usuario}" class="row g-3 needs-validation position:relative" method="POST" id="userform" enctype="multipart/form-data">                        
                         <!--User Name-->
                         <div class="col-md-6 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
                             <div class="name">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" required>
-                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}" required>
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
                             </div>
                             <p class="group__errorname">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
@@ -143,8 +62,8 @@
                         <div class="col-md-6 position-relative" id="group_user">
                             <label for="user" class="form-label">Nombre de Usuario</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" required>
-                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}" required>
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
                             </div>
                             <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
                         </div>
@@ -153,8 +72,8 @@
                         <div class="col-md-6 position-relative" id="group_email">
                             <label for="email" class="form-label">Correo</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" required>
-                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}" required>
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email">
+                                <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
@@ -164,9 +83,8 @@
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
                                 <input type="file" class="form-control" name="archivo">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">
+                                <!--<input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">-->
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
-
                             </div>
                         </div>
 
@@ -174,18 +92,19 @@
                         <div th:if="${ #strings.equals(tipoForm, 'register')}" class="col-md-6 position-relative" id="group_pass">
                             <label for="pass" class="form-label">Contraseña</label>
                             <div class="grouplastname">
-                                <input type="password" class="form-control fm" name="pass" id="pass" placeholder="Password" required>                                
+                                <input type="password" class="form-control fm" name="pass" id="pass" placeholder="Password">                                
                             </div>
                             <p class="group__errorname">La contraseña tiene que ser de 4 a 12 dígitos.</p>
                         </div>
                         
                         <!--Password 2 -->
-                        <div th:if="${ #strings.equals(tipoForm, 'register')}" class="col-md-6 position-relative" id="group_pass">
-                            <label for="pass" class="form-label">Repita la contraseña</label>
+                        <!--<div th:if="${ #strings.equals(tipoForm, 'register')}" class="col-md-6 position-relative" id="group_pass">-->
+                        <div class="col-md-6 position-relative" id="group_pass2">
+                            <label for="pass2" class="form-label">Repita la contraseña</label>
                             <div class="grouplastname">
-                                <input type="password" class="form-control fm" name="pass2" id="pass2" placeholder="Password" required>                                
+                                <input type="password" class="form-control fm" name="pass2" id="pass2" placeholder="Password">                                
                             </div>
-                            <p class="group__errorname">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+                            <p class="group__errorname">Ambas contraseña deben ser iguales.</p>
                         </div>
 
                         <div class="msj-error" id="msj-error">
@@ -205,13 +124,9 @@
             </td>
         </tr>
     </table>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <!--<script th:src="@{/js/validation_form.js}"></script>-->
 
-    <!--<script src="/js/validation_form.js"></script>-->
+    <script th:src="@{/js/validation_form.js}"></script>
 
-    <!--<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>-->
+    <script src="/js/validation_form.js"></script>
 </body>
 </html>

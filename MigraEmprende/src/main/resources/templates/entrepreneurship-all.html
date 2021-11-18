@@ -25,7 +25,7 @@
 </header>
 
 <body>
-        <!-- navbar logout -->
+       <!-- navbar logout -->
 <nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid ">
         <a class="navbar-brand" href="../"><img th:href="@{../}" class="logo" src="/img/logotexto.png"></a>
@@ -122,17 +122,21 @@
 		 </div >
 	 	</div >
 		  <div class="row mt-3">
-		   <div class="col-sm-12 col-md-3 my-3" th:each="emprendimiento:${todosEmprendimientos}">
+		   <div class="col-sm-12 col-md-3 my-3 d-flex align-items-stretch" th:each="emprendimiento:${todosEmprendimientos}">
 		   
 		    	<!--  La siguiente card es para agregar las fotos -->
-		 		<div class="card" style="width:400px">
+		 		<div class="card">
 		 		<a class="aNull text-dark" th:href="@{/emprendimiento/}+${emprendimiento.id}">
-		 			<img th:if="${emprendimiento.foto == null}" src="https://innovadirectivos.es/wp-content/uploads/2019/09/comprador-online-2.jpg" class="card-img-top imgF" alt="...">
+		 			<img th:if="${emprendimiento.foto == null}" src="/img/logotexto.png" class="card-img-top imgF" alt="Imágen por defecto">
 		  			<img th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" class="card-img-top imgF" alt="...">
 		    			<div class="card-body">
 		      		<h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_Emprendimiento </h4>
-		      		<p class="card-text" th:text="${emprendimiento.descripcion}" >Foto del emprendimiento</p>		      
+		      		<p class="card-text descripcion" th:text="${emprendimiento.descripcion}" >Foto del emprendimiento</p>		      
 		    	</div>
+		    	<div class="d-flex justify-content-between align-items-end"> 
+		    		<a th:href="@{/emprendimiento/deshabilitar/}+${emprendimiento.id}" class="btn btn-danger botonF" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
+        			<a th:href="@{/emprendimiento/deshabilitar/}+${emprendimiento.id}" class="btn btn-danger botonF" th:if="${ session.usuariosession.id == emprendimiento.usuario.id}"> Eliminar  </a>
+        		</div >
 		    <!-- <img class="card-img-bottom" th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del producto" style="width:100%">-->
 		   </div>
 			</a>
