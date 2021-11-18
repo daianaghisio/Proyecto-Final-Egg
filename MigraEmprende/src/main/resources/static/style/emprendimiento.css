@@ -368,4 +368,18 @@ html {
     content: "\ea92";
   }
   
+  .descripcion{	
+	overflow-y: scroll;
+} 
+
+.botonF{
+	max-width: 85px;	
+	bottom: 20px;
+	margin: 20px auto;
+}
+
+
+
+  
+  
   

@@ -1,6 +1,7 @@
 package com.MigraEmprende.MigraEmprende.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -142,9 +143,17 @@ public class ValidationsService {
 		}
 	}
 	
+
 	public void ValidarPasswordsSonIguales(String pass1, String pass2) throws Exception {
 		if (!pass1.equals(pass2)) {
 			throw new Exception ("Las contraseñas no coinciden.");
+		}
+	}
+	
+	public void ValidarUsernameNoRepetido(String username) throws Exception {
+		Optional<Usuario> respuesta = usuarioRepository.findByUsername(username);
+		if( respuesta.isPresent() ) {
+			throw new Exception ("Ese nombre de usuario ya se encuentra registrado");
 		}
 	}
 
