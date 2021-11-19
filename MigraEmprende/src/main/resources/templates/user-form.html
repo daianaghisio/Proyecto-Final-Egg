@@ -16,8 +16,9 @@
     <!--CSS-->
 
     <link rel="stylesheet" href="/style/user-form.css" th:href="@{/style/user-form.css}">
-    
+    <link rel="stylesheet" href="/style/estilofooter.css">
     <link rel="stylesheet" href="/style/user-form.css">
+    <link rel="stylesheet" href="/style/emprendimiento.css">
 
     <!--FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +28,88 @@
     <title>Formulario de usuario</title>
 </head>
 <body>
-    
+        <!-- navbar logout -->
+<nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid ">
+        <a class="navbar-brand" href="../"><img th:href="@{../}" class="logo" src="/img/logotexto.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/foro/}">Foro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/consulta/}">Consultas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/leyes/}">Leyes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/noticias/}">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- navbar login -->
+    <nav th:if="${session.usuariosession != null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="../"><img th:href="@{/}" class="logo" src="/img/logotexto.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/foro/}">Foro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/consulta/}">Consultas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/leyes/}">Leyes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/noticias/}">Noticias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle menu-usuario" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="img-container-logo">
+                                <img th:if="${session.usuariosession.foto != null}" th:src="${'/foto/usuario?id=' + session.usuariosession.id}" class="foto-logo" alt="img-avatar">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                            <li><a class="dropdown-item" th:href="@{/user/profile/}+${session.usuariosession.id}">Mi perfil</a></li>
+                            <li><a class="dropdown-item" th:href="@{/emprendimiento/}+${id}">Mis emprendimientos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!--Form User-->
     <table class="form">
         <tr>
@@ -55,7 +137,7 @@
                         <div class="col-md-6 position-relative" id="group_name">
                             <label for="name" class="form-label is-invalid">Nombre</label>
                             <div class="name">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" id="name" class="form-control fm" name="name" placeholder="Name" th:value="${usuario.nombreYApellido}">
                             </div>
                             <p class="group__errorname">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
@@ -74,7 +156,7 @@
                         <div class="col-md-6 position-relative" id="group_user">
                             <label for="user" class="form-label">Nombre de Usuario</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="user" id="user" placeholder="Usuario" th:value="${usuario.username}">
                             </div>
                             <p class="group__errorname">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo</p>
@@ -84,7 +166,7 @@
                         <div class="col-md-6 position-relative" id="group_email">
                             <label for="email" class="form-label">Correo</label>
                             <div class="grouplastname">
-                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email">
+                                <input th:if="${ #strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="text" class="form-control fm" name="email" id="email" placeholder="Email" th:value="${usuario.email}">
                             </div>
                             <p class="group__errorname">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
@@ -95,7 +177,7 @@
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
                                 <input type="file" class="form-control" name="archivo">
-                                <!--<input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo">-->
+                                <!-- input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}" -->
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
                             </div>
                         </div>
@@ -128,17 +210,55 @@
                         <div class="formulario__grupo formulario__grupo-btn-enviar">
                             <button th:if="${ #strings.equals(tipoForm, 'register')}" class="btn btnn" type="submit" th:href="@{/}">Registrarse</button>
                             <button th:if="${ !#strings.equals(tipoForm, 'register' )}" class="btn btnn" type="submit" th:href="@{/}">Modificar</button>
-                            <button class="btn btnn" type="reset" th:href="@{/}">Cancelar</button>
+                            
                             <p class="mensaje-exito" id="mensaje-exito">Formulario enviado exitosamente!</p>
                         </div>
                     </form>
+                    <a href="/./"><button class="btn btnn" type="button">Cancelar</button></a>
                 </section>
             </td>
         </tr>
     </table>
+ <!-- pie de pagina -->
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                 <a href="#">
+                    <img src="/img/logotexto.png" alt="Logo Migra">
+                    </a>
+                </figure>
+            </div>
+           
+            <div class="box">
+                <h2 class="contacto">SEGUINOS EN LAS REDES</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/fundacionmigra/?ref=page_internal" class="fa fa-facebook" target="_blank"></a>
+                    <a href="https://www.instagram.com/fundacionmigra/" class="fa fa-instagram" target="_blank"></a>
+                    <a href="https://twitter.com/fundacionmigra" class="fa fa-twitter" target="_blank"></a>
+                    <a href="https://www.linkedin.com/company/fundaci%C3%B3nmigra/" class="fa fa-linkedin" target="_blank"></a>
+                </div>
+            </div>
 
+            <div class="box-contacto">
+                <h2 class="contacto">CONTACTO</h2>
+                <ul class="lista-contacto">
+                    <li>Telefono: +54 9 11 2255 2793</li>
+                    <li>Dirección: Rioja 1474, Piso 8</li>
+                    <li>E-Mail: info@fundacionmigra.org</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grupo-2">
+             <small>&copy; 2021 <b>Mesa 5</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <script th:src="@{/js/validation_form.js}"></script>
 
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="/js/validation_form.js"></script>
 </body>
 </html>
