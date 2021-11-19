@@ -92,11 +92,12 @@ public String modificarId(@PathVariable String id, MultipartFile archivo, String
 	return "redirect:/";
 }
 
-@PostMapping("/deshabilitar")
-public String deshabilitar(String id) throws Exception {
+@GetMapping("/deshabilitar/{id}")
+public String deshabilitar(@PathVariable String id) throws Exception {
 	emprendimientoService.baja(id);
 	return "redirect:/";
 }
+
 
 
 
