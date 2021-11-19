@@ -16,7 +16,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/0f0f835cc6.js" crossorigin="anonymous"></script>
 
-        <title>Comentarios</title>
+        <title>Comentario</title>
     </head>
 
 <body> 
@@ -106,7 +106,7 @@
 
         <!--Caja de comentarios-->
     <div class="comments-container">
-            <h1>Comentarios <a href="#"></a></h1>
+            <h1 th:text="${comentario.titulo}">Comentario <a href="#"></a></h1>
             <ul id="comments-list" class="comments-list">
                 <li>
                     <div class="comments-main-level">
@@ -115,19 +115,13 @@
                         <!--Contenedor del comentario-->
                         <div class="comment-box">
                             <div class="comment-head">
-                               <h6 class="comment-name" th:text="${comentario.titulo}">Fundación Migra</h6>
-                               <span>hace 20 minutos</span>
+                            	<h6 class="comment-name" th:text="${comentario.usuario.username}">Fundación Migra</h6>
+                               <span th:text="${comentario.fecha}">hace 20 minutos</span>
                                <i class="fas fa-heart"></i>
                                <i class="fas fa-reply"></i>
                             </div>
                             <div class="comment-content" th:text="${comentario.contenido}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id rerum ducimus. Nam sint corporis nisi laboriosam, dolores eligendi saepe ipsam? Magni alias ex rem explicabo, quia quo amet laudantium?</div>
                         </div>
-                        <form class="form d-flex justify-content-between" th:action="@{/foro/}+ ${comentario.id}+ '/responder'" method="POST">
-                        	<input class="form-input" type="text"name="contenido" placeholder="Comenta algo" required>
-                        	<input type="hidden" name="username" th:value="${session.usuariosession.username}">
-                        	<input type="hidden" name="idComentario" th:value="${comentario.id}"> 
-                        	<input class="form-button" type="submit" th:href="@{/foro/} + @{comentario.id}"> 
-                        </form >
                     </div>
                     <!--Respuesta Comentario-->
                     <ul class="comments-list reply-list" >
@@ -138,7 +132,7 @@
                             <div class="comment-box">
                                 <div class="comment-head">
                                     <h6 class="comment-name" th:text="${respuesta.usuario.username}">Naynay</h6>
-                                    <span>hace 20 minutos</span>
+                                    <span th:text="${respuesta.fecha}">hace 20 minutos</span>
                                     <i class="fas fa-heart"></i>
                                     <i class="fas fa-reply"></i>
                                 </div>
@@ -151,7 +145,12 @@
                             </div>
                             
                         </li >
-                        
+                                                <form class="form d-flex justify-content-between" th:action="@{/foro/}+ ${comentario.id}+ '/responder'" method="POST">
+                        	<input class="form-input" type="text"name="contenido" placeholder="Comenta algo" required>
+                        	<input type="hidden" name="username" th:value="${session.usuariosession.username}">
+                        	<input type="hidden" name="idComentario" th:value="${comentario.id}"> 
+                        	<input class="form-button" type="submit" th:href="@{/foro/} + @{comentario.id}"> 
+                        </form >
                         
                     </ul>
                 </li>
