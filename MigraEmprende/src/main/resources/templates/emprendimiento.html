@@ -105,40 +105,49 @@
     </nav>
 
     <!--BODY -->
+    
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="container-cover">
                 <div class="perfil-usuario-portada">
+                    <div class="perfil-usuario-avatar">
+                        <div class="img-container">
+                            <img class="foto" src="gatito.jpg">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Nombre emprendimiento</h3>
-                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <h3 class="titulo" th:text="${emprendimiento.nombre}">Nombre emprendimiento</h3>
+                <p class="texto" th:text="${emprendimiento.descripcion}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </div>
         <div class="social-bar">
             <a href="#" class="icon icon-facebook" target="_blank"></a>
             <a href="#" class="icon icon-instagram" target="_blank"></a>
+        </div>
     </section>
-   
+
     <section class="info">
         <div class="lista">
             <ul class="datos-personales">
                 <li class="items">
                     <div class="icon-label">
-                        <i class="bi bi-geo-alt-fill icon-class"></i><p class="dato">Dirección</p>
+                        <i class="bi bi-geo-alt-fill icon-class"></i>
+                        <p class="dato" >Dirección</p>
                     </div>
-                    <p class="datocolor">Calle Falsa 123</p>
+                    <p class="datocolor" th:text="${emprendimiento.address}">Calle Falsa 123</p>
                 </li>
                 <hr class="lineaperfil">
                 <li class="items">
                     <div class="icon-label">
-                        <i class="bi bi-telephone-fill icon-class"></i><p class="dato">Télefono</p> 
+                        <i class="bi bi-telephone-fill icon-class"></i>
+                        <p class="dato">Télefono</p>
                     </div>
-                    <p class="datocolor">3413185122</p>
+                    <p class="datocolor" th:text="${emprendimiento.phone}" >3413185122</p>
                 </li>
             </ul>
         </div>
