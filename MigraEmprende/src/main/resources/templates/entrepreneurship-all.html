@@ -126,7 +126,7 @@
 		   <div class="col-sm-12 col-md-3 my-3 d-flex align-items-stretch" th:each="emprendimiento:${todosEmprendimientos}">
 		   
 		    	<!--  La siguiente card es para agregar las fotos -->
-		 		<div class="card">
+		 		<div class="card" th:if="${emprendimiento.alta == true}">
 		 		<a class="aNull text-dark" th:href="@{/emprendimiento/}+${emprendimiento.id}">
 		 			<img th:if="${emprendimiento.foto == null}" src="/img/logotexto.png" class="card-img-top imgF" alt="Imágen por defecto">
 		  			<img th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" class="card-img-top imgF" alt="...">
