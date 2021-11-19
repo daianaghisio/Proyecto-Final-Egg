@@ -119,7 +119,8 @@
                     <img th:if="${comentario.usuario.foto == null}" src="/img/male.jpg"  widht="84" height="84" alt="">
                     <div class="media-body">
                     	<div class="d-flex justify-content-between">                         	
-                        	<p th:text="${comentario.titulo}"> </p >
+                        	<a th:href="@{'/foro/' + ${comentario.id}}" th:text="${comentario.titulo}"> </a>
+                        	<a th:text="${comentario.fecha}"> </a>
                         	<p class="name-user" th:text="${comentario.usuario.username}">Juan Perez <span>Time: 19:34, 01/01/2022 </span></p>
                         </div >
                         <p class="comment-user" th:text="${comentario.contenido}">

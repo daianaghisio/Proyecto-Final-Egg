@@ -1,6 +1,5 @@
 package com.MigraEmprende.MigraEmprende.services;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,9 +25,6 @@ public class ComentarioService {
 	
 	@Autowired
 	private RespuestaRepository respuestaRepository;
-	
-	@Autowired
-	private UsuarioService usuarioService;
 
 	// CREAR COMENTARIO
 	@Transactional
