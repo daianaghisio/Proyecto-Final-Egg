@@ -73,10 +73,6 @@ public class EmprendimientoController {
 		return "emprendimiento";
 	}
 
-	@GetMapping("/{id}") // Devuelve un único emprendimiento
-	public String id(@PathVariable String id) {
-		return "emprendimiento";
-	}
 
 	@PostMapping("/modificar/{id}") // Envía los datos del formulario acá para editar un emprendimiento
 	public String modificarId(@PathVariable String id, MultipartFile archivo, String nombre, String descripcion,
