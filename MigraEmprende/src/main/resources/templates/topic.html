@@ -144,7 +144,7 @@
 	                                <!--Contenedor del comentario-->
 	                            <div class="comment-box">
 	                                <div class="comment-head">
-	                                <p class="mt-2 fs-6">Respuesta de <a class="text-decoration-none textoAmarillo" th:href="@{/user/profile/} + ${respuesta.usuario.id}"><span class="name-user " th:text="${respuesta.usuario.username}">Juan Pérez</span ></a > el <span th:text="${comentario.fecha}"> Time: 19:34, 01/01/2022 </span  ></p >
+	                                <p class="mt-2 fs-6">Respuesta de <a class="text-decoration-none textoAmarillo" th:href="@{/user/profile/} + ${respuesta.usuario.id}"><span class="name-user " th:text="${respuesta.usuario.username}">Juan Pérez</span ></a > el <span th:text="${respuesta.fecha}"> Time: 19:34, 01/01/2022 </span  ></p >
 	                                   
 	                                </div>
 	                                <div class="comment-content contenedorContenidoComentario" th:text="${respuesta.contenido}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id rerum ducimus. Nam sint corporis nisi laboriosam, dolores eligendi saepe ipsam? Magni alias ex rem explicabo, quia quo amet laudantium?
