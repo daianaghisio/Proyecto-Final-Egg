@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
 import com.MigraEmprende.MigraEmprende.services.EmprendimientoService;
+import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
 @Controller
 @RequestMapping("/emprendimiento")
@@ -22,6 +23,9 @@ public class EmprendimientoController {
 
 	@Autowired
 	private EmprendimientoService emprendimientoService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/") // Este get se usa para las cards de emprendimientos en "entrepreneurship-all"
@@ -41,9 +45,9 @@ public class EmprendimientoController {
 	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/mis-emprendimientos/{userid}")   //Este get se usa para las cards de emprendimientos en "entrepreneurship-all"
 	public String listaUsuario(ModelMap modelo, @PathVariable String userid) {
-		List<Emprendimiento> listarEmprendimientos = emprendimientoService.listarEmprendimientos();
 		
-		modelo.addAttribute("todosEmprendimientos", listarEmprendimientos); //entre comillas ES UNA VARIABLE que va al front y lleva consigo la lista que puse despues de la coma
+		List<Emprendimiento> listarEmprendimientosDelUsuario = emprendimientoService.retornarEmprendimientosPorUserId(userid);
+		modelo.addAttribute("todosEmprendimientos", listarEmprendimientosDelUsuario); //entre comillas ES UNA VARIABLE que va al front y lleva consigo la lista que puse despues de la coma
 		
   	//la variable "todosEmprendimientos" es para ITERAR en th:each 
 	//y mostrar atributos como nombre, foto, etc de cada emprendimiento
