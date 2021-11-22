@@ -163,10 +163,17 @@ public class UsuarioController {
    }
    
    @PostMapping("/resetpassword/{id}")
-   public String resetpassEnd(@RequestParam String password, @PathVariable String id) throws Exception {
-	   usuarioService.changePass(id, password);
+   public String resetpassEnd(ModelMap modelo,@RequestParam String password1,@RequestParam String password2, @PathVariable String id) throws Exception {
+	   if (password1.equals(password2)) {
+		   usuarioService.changePass(id, password1);
+		   return "redirect:../login";
+	}else {
+		modelo.put("error", "Las contraseñas no coinciden! Intentelo nuevamente");
+		return "resetpass-end";
+	}
 	   
-	   return "redirect:../login";
+	   
+	   
    }
 }
    
