@@ -106,43 +106,72 @@
         </div>
     </nav>
     <!-- Comments -->
-    <div class="container colum-container">
-        <div class="row comments justify-content-center">
-            <div class="col-6">
-                <h2>Deja tu comentario</h2>
-                <form action="" class="form_comments d-flex justify-content-end flex-wrap mb-5">
-                    <a href="/foro/crear/"> <div class="btn btn-primary" type="button">Comentar</div > </a> 		        </form>
+    <div class="container">
+        <div class="row">
+            
+                
+                
                 
                 <!--Usuarios-->
-                <div class="media shadow-lg p-4 mb-5" th:each="comentario : ${listaComentario}">
-                	<img th:if="${comentario.usuario.foto != null}" th:src="${'/foto/comentario?id=' + comentario.id}"  widht="84" height="84" alt="">
-                    <img th:if="${comentario.usuario.foto == null}" src="/img/male.jpg"  widht="84" height="84" alt="">
-                    <div class="media-body">
-                    	<div class="d-flex justify-content-between">                         	
-                        	<a th:href="@{'/foro/' + ${comentario.id}}" th:text="${comentario.titulo}"> </a>
-                        	<a th:text="${comentario.fecha}"> </a>
-                        	<p class="name-user" th:text="${comentario.usuario.username}">Juan Perez <span>Time: 19:34, 01/01/2022 </span></p>
-                        </div >
-                        <p class="comment-user" th:text="${comentario.contenido}">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione dolorem iusto nesciunt quos consectetur maxime natus labore impedit necessitatibus possimus temporibus voluptas, exercitationem inventore at laudantium reprehenderit nihil atque?
-                        </p>
-                    </div>
-                    <div th:if="${session.usuariosession != null}" class="d-flex justify-content-end">
-                    	<a th:href="@{/foro/}+${comentario.id}" class="btn btn-info"> Responder </a>
-        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn btn-danger" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
-        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn btn-danger" th:if="${ session.usuariosession.id == comentario.usuario.id}"> Eliminar  </a>
-         			</div >
-         			<div th:if="${session.usuariosession == null}" class="d-flex justify-content-end">
-         				<p class="text-muted">Si quieres comentar, <a th:href="@{/user/register}">regístrate</a > o <a th:href="@{/user/login}">Inicia Sesión</a ></p >
-         			</div>
-                </div>
+                <div class="container">
+                	<div class="row">
+	                	<div class="col-12 ">
+	                		<div class="divComentar row d-flex justify-content-around align-items-stretch">
+	                			<div class="col-sm-12 col-md-3 d-flex justify-content-center align-items-center"><div><p class="textoComentar fs-4">Escribe tus consultas en nuestro foro</p ></div ></div>
+	                    		<div class="col-sm-12 col-md-3 d-flex justify-content-center align-items-center"><a href="/foro/crear/"> <div class="btn botonComentar text-white p-2 " type="button">Comentar</div > </a></div>
+	                    	</div > 
+			        	</div >	
+                	</div>
+	                <div class="media contenedorComentario shadow-lg p-4 mb-5 row" th:each="comentario : ${listaComentario}">
+	                	<div class=""> <!-- Contiene la foto, titulo, nombre y hora -->               		
+	                		<div class="d-flex justify-content-between align-items-center">
+		                		<div class="col-12 bloqueFoto d-flex justify-content-start">
+		                			<a class="text-decoration-none" th:href="@{/user/profile/} + ${comentario.usuario.id}"><img th:if="${comentario.usuario.foto != null}" th:src="${'/foto/comentario?id=' + comentario.id}"  widht="84" height="84" alt=""></a>
+		                    		<a class="text-decoration-none" th:href="@{/user/profile/} + ${comentario.usuario.id}"><img th:if="${comentario.usuario.foto == null}" src="/img/male.jpg"  widht="84" height="84" alt=""></a>
+		                		</div >
+		                		<div class="col-12 justify-content-center bloqueTitulo text-center">
+		                			<a class="fs-3 text-decoration-none textTitulo" th:href="@{'/foro/' + ${comentario.id}}" th:text="${comentario.titulo}"> </a>
+		                			<p>Comentado por <a class="text-decoration-none" th:href="@{/user/profile/} + ${comentario.usuario.id}"><span class="name-user " th:text="${comentario.usuario.username}">Juan Pérez</span ></a > el <span th:text="${comentario.fecha}"> Time: 19:34, 01/01/2022 </span  ></p>
+		                		</div >
+	                		</div >
+	                		
+							<div>							
+	                        	
+							</div>
+	                    	<div class="lineaDivisoria"> </div >
+	                	</div >
+	                	
+	                    <div class="media-body">
+	                    
+	                    	<div class="d-flex justify-content-between">                         	                        	
+	                        	
+	                        </div >
+	                        <div class="contenedorContenidoComentario d-flex align-items-stretch">
+		                        <p class="comment-user" th:text="${comentario.contenido}">
+		                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione dolorem iusto nesciunt quos consectetur maxime natus labore impedit necessitatibus possimus temporibus voluptas, exercitationem inventore at laudantium reprehenderit nihil atque?
+		                        </p>
+	                        </div >
+	                    </div>
+	                    
+	                    <div class="p-1 ">
+		                    <div th:if="${session.usuariosession != null}" class="d-flex justify-content-end contenedorBotones">
+		                    	<a th:href="@{/foro/}+${comentario.id}" class="btn botonResponder p-2 m-2 text-white"> Responder </a>
+		        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn botonEliminar p-2 m-2 text-white" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
+		        				<a th:href="@{/foro/delete/}+${comentario.id}" class="btn botonEliminar p-2 m-2 text-white" th:if="${ session.usuariosession.id == comentario.usuario.id}"> Eliminar  </a>
+		         			</div >
+		         			<div th:if="${session.usuariosession == null}" class="d-flex justify-content-end">
+		         				<p class="text-muted">Si quieres comentar, <a th:href="@{/user/register}">regístrate</a > o <a th:href="@{/user/login}">Inicia Sesión</a ></p >
+		         			</div>
+	         			</div >
+	                </div>
                 <!--Usuarios-->
                 
-
+				</div  >
             </div>
         </div>
-    </div>
-    <!-- pie de pagina -->
+    
+    
+     <!-- pie de pagina -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
@@ -176,7 +205,9 @@
              <small>&copy; 2021 <b>Mesa 5</b> - Todos los Derechos Reservados.</small>
         </div>
     </footer>
+    
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

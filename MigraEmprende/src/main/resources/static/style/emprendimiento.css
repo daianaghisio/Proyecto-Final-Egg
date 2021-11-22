@@ -269,10 +269,12 @@ html {
     padding-inline-start: 0pt;
 }
 
+h3{
+	color:  #fcb316;
+}
 .container {
     font-family: 'Lato', sans-serif;
-    font-weight: 900;
-    color: #fcb316 !important;
+    font-weight: 900;    
     padding-inline-start: 0pt;  
 }
 

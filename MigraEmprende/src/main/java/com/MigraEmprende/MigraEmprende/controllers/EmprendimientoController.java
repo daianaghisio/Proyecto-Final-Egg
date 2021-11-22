@@ -67,7 +67,19 @@ public class EmprendimientoController {
 		return "redirect:/";
 	}
 
-	// fin crear
+@GetMapping("/{id}") //Devuelve un único emprendimiento
+public String id(@PathVariable String id, ModelMap modelo) throws Exception {
+	modelo.addAttribute("emprendimiento", emprendimientoService.buscarPorId(id));
+	return "emprendimiento";
+}
+
+
+@PostMapping("/modificar/{id}") // Envía los datos del formulario acá para editar un emprendimiento
+public String modificarId(@PathVariable String id, MultipartFile archivo, String nombre, String descripcion, String email, String username, String address, String phone, String facebook, String instagram) throws Exception {
+	emprendimientoService.modificar(archivo, nombre, descripcion, email, username, id);
+	return "redirect:/";
+}
+
 
 	@GetMapping("/{id}") // Devuelve un único emprendimiento
 	public String id(@PathVariable String id) {
