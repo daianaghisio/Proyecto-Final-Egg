@@ -55,7 +55,12 @@ body{
     display: flex;
     padding: 0;
     width: 300%;
-    animation: cambio 20s infinite alternate linear;
+    animation-name: cambio;
+    animation-duration: 18s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
     
 }
 
@@ -99,7 +104,7 @@ body{
 }
 
 @keyframes cambio {
-    0% {margin-top: 0;}
+    0% {margin-left: 0;}
     20% {margin-left: 0;}
 
     25% {margin-left: -100%;}
@@ -108,6 +113,10 @@ body{
     50% {margin-left: -200%;}
     70% {margin-left: -200%;}
     
+    75% {margin-left: -100%;}
+    95% {margin-left: -100%;}
+    
+    100% {margin-left: 0;}
 }
 
 /*-------- Container noticias-----*/
