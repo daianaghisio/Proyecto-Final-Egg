@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style/resetpass-form.css">
-    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/style/emprendimiento.css">
-    <link rel="stylesheet" href="/style/estilofooter.css">
-    <!--FONT-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recuperar Contraseña</title>
+	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="/style/resetpass-form.css">
+	<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="/style/emprendimiento.css">
+	<link rel="stylesheet" href="/style/estilofooter.css">
+	<!--FONT-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
+<<<<<<< HEAD
  <!-- navbar logout -->
 <nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid ">
@@ -105,20 +107,109 @@
             </div>
         </div>
     </nav>
+=======
+	<!-- navbar logout -->
+	<nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid ">
+			<a class="navbar-brand" href="../"><img th:href="@{../}" class="logo" src="/img/logotexto.png"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+				<ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/foro/}">Foro</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/consulta/}">Consultas</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/leyes/}">Leyes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/noticias/}">Noticias</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/user/login}">Login</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- navbar login -->
+	<nav th:if="${session.usuariosession != null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid ">
+			<a class="navbar-brand" href="../"><img th:href="@{/}" class="logo" src="/img/logotexto.png"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+				<ul class="navbar-nav  mb-2 mb-lg-0 align-items-center ">
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/emprendimiento/}">Emprendimientos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/capacitaciones/}">Capacitaciones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/foro/}">Foro</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/consulta/}">Consultas</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/leyes/}">Leyes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/noticias/}">Noticias</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle menu-usuario" href="#" id="navbarDarkDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="img-container-logo">
+								<img th:if="${session.usuariosession.foto != null}"
+									th:src="${'/foto/usuario?id=' + session.usuariosession.id}" class="foto-logo"
+									alt="img-avatar">
+							</div>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+							<li><a class="dropdown-item" th:href="@{/user/profile/}+${session.usuariosession.id}">Mi
+									perfil</a></li>
+							<li><a class="dropdown-item"
+									th:href="@{/emprendimiento/mis-emprendimientos/}+${session.usuariosession.id}">Mis
+									emprendimientos</a></li>
+							<li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+>>>>>>> 783f8a64f25e35de384d276a6568836073d06173
 
 
-    <div class="login-box">
-        <img src="/img/logo.jpg" class="avatar" alt="Avatar Image">
-        <h1>Recuperar contraseña</h1>      
-        <form th:action="@{/user/resetpassword}" method="POST">
-          <!-- EMAIL INPUT -->
-          <label for="email">Email</label>
-          <input type="text" name="email" placeholder="Ingresá tu email">
-          <input type="submit" value="Enviar">
-          <a th:href="@{/user/register/}">¿No tenés una cuenta?</a>
-        </form >
-      </div>
- <!-- pie de pagina -->
+	<div class="login-box">
+		<img src="/img/logo.jpg" class="avatar" alt="Avatar Image">
+		<h1>Recuperar contraseña</h1>
+		<form th:action="@{/user/resetpassword}" method="POST">
+			<!-- EMAIL INPUT -->
+			<label for="email">Email</label>
+			<input type="text" name="email" placeholder="Ingresá tu email">
+			<input type="submit" value="Enviar">
+			<a th:href="@{/user/register/}">¿No tenés una cuenta?</a>
+		</form>
+	</div>
+	         <!-- pie de pagina -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
@@ -139,30 +230,6 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
-	<footer class="pie-pagina">
-        <div class="grupo-1">
-            <div class="box">
-                <figure>
-                 <a href="#">
-                    <img src="/img/logotexto.png" alt="Logo de SLee Dw">
-                    </a>
-                </figure>
-            </div>
-            <div class="box">
-                <h2>SOBRE NOSOTROS</h2>
-                <p>Somos una organización dedicada a brindar ayuda a todas las personas respecto a la migración.</p>
-                <p>Podemos ayudarte con información legal, noticias relevantes, publicitar tu emprendimiento y asesorarte con mails.</p>
-            </div>
-            <div class="box">
-                <h2>SIGUENOS</h2>
-                <div class="red-social">
-                    <a href="https://www.facebook.com/fundacionmigra/?ref=page_internal" class="fa fa-facebook" target="_blank"></a>
-                    <a href="https://www.instagram.com/fundacionmigra/" class="fa fa-instagram" target="_blank"></a>
-                    <a href="https://twitter.com/fundacionmigra" class="fa fa-twitter" target="_blank"></a>
-                    <a href="https://www.linkedin.com/company/fundaci%C3%B3nmigra/" class="fa fa-linkedin" target="_blank"></a>
-                </div>
-=======
             <div class="box-contacto">
                 <h2 class="contacto">CONTACTO</h2>
                 <ul class="lista-contacto">
@@ -170,21 +237,17 @@
                     <li>Dirección: Rioja 1474, Piso 8</li>
                     <li>E-Mail: info@fundacionmigra.org</li>
                 </ul>
->>>>>>> dd63bf286c9f4362d8d25e0c4a664f944e287d29
             </div>
         </div>
         <div class="grupo-2">
              <small>&copy; 2021 <b>Mesa 5</b> - Todos los Derechos Reservados.</small>
         </div>
     </footer>
-<<<<<<< HEAD
-    
-=======
-    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+			<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 
->>>>>>> dd63bf286c9f4362d8d25e0c4a664f944e287d29
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 </body>
+
 </html>
