@@ -1,15 +1,24 @@
 package com.MigraEmprende.MigraEmprende.controllers;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.MigraEmprende.MigraEmprende.entities.Usuario;
+import com.MigraEmprende.MigraEmprende.repositories.EmprendimientoRepository;
 
 @Controller
 @RequestMapping("/")
 public class MainController {
 	
+	
 	@GetMapping("/")
-	public String index() {
+	public String index(ModelMap modelo) {		
+		
 		return "index";
 	}
 	

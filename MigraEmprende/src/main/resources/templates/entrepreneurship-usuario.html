@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device=width, user-scalable=no, initial=
-        scale=1, maximum-scale=1, minimum=scale=1">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">           
-        
-        <link rel="stylesheet" href="/style/style-comentario-individual.css">
-        <link rel="stylesheet" href="/style/emprendimiento.css">
-        <link rel="stylesheet" href="/style/estilofooter.css">
-        <link rel="stylesheet" href="/style/comments.css">
-        
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/0f0f835cc6.js" crossorigin="anonymous"></script>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+       <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="/style/emprendimiento.css">
+    <link rel="stylesheet" href="/style/user-form.css">
+    <link rel="stylesheet" href="/style/estilofooter.css">
+    <!--FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <title> Emprendimiento</title>
 
-        <title th:text="${comentario.titulo}">Comentario</title >
-    </head>
 
-<body> 
-        <!-- navbar logout -->
+</head>
+<header>
+  
+</header>
+
+<body>
+       <!-- navbar logout -->
 <nav th:if="${session.usuariosession == null}" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid ">
         <a class="navbar-brand" href="../"><img th:href="@{../}" class="logo" src="/img/logotexto.png"></a>
@@ -104,70 +110,52 @@
             </div>
         </div>
     </nav>
+  <section>
+  
+  
+  
 
-
-        <!--Caja de comentarios-->
-    <div class="comments-container  container">
-    	<div class="row contenedorComentario mb-2">
-    	
-    		<div class="col-12 shadow-lg">
-    			<div class="d-flex justify-content-between align-items-center p-3">
-					<div class="justify-content-center contenedorFoto">
-						<a th:href="@{/user/profile/} + ${comentario.usuario.id}"><div class="fotoComentario bloqueFoto align-items-center"><img th:src="${'/foto/usuario?id='}  +${comentario.usuario.id}" alt="--Avatar--"></div></a>
-					</div >						 
-	            	<div class="bloqueTitulo">
-	            		<h1 class="comentarioTitulo" th:text="${comentario.titulo}" >Comentario</h1>
-	            		<div class="contenedorContenidoComentario comment-content p-3" th:text="${comentario.contenido}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id rerum ducimus. Nam sint corporis nisi laboriosam, dolores eligendi saepe ipsam? Magni alias ex rem explicabo, quia quo amet laudantium?</div>
-	            		<p class="mt-2">Comentado por <a class="text-decoration-none textoAmarillo" th:href="@{/user/profile/} + ${comentario.usuario.id}"><span class="name-user " th:text="${comentario.usuario.username}">Juan Pérez</span ></a > el <span th:text="${comentario.fecha}"> Time: 19:34, 01/01/2022 </span  ></p >
-	            	</div >
-				
-	            	
-	            </div >
-	            <div class="lineaDivisoria"> </div >
-	            <div class="d-flex justify-content-center"> 
-		            <form class="form d-flex justify-content-center m-3" th:action="@{/foro/}+ ${comentario.id}+ '/responder'" method="POST">
-                    	<input class="form-input" type="text"name="contenido" placeholder="Comenta algo" required>
-                    	<input type="hidden" name="username" th:value="${session.usuariosession.username}">
-                    	<input type="hidden" name="idComentario" th:value="${comentario.id}"> 
-                    	<input class="form-button botonComentar text-white" type="submit" th:href="@{/foro/} + @{comentario.id}"> 
-		            </form >
-	            </div >
-	            <ul id="comments-list" class="comments-list">
-	                <li>
-	                    
-	                    
-	                    <!--Respuesta Comentario-->
-	                    <ul class="comments-list reply-list" >
-	                        <li th:each="respuesta : ${respuestas}">
-	                            <!--Avatar-->
-	                            <a th:href="@{/user/profile/} + ${respuesta.usuario.id}"><div class="comment-avatar"><img th:src="${'/foto/usuario?id='}  +${respuesta.usuario.id}" alt="--Avatar--"></div></a>
-	                                <!--Contenedor del comentario-->
-	                            <div class="comment-box">
-	                                <div class="comment-head">
-	                                <p class="mt-2 fs-6">Respuesta de <a class="text-decoration-none textoAmarillo" th:href="@{/user/profile/} + ${respuesta.usuario.id}"><span class="name-user " th:text="${respuesta.usuario.username}">Juan Pérez</span ></a > el <span th:text="${respuesta.fecha}"> Time: 19:34, 01/01/2022 </span  ></p >
-	                                   
-	                                </div>
-	                                <div class="comment-content contenedorContenidoComentario" th:text="${respuesta.contenido}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id rerum ducimus. Nam sint corporis nisi laboriosam, dolores eligendi saepe ipsam? Magni alias ex rem explicabo, quia quo amet laudantium?
-	                                </div>
-	                                <div class="my-2">
-	                   		           	 <a th:href="@{/foro/}+${comentario.id}+'/'+${respuesta.id}" class="btn botonEliminar text-white" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
-	        			 	   			<a th:href="@{/foro/}+${comentario.id}+'/'+${respuesta.id}" class="btn botonEliminar text-white" th:if="${ session.usuariosession.id == comentario.usuario.id}"> Eliminar  </a> 
-			        				</div >
-	                            </div>
-	                            
-	                        </li >
-	                        
-	                        
-	                    </ul>
-	                </li>
-	                
-	            </ul>
-	        </div  >
-        </div  >
-    </div >
+	<div class="container-fluid">    
+	<div class="row p-4 d-flex justify-content-between align-items-center">
+		<div class="col-sm-12 col-md-4">
+			<p class="text-white"> <span class="fs-3">¿Tienes interés en llegar a más personas?</span > <span class="fs-3 ">¡Podemos ayudarte! </span ></p  >
+		 </div >
+		<div class="col-sm-12 col-md-4">
+			<a th:href="@{/emprendimiento/crear/}" class="btn btn-primary">Crear emprendimiento</a  >
+		 </div >
+	 	</div >
+		  <div class="row mt-3 vh-100">
+		   <div class="col-sm-12 col-md-3 my-3 d-flex align-items-stretch" th:each="emprendimiento:${todosEmprendimientos}">
+		   
+		   <div th:if="${emprendimiento.usuario.id == session.usuariosession.id}">
+		    	<!--  La siguiente card es para agregar las fotos -->
+		 		<div class="card" th:if="${emprendimiento.alta == true}">
+			 		<div th:if="${emprendimiento.usuario.id == session.usuariosession.id}">
+			 		<a class="aNull text-dark" th:href="@{/emprendimiento/}+${emprendimiento.id}">
+			 			<img th:if="${emprendimiento.foto == null}" src="/img/logotexto.png" class="card-img-top imgF" alt="Imágen por defecto">
+			  			<img th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" class="card-img-top imgF" alt="...">
+			    			<div class="card-body">
+			      		<h4 class="card-title" th:text="${emprendimiento.nombre}"> Nombre_Del_Emprendimiento </h4>
+			      		<p class="card-text descripcion" th:text="${emprendimiento.descripcion}" >Foto del emprendimiento</p>		      
+			    	</div>
+			    	<div class="d-flex justify-content-between align-items-end"> 
+			    		<a th:href="@{/emprendimiento/deshabilitar/}+${emprendimiento.id}" class="btn btn-danger botonF" th:if="${ #strings.equals(session.usuariosession.rol, 'ROLE_ADMIN' )}"> Eliminar </a>
+	        			<a th:href="@{/emprendimiento/deshabilitar/}+${emprendimiento.id}" class="btn btn-danger botonF" th:if="${ session.usuariosession.id == emprendimiento.usuario.id}"> Eliminar  </a>
+	        		</div >
+			    <!-- <img class="card-img-bottom" th:if="${emprendimiento.foto != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="imagen del producto" style="width:100%">-->
+			   </div >
+		   </div>
+			</a>
+		   </div >
+		   </div >		
+		   
+	</div>
     
-
- <!-- pie de pagina -->
+     
+     
+    </section>
+    
+     <!-- pie de pagina -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
@@ -201,11 +189,10 @@
              <small>&copy; 2021 <b>Mesa 5</b> - Todos los Derechos Reservados.</small>
         </div>
     </footer>
-    
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 </body>
-</html> 
+</html>
