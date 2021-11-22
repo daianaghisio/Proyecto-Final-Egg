@@ -112,7 +112,8 @@
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
                         <div class="img-container">
-                            <img class="foto" src="gatito.jpg">
+                             <img class="foto" th:if="${usuario == null}"  src="/img/user.jpg" alt="img-avatar">
+                             <img class="foto" th:if="${usuario != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="img-avatar">
                         </div>
                     </div>
                 </div>

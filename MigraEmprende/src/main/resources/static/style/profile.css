@@ -38,8 +38,8 @@ html {
     border-bottom-left-radius: 20px;
     -webkit-box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.54); 
     box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.54);
-    background-image:url(../portadalogo.jpg);
-}
+    background-image:url(../img/portadalogo.jpg);
+    }
 .seccion-perfil-usuario .perfil-usuario-avatar  {
     display: flex;
     width: 180px;
