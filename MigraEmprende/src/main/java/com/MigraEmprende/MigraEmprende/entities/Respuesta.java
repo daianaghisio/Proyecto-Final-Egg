@@ -10,9 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.MigraEmprende.MigraEmprende.repositories.ComentarioRepository;
 
 @Entity
 public class Respuesta {
