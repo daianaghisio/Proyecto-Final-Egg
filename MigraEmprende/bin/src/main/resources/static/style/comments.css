@@ -3,12 +3,11 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background-color: #3b3b3d;
+body{    
     font-family: 'Lato', sans-serif;
 
 }
-.colum-container{
+.container{
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -46,6 +45,8 @@ h2{
     box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.35);
 }
 
+
+
 /* Box Users */
 .media{
     border-top: 1px solid #bfbfbf;
@@ -64,6 +65,12 @@ h2{
     color: #464646;
     margin-left: 10px;
 }
+
+.name-user:hover{
+	color: rgb(0, 0, 202);
+}
+
+
 .media .comment-user{
     margin-top: 10px;
 }
@@ -89,3 +96,91 @@ navbar-logo{
   i:hover {
     color: #bfbfbf;
   }
+  
+  
+  .bloqueFoto{
+	margin-bottom: 5px;
+	width: 20%;
+	
+}
+
+.bloqueFoto img{
+	border-radius: 50%;
+}
+
+.bloqueFoto img:hover{
+	transition: 2x;
+	box-shadow: 2px 2px 2px 2px rgb(240, 206, 136);
+}
+
+  .bloqueTitulo{
+	width: 80%
+	}
+
+.textTitulo{
+	color: #db9f1c;
+}
+
+.lineaDivisoria{
+	width: 100%;
+	height: 2px;
+	background-color: rgb(183, 183, 183);
+}
+
+.contenedorContenidoComentario{
+	padding: 20px;
+	margin-top: 10px;
+	background-color: rgb(235, 235, 235);
+	border-radius: 8px;
+	
+}
+
+.contenedorComentario{
+	margin: 0 10%;
+	border: 0 !important;
+	border-radius: 8px;
+	padding-bottom: 0 !important;
+	border-bottom: 2px solid #db9f1c !important;
+	border-right: 2px solid #db9f1c !important;
+}
+
+.contenedorBotones{
+	padding: 10px 0; 	
+}
+
+.botonResponder, .botonComentar{
+	background-color: #db9f1c;
+	border-bottom: 2px solid rgb(241, 210, 146) !important;
+	border-right: 2px solid rgb(241, 210, 146) !important;
+}
+
+.botonResponder:hover, .botonComentar:hover{
+	background-color: rgb(232, 179, 68);
+	border-bottom: 2px solid rgb(241, 210, 146) !important;
+	border-right: 2px solid rgb(241, 210, 146) !important;
+}
+
+.botonEliminar{
+	background-color: rgb(189, 2, 2);
+	border: 0 !important;
+	border-bottom: 2px solid rgb(253, 64, 64) !important;
+	border-right: 2px solid rgb(253, 64, 64) !important;
+
+}
+
+.botonEliminar:hover{
+	background-color: rgb(253, 47, 47);
+	border: 0 !important;
+	border-bottom: 2px solid rgb(254, 160, 160) !important;
+	border-right: 2px solid rgb(254, 160, 160) !important;
+}
+
+.divComentar{
+	min-height: 110px;
+}
+
+.textoComentar{
+	color: #db9f1c;
+	font-weight: 800;
+}
+

@@ -127,12 +127,14 @@ navbar-logo{
 	}
 
 .imgF{
-	width: 100%;
-	max-width: 398px;	
+	width: 100%;	
 }
 .aNull{
 	text-decoration: none;
 	color: rgb(31, 31, 31);
+}
+.card{
+	width: 100%;
 }
 
 

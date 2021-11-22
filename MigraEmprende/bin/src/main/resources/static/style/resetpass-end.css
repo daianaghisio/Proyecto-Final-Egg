@@ -1,0 +1,360 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(https://images.pexels.com/photos/414184/pexels-photo-414184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat center top;
+  background-size: cover;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.login-box {
+  width: 320px;
+  height: 350px;
+  background: #000;
+  color: #fff;
+  top: 32%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 4px 27px -1px #000000; 
+   box-shadow: 0px 4px 27px -1px #000000;
+}
+
+.login-box .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.login-box h1 {
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login-box label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #3a3a3c;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+
+.login-box a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.login-box a:hover {
+  color: #fff;
+}
+
+
+
+
+
+
+.navbar-logo{
+  display:flex;
+  vertical-align: middle;
+  width: 150px;
+}
+.navbar-logo img{
+  display:block;
+  width: 100%;
+  height:fit-content;
+}
+.margen {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ly7kvk');
+  src:  url('fonts/icomoon.eot?ly7kvk#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ly7kvk') format('truetype'),
+    url('fonts/icomoon.woff?ly7kvk') format('woff'),
+    url('fonts/icomoon.svg?ly7kvk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-envelop:before {
+  content: "\e945";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-user-check:before {
+  content: "\e975";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            line-height: 1.4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #404040;
+            font-family: "Arial", Segoe UI, Tahoma, sans-serifl, Helvetica Neue, Helvetica;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body,
+        .seccion-perfil-usuario {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(#fcb315, transparent);
+            margin-bottom: 1.25rem;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-portada {
+            display: block;
+            position: relative;
+            width: 90%;
+            height: 17rem;
+            background-color: #404040;
+            border-radius: 0 0 20px 20px;
+        }
+        .seccion-perfil-usuario .perfil-usuario-avatar{
+          width: 10%;
+          height: 10%;
+        }
+        .seccion-perfil-usuario .perfil-usuario-avatar {
+            display: flex;
+            height: 5%;
+            object-fit: cover;
+            object-position: center center;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #fcb41a;
+            border-radius: 20%;
+            background-color: #fcb41a;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            position: absolute;
+            bottom: -10px;
+            left: calc(10% - 90px);
+            z-index: 1;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-avatar img {
+            width: 100%;
+            position: relative;
+            border-radius: 20%;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            border: 0;
+            background-color: #fff;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body {
+            width: 70%;
+            position: relative;
+            max-width: 750px;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body .titulo {
+            display: block;
+            width: 100%;
+            font-size: 1.75em;
+            margin-bottom: 0.5rem;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-body .texto {
+            color: #848484;
+            font-size: 0.95em;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-footer,
+        .seccion-perfil-usuario .perfil-usuario-bio {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            background-color: #fff;
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .seccion-perfil-usuario .perfil-usuario-bio {
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .seccion-perfil-usuario .lista-datos {
+            width: 50%;
+            list-style: none;
+        }
+
+        .seccion-perfil-usuario .lista-datos li {
+            padding: 5px 0;
+        }
+
+        .seccion-perfil-usuario .lista-datos li>.icono {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            vertical-align: middle;
+        }
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+/*:::::Pie de Pagina*/
+.pie-pagina{
+    width: 100%;
+    background-color: #212529;
+    position: relative;
+    top: 22.3%;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+.pie-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pie-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+.pie-pagina .grupo-1 .box h2{
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.pie-pagina .grupo-1 .box p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+.pie-pagina .grupo-1 .red-social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.pie-pagina .grupo-1 .red-social a:hover{
+    color: aqua;
+}
+.pie-pagina .grupo-2{
+    background-color: #404040;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
