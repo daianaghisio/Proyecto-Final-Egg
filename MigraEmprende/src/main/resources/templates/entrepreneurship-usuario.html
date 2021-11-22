@@ -124,12 +124,12 @@
 			<a th:href="@{/emprendimiento/crear/}" class="btn btn-primary">Crear emprendimiento</a  >
 		 </div >
 	 	</div >
-		  <div class="row mt-3 vh-100">
+		  <div class="row mt-3 minHeight">
 		   <div class="col-sm-12 col-md-3 my-3 d-flex align-items-stretch" th:each="emprendimiento:${todosEmprendimientos}">
 		   
 		   <div th:if="${emprendimiento.usuario.id == session.usuariosession.id}">
 		    	<!--  La siguiente card es para agregar las fotos -->
-		 		<div class="card" th:if="${emprendimiento.alta == true}">
+		 		<div class="card cardResponsive" th:if="${emprendimiento.alta == true}">
 			 		<div th:if="${emprendimiento.usuario.id == session.usuariosession.id}">
 			 		<a class="aNull text-dark" th:href="@{/emprendimiento/}+${emprendimiento.id}">
 			 			<img th:if="${emprendimiento.foto == null}" src="/img/logotexto.png" class="card-img-top imgF" alt="Imágen por defecto">

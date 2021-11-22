@@ -380,8 +380,12 @@ h3{
 	margin: 20px auto;
 }
 
-
+.minHeight{
+	min-height: 100vh;
+}
 
   
-  
+  .cardResponsive{
+	height: 100%;
+}
   

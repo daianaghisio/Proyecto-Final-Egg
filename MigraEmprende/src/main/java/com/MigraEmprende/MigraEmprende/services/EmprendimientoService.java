@@ -221,5 +221,11 @@ public class EmprendimientoService {
 	public List<Emprendimiento> listarEmprendimientos(){
 		return emprendimientoRepository.findAll();
 	}
+	
+	@Transactional(readOnly=true) //Se usa por buenas practicas aclarando entre parentesis que no es una modificacion a la BBDD
+	public List<Emprendimiento> retornarEmprendimientosPorUserId(String id){
+		
+		return emprendimientoRepository.retornarEmprendimientosPorUserId(id);
+	}
 
 }
