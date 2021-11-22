@@ -81,7 +81,8 @@ public class EmprendimientoController {
 	
 
 @GetMapping("/{id}") //Devuelve un único emprendimiento
-public String id(@PathVariable String id) {
+public String id(@PathVariable String id, ModelMap modelo) throws Exception {
+	modelo.addAttribute("emprendimiento", emprendimientoService.buscarPorId(id));
 	return "emprendimiento";
 }
 
