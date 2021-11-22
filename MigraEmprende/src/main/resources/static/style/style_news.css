@@ -52,6 +52,7 @@ body{
     column-gap:100px;
     column-width: 50px;
 }
+
 .rows{
     -webkit-row-count:3;
     -moz-row-count:3;
@@ -70,8 +71,9 @@ body{
     border: 1px solid #DB9F1C;;
     overflow: hidden;
     background: #fff;
-    cursor: pointer;
 }
+
+
 
 .rows img{
     width: 100%;
@@ -82,6 +84,7 @@ body{
     text-align: justify;
 
 }
+
 .rows.contenido h3{
     font-weight: 400;
     margin-bottom: 15px;
@@ -96,6 +99,12 @@ body{
 .imagenF{
 	width: 100%;
 }
+
+a{
+	text-decoration: none ;
+}
+
+
 
 
 
