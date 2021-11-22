@@ -42,6 +42,19 @@ public class EmprendimientoController {
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+	@GetMapping("/mis-emprendimientos/{userid}")   //Este get se usa para las cards de emprendimientos en "entrepreneurship-all"
+	public String listaUsuario(ModelMap modelo, @PathVariable String userid) {
+		List<Emprendimiento> listarEmprendimientos = emprendimientoService.listarEmprendimientos();
+		
+		modelo.addAttribute("todosEmprendimientos", listarEmprendimientos); //entre comillas ES UNA VARIABLE que va al front y lleva consigo la lista que puse despues de la coma
+		
+  	//la variable "todosEmprendimientos" es para ITERAR en th:each 
+	//y mostrar atributos como nombre, foto, etc de cada emprendimiento
+		
+		return "entrepreneurship-usuario";
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/form") //Devuelve el formulario para crear y modificar un emprendimiento
 	public String form() {
 		return "entrepreneurship-form";

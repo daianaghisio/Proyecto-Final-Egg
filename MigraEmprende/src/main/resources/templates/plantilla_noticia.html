@@ -107,7 +107,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                             <li><a class="dropdown-item" th:href="@{/user/profile/}+${session.usuariosession.id}">Mi perfil</a></li>
-                            <li><a class="dropdown-item" th:href="@{/emprendimiento/}+${id}">Mis emprendimientos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/emprendimiento/mis-emprendimientos/}+${session.usuariosession.id}">Mis emprendimientos</a></li>
                             <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
                         </ul>
                     </li>
