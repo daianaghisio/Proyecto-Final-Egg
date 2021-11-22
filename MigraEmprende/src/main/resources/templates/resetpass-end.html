@@ -106,9 +106,14 @@
             </div>
         </div>
     </nav>
-
+	<div th:if="${error}!=null" class="card text-white bg-danger mb-1" >
+			<div class="card-body">
+				<p class="card-text" th:text="${error}"></p>
+			</div>
+		</div>
 
     <div class="login-box">
+    	
         <img src="/img/logo.jpg" class="avatar" alt="Avatar Image">
         <h1>Cambiar contraseña</h1>      
         <form th:action="@{/user/resetpassword/__${id}__}" method="POST">
