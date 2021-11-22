@@ -102,7 +102,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                             <li><a class="dropdown-item" th:href="@{/user/profile/}+${session.usuariosession.id}">Mi perfil</a></li>
-                            <li><a class="dropdown-item" th:href="@{/emprendimiento/}+${id}">Mis emprendimientos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/emprendimiento/mis-emprendimientos/}+${session.usuariosession.id}">Mis emprendimientos</a></li>
                             <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
                         </ul>
                     </li>
@@ -124,7 +124,7 @@
 			<a th:href="@{/emprendimiento/crear/}" class="btn btn-primary">Crear emprendimiento</a  >
 		 </div >
 	 	</div >
-		  <div class="row mt-3 vh-100">
+		  <div class="row mt-3 minHeight">
 		   <div class="col-sm-12 col-md-3 my-3 d-flex align-items-stretch" th:each="emprendimiento:${todosEmprendimientos}">
 		   
 		    	<!--  La siguiente card es para agregar las fotos -->
