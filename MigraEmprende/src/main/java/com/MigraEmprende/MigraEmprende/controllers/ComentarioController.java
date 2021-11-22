@@ -72,10 +72,10 @@ public class ComentarioController {
 		try {
 			comentarioService.bajaComentario(id);
 			modelo.put("exito", "Comentario borrado!");
-			return "redirect:/";
+			return "redirect:/foro/";
 		} catch (Exception e) {
 			modelo.put("error", e.getMessage());
-			return "redirect:/";
+			return "redirect:/foro/";
 		}
 	}
 	
