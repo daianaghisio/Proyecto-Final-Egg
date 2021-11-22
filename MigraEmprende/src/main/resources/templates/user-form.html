@@ -176,7 +176,7 @@
                         <div class="col-md-6 position-relative">
                             <label for="foto" class="form-label">Foto</label>
                             <div class="grouplastname">
-                                <input type="file" class="form-control" name="archivo">
+                                <input type="file" class="form-control" name="archivo" required>
                                 <!-- input th:if="${ #strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}" -->
                                 <input th:if="${ !#strings.equals(tipoForm, 'register')}" type="file" class="form-control fm" name="archivo" th:value="${usuario.foto}">
                             </div>
