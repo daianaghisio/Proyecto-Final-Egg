@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.MigraEmprende.MigraEmprende.entities.Emprendimiento;
 import com.MigraEmprende.MigraEmprende.services.EmprendimientoService;
-import com.MigraEmprende.MigraEmprende.services.UsuarioService;
 
 @Controller
 @RequestMapping("/emprendimiento")
@@ -23,9 +22,6 @@ public class EmprendimientoController {
 
 	@Autowired
 	private EmprendimientoService emprendimientoService;
-	
-	@Autowired
-	private UsuarioService usuarioService;
 
 	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	@GetMapping("/") // Este get se usa para las cards de emprendimientos en "entrepreneurship-all"

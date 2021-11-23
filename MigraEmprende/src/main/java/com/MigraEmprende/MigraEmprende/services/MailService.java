@@ -60,7 +60,7 @@ public class MailService {
 		try {
 			validationsServices.ValidarEmail(email);
 			
-			Usuario usuario = usuarioService.busarPorEmail(email);
+			Usuario usuario = usuarioService.buscarPorEmail(email);
 			
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setFrom("nosepruebanoseprueba@gmail.com");
