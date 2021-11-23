@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 </head>
 
@@ -112,8 +115,7 @@
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
                         <div class="img-container">
-                             <img class="foto" th:if="${usuario == null}"  src="/img/user.jpg" alt="img-avatar">
-                             <img class="foto" th:if="${usuario != null}" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="img-avatar">
+                             <img class="foto" th:src="${'/foto/emprendimiento?id=' + emprendimiento.id}" alt="img-avatar">
                         </div>
                     </div>
                 </div>
@@ -127,8 +129,8 @@
             </div>
         </div>
         <div class="social-bar">
-            <a href="#" class="icon icon-facebook" target="_blank"></a>
-            <a href="#" class="icon icon-instagram" target="_blank"></a>
+             <i class="bi bi-facebook icon icon-facebook"><a th:href="${emprendimiento.facebook}"  class="icon" target="_blank"></a></i>
+            <i class="bi bi-instagram icon icon-instagram"><a th:href="${emprendimiento.instagram}" class="icon" target="_blank"></a> </i>
         </div>
     </section>
 
