@@ -1,3 +1,20 @@
+.boton{
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:40px;
+    padding-right:40px;
+    background-color:#fcb316;
+    border-radius:35px;
+    color: #000000;
+    width: 30%;
+}
+.boton:hover {
+    background-color:#000000;
+    color:#DFE5F2;
+}
 
 .titulo {
     font-family: 'Lato', sans-serif;

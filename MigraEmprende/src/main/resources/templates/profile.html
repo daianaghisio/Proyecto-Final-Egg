@@ -141,7 +141,13 @@
                     </div>
                     <p class="datocolor" th:text="${usuario.email}">usuario@gmail.com</p>
                 </li>
+                <li class="items">
+                    <div class="icon-label">
+                        <a class="boton" th:href="@{/modificar/}+${session.usuariosession.id}">Editar perfil</a>
+                    </div>
+                </li>
             </ul>
+             
         </div>
        
     </section>
