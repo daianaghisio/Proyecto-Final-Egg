@@ -201,7 +201,7 @@ public class UsuarioService implements UserDetailsService{
 
 	}
 
-	public Usuario busarPorEmail(String email) throws Exception {
+	public Usuario buscarPorEmail(String email) throws Exception {
 		try {
 
 			// validations
@@ -234,6 +234,7 @@ public class UsuarioService implements UserDetailsService{
 		}
 
 	}
+	
 	// RETORNA USUARIO (LOGIN)
 	@Transactional(readOnly=true)
 	public Usuario findByUsername(String username) throws Exception{
