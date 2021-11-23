@@ -69,35 +69,6 @@ body{
     list-style: none;
 }
 
-
-.menuSlider{
-    text-align: center;
-    margin: 20px;
-}
-
-.menuSlider li:target{
-    opacity: 1;
-}
-
-.menuSlider li{
-    display: inline-block;
-    text-align: inherit;
-    padding: 0;
-    list-style: none;
-}
-
-.menuSlider li a{
-    display: inline-block;
-    color: white;
-    text-decoration: none;
-    background-color: #DB9F1C;
-    padding: 5px;
-    width: 25px;
-    height: 25px;
-    font-size: 13px;
-    border-radius: 100%;
-}
-
 .slider ul img{
     width: 100%;
     
